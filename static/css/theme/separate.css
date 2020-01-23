@@ -1,0 +1,16 @@
+span.separate {
+    padding: 0 3px;
+}
+
+span.separate-comma:before {
+    content: '\00002C';
+}
+
+span.separate-middle-dot:before {
+    content: '\0000B7';
+}
+
+span.separate-hyphen-minus:before {
+    content: '\00002D';
+    padding: 0 8px;
+}

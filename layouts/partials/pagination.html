@@ -1,0 +1,10 @@
+{{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
+<nav class="page-link">
+    {{ if .Paginator.HasPrev }}
+    <a class="page-link" href="{{ .Paginator.Prev.URL }}"><i class="nf nf-fa-chevron_left nf-36"></i></a>
+    {{ end }}
+    {{ if .Paginator.HasNext }}
+    <a class="page-link" href="{{ .Paginator.Next.URL }}"><i class="nf nf-fa-chevron_right nf-36"></i></a>
+    {{ end }}
+</nav>
+{{ end }}

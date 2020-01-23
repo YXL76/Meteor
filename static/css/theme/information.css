@@ -1,0 +1,17 @@
+div.information {
+    padding: 0 0 6px 0;
+    color: #9E9E9E;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 26px;
+}
+
+div.information > div > a {
+    color: #9E9E9E;
+    transition: color .5s;
+}
+
+div.information > div > a:hover {
+    color: #F9A825;
+    text-decoration: underline;
+}

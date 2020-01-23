@@ -1,0 +1,24 @@
+<div class="scroll-line"></div>
+<nav class="header">
+    <ul>
+        <li class="left hvr-buzz-out">
+            <a href="{{ .Site.Params.Navbar.Url }}"> {{ .Site.Title }} </a>
+        </li>
+        {{ range .Site.Menus.main }}
+        <li class="center"><a href="{{ .URL }}"> {{ .Name }} </a>
+            {{ if .HasChildren }}
+            <ul>
+                {{ range .Children }}
+                <li><a href="{{ .URL }}"> {{ .Name }} </a></li>
+                {{ end }}
+            </ul>
+            {{ end }}
+        </li>
+        {{ end }}
+    </ul>
+    <!--
+        <div class="right">
+            <a href="">{{ .Site.Title }}</a>
+        </div>
+    -->
+</nav>
