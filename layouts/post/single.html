@@ -1,0 +1,41 @@
+{{ define "main" }}
+
+<div class="single-header">
+    <img src="/img/{{ .Params.Image.Name }}" alt="{{ .Params.Image.Caption }}">
+    <span class="caption"> {{ .Params.Image.Caption | markdownify | emojify }} </span>
+</div>
+
+<div class="single-title">
+    <h1> {{ .Title | markdownify | emojify }} </h1>
+    <div class="single-information">
+        <h2 class="subtitle"> {{ .Params.Subtitle | markdownify | emojify }} </h2>
+        {{- partial "information" . -}}
+    </div>
+    <div class="share">
+        <a href="#"><i id="facebook" class="nf nf-fa-reddit_alien nf-24"></i></a>
+        <a href="#"><i id="twitter" class="nf nf-fa-twitter nf-24"></i></a>
+        <a href="#"><i id="weibo" class="nf nf-fa-weibo nf-24"></i></a>
+        <a href="#"><i id="linkedin" class="nf nf-fa-linkedin nf-24"></i></a>
+        <a href="#"><i id="email" class="nf nf-mdi-email nf-24"></i></a>
+    </div>
+    {{ if .Params.Avatar }}
+    <img class="avatar" src="{{ . }}">
+    {{ else }}
+    <img class="avatar" src="/img/avatar.jpg">
+    {{ end }}
+</div>
+
+<div>
+    {{ with .Params.toc }}
+    <aside class="TableOfContents">
+        <h2>Table Of Contents</h2>
+        {{ $.TableOfContents }}
+    </aside>
+    {{ end }}
+    <div class="single-content">
+        {{ .Content }}
+        {{ template "_internal/disqus.html" . }}
+    </div>
+</div>
+
+{{ end }}

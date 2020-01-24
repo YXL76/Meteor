@@ -7,26 +7,28 @@
     {{ $desc := "" }}
     {{ if .Params.summary }}
     {{ $desc = .Params.summary }}
-    {{ else if .Params.abstract }}
-    {{ $desc = .Params.abstract }}
     {{ else if .IsPage }}
     {{ $desc = .Summary }}
     {{ else if .Site.Params.description }}
     {{ $desc = .Site.Params.description }}
-    {{ else }}
-    {{ $desc = "" }}
     {{ end }}
     <meta name="description" content="{{ $desc }}">
+
     <link rel="stylesheet" href="/fonts/Montserrat/Montserrat-custom.css">
     <link rel="stylesheet" href="/fonts/Source Code Pro/Source Code Pro.css">
     <link rel="stylesheet" href="/fonts/Nerd Fonts/nerd-fonts-generated.css">
     <link rel="stylesheet" href="/fonts/Roboto/Roboto-custom.css">
-    <link rel="stylesheet" href="/css/katex.min.css">
     <link rel="stylesheet" href="/css/style.css">
 
-    <script src="/js/flexible.min.js"></script>
+    <script defer src="/js/flexible.min.js"></script>
 
+    {{ if .Site.Params.math }}
+    <link rel="stylesheet" href="/css/katex.min.css">
     <script defer src="/js/katex.min.js"></script>
     <script defer src="/js/auto-render.min.js"
             onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    {{ end }}
+    {{ if .Site.Params.diagram }}
+    <script defer src="/js/mermaid.min.js" onload="mermaid.initialize({startOnLoad:true});"></script>
+    {{ end }}
 </head>

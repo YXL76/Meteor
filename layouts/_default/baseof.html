@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode | default "en-us" }}">
+<html style="font-size: medium;" lang="{{ .Site.LanguageCode | default "en-us" }}">
 {{- partial "head.html" . -}}
     <body>
         {{- partial "navbar.html" . -}}
-        {{- partial "header.html" . -}}
         <div class="content" id="content">
         {{- block "main" . }}{{- end }}
         </div>

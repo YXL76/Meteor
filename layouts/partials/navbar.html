@@ -2,7 +2,7 @@
 <nav class="header">
     <ul>
         <li class="left hvr-buzz-out">
-            <a href="{{ .Site.Params.Navbar.Url }}"> {{ .Site.Title }} </a>
+            <a href="/{{ .Language }}"> {{ .Site.Title }} </a>
         </li>
         {{ range .Site.Menus.main }}
         <li class="center"><a href="{{ .URL }}"> {{ .Name }} </a>
