@@ -13,6 +13,22 @@ a {
     text-decoration: none;
 }
 
+ul {
+    padding: 0;
+    margin: 0;
+}
+
 .avatar {
-    border-radius: 50%;
+    -webkit-border-radius: 50%;
+       -moz-border-radius: 50%;
+            border-radius: 50%;
+}
+
+.anchorjs-link:after {
+    font-family: "NerdFontsSymbols Nerd Font";
+    color: #f9a825;
+    -webkit-transition: all .2s;
+    -o-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
 }

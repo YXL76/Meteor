@@ -1,92 +1,14 @@
-<script>
-    let winWidth = window.screen.width, heightDiff;
+<script src="/js/onscroll.js"></script>
 
-    document.body.onresize = () => {
-        heightDiff = 1 / (document.body.scrollHeight - window.screen.height)
-    };
+{{ if .Site.Params.math }}
+<link rel="stylesheet" href="/css/katex.min.css">
+<script src="/js/katex.min.js"></script>
+<script src="/js/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+{{ end }}
 
-    window.onresize = () => {
-        winWidth = window.screen.width;
-        heightDiff = 1 / (document.body.scrollHeight - window.screen.height)
-    };
-
-    let headingHeight = [];
-
-    const addItem = item => {
-        headingHeight.push({
-            h: item.offsetTop - 70,
-            id: "#" + item.id
-        })
-    };
-
-    let toLower = false, indexPre = 0, wintopPre = 100000000;
-    let scrollLine, singleContent, tableOfContents, tocLink, header;
-
-    window.onload = () => {
-        heightDiff = 1 / (document.body.scrollHeight - window.screen.height);
-        scrollLine = document.getElementsByClassName("scroll-line")[0].style;
-        header = document.getElementsByClassName("header")[0].style;
-        {{ with and .IsPage .Params.toc }}
-        singleContent = document.getElementsByClassName("single-content")[0];
-        tableOfContents = document.getElementsByClassName("TableOfContents")[0];
-        tocLink = tableOfContents.getElementsByTagName("a");
-        {{ range $.Site.Params.tableOfContents }}
-            {{ printf "let %s = singleContent.getElementsByTagName(\"%s\");" . . | safeJS }}
-            {{ printf "let length%s = %s.length;" . . | safeJS }}
-            {{ printf "for (let i = 0; i < length%s; ++i)   addItem(%s[i]);" . . | safeJS }}
-        {{ end }}
-        headingHeight.sort((a, b) => a.h > b.h);
-        {{ end }}
-        scroollAction();
-    };
-
-    function scroollAction() {
-        const winTop = document.body.scrollTop || document.documentElement.scrollTop;
-        const scrolled = winTop * heightDiff * 100;
-        scrollLine.width = scrolled + "%";
-        {{ with and .IsPage .Params.toc }}
-        const off = singleContent.offsetTop - winTop - 12;
-        tableOfContents.style.top = (off > 50 ? off : 50) + "px";
-        {{ end }}
-        if (toLower !== winTop >= wintopPre) {
-            if (!toLower) {
-                header.transform = "translateY(-60px)";
-                {{ with and .IsPage .Params.toc }}
-                if (off < 50)   tableOfContents.style.transform =  "translateY(-60px)";
-                {{ end }}
-            } else {
-                header.transform = "translateY(0)";
-                {{ with and .IsPage .Params.toc }}
-                tableOfContents.style.transform =  "translateY(0)";
-                {{ end }}
-            }
-            toLower = !toLower
-        }
-        wintopPre = winTop;
-        {{ with and .IsPage .Params.toc }}
-        if (winWidth > 1380) {
-            const index = headingHeight.findIndex(item => item.h > winTop);
-            let length = tocLink.length;
-            for (let i = 0; i < length; ++i) {
-                if (tocLink[i].getAttribute("href") === headingHeight[indexPre].id) {
-                    tocLink[i].classList.remove("active");
-                    break
-                }
-            }
-            if (index > 0) {
-                indexPre = index - 1;
-                for (let i = 0; i < length; ++i) {
-                    if (tocLink[i].getAttribute("href") === headingHeight[indexPre].id) {
-                        tocLink[i].classList.add("active");
-                        break
-                    }
-                }
-            }
-        }
-        {{ end }}
-    }
-
-    window.onscroll = scroollAction;
-</script>
+{{ if .Site.Params.diagram }}
+<script src="/js/mermaid.min.js" onload="mermaid.initialize({startOnLoad:true});"></script>
+{{ end }}
 
 {{ template "_internal/google_analytics_async.html" . }}

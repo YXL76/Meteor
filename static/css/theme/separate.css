@@ -1,5 +1,5 @@
 span.separate {
-    padding: 0 3px;
+    padding: 0 .03rem;
 }
 
 span.separate-comma:before {
@@ -12,5 +12,5 @@ span.separate-middle-dot:before {
 
 span.separate-hyphen-minus:before {
     content: '\00002D';
-    padding: 0 8px;
+    padding: 0 .1rem;
 }

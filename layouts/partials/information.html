@@ -3,7 +3,7 @@
         {{ with .Params.authors}}
         {{ $len := len . }}
         {{ range $index, $val := . }}
-        <a href="/authors/{{ . | urlize }}">
+        <a href="/{{ $.Language }}/authors/{{ . | urlize }}">
             <span> {{ $val }} </span>
         </a>
         {{ with ne $index (sub $len 1) }}
@@ -17,8 +17,8 @@
         {{ with .Params.categories}}
         {{ $len := len . }}
         {{ range $index, $val := . }}
-        <a href="/categories/{{ . | urlize }}">
-            <i class="nf nf-fa-folder_o nf-24"></i>
+        <a href="/{{ $.Language }}/categories/{{ . | urlize }}">
+            <i class="nf nf-fa-folder_o"></i>
             <span> {{ $val }} </span>
         </a>
         {{ with ne $index (sub $len 1) }}

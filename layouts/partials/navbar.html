@@ -1,24 +1,48 @@
 <div class="scroll-line"></div>
 <nav class="header">
-    <ul>
+    <ul class="navigation">
         <li class="left hvr-buzz-out">
-            <a href="/{{ .Language }}"> {{ .Site.Title }} </a>
+            <a href="/{{ .Language }}">{{ .Site.Title }}</a>
         </li>
         {{ range .Site.Menus.main }}
-        <li class="center"><a href="{{ .URL }}"> {{ .Name }} </a>
+        <li class="center">
+            <a {{ with .URL }} href="{{ . }}" {{ end }}>{{ .Name }}</a>
             {{ if .HasChildren }}
             <ul>
                 {{ range .Children }}
-                <li><a href="{{ .URL }}"> {{ .Name }} </a></li>
+                <li><a {{ with .URL }} href="{{ . }}" {{ end }}>{{ .Name }}</a></li>
                 {{ end }}
             </ul>
             {{ end }}
         </li>
         {{ end }}
     </ul>
-    <!--
-        <div class="right">
-            <a href="">{{ .Site.Title }}</a>
+    <label>
+        <input id="dropdown-menu" type="checkbox" oninput="Dropdown(this.checked)">
+        <div class="nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-    -->
+        <ul class="dropdown">
+            {{ range .Site.Menus.main }}
+            <li>
+                <a {{ with .URL }} href="{{ . }}" {{ end }}>{{ .Name }}</a>
+                {{ if .HasChildren }}
+                <label>
+                    <input type="radio" name="dropdown">
+                    <i class="nf nf-18 nf-mdi-chevron_left"></i>
+                    <ul>
+                        {{ range .Children }}
+                        <li><a {{ with .URL }} href="{{ . }}" {{ end }}>{{ .Name }}</a></li>
+                        {{ end }}
+                    </ul>
+                </label>
+                {{ end }}
+            </li>
+            {{ end }}
+        </ul>
+    </label>
 </nav>
+<div class="mask"></div>

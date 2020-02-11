@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="/css/swiper.min.css">
+<style>
+    div.right > div.swiper-container {
+        width: 100%;
+        height: auto;
+        padding-bottom: 16px;
+    }
+
+    div.right div.swiper-wrapper {
+        width: 0;
+    }
+
+    div.right div.swiper-button-next, div.right div.swiper-button-prev {
+        color: #000000;
+    }
+
+    div.swiper-pagination > span {
+        background: #000000
+    }
+
+    div.swiper-button-next::after, div.swiper-button-prev::after {
+        font-size: .7rem;
+    }
+
+    @media (max-width: 540px) {
+        div.swiper-button-next, div.swiper-button-prev {
+        width: 0;
+        }
+
+        div.swiper-slide > ul.term-list {
+            padding: 0 .5rem;
+        }
+    }
+</style>

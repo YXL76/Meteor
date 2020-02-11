@@ -1,3 +1,79 @@
 {{ define "main" }}
 
+<div class="single-header">
+    <img src="/img/{{ .Params.Image.Name }}" alt="{{ .Params.Image.Caption }}">
+    <span class="caption">{{ .Params.Image.Caption | markdownify | emojify }}</span>
+</div>
+
+<div class="single-title">
+    <div>
+        <h1>{{ .Title | markdownify | emojify }}</h1>
+        <div class="single-information">
+            <h2 class="subtitle">{{ .Params.Subtitle | markdownify | emojify }}</h2>
+            <div>
+                {{- partial "information" . -}}
+                <div class="share">
+                    <a href="#"><i id="facebook" class="nf nf-fa-reddit_alien"></i></a>
+                    <a href="#"><i id="twitter" class="nf nf-fa-twitter"></i></a>
+                    <a href="#"><i id="weibo" class="nf nf-fa-weibo"></i></a>
+                    <a href="#"><i id="linkedin" class="nf nf-fa-linkedin"></i></a>
+                    <a href="#"><i id="email" class="nf nf-mdi-email"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ if .Params.Avatar }}
+    <img class="avatar" src="{{ . }}">
+    {{ else }}
+    <img class="avatar" src="/img/avatar.jpg">
+    {{ end }}
+</div>
+
+{{ with .Params.toc }}
+<aside class="TableOfContents js-toc"></aside>
 {{ end }}
+
+{{ if and .Params.music (eq .Params.musicOption.fixed true) }}
+{{- partial "meting.html" .Params.musicOption -}}
+{{ end }}
+
+<div class="single-content js-toc-content">
+    {{ if and .Params.music (eq .Params.musicOption.fixed false) }}
+    {{- partial "meting.html" .Params.musicOption -}}
+    {{ end }}
+    {{ .Content }}
+    {{ template "_internal/disqus.html" . }}
+</div>
+
+{{ end }}
+
+{{- define "foot" -}}
+
+{{- if .Params.toc -}}
+<script src="/js/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        tocSelector: '.js-toc',
+        contentSelector: '.js-toc-content',
+        headingSelector: '{{.Params.tocHeading}}',
+        hasInnerContainers: true,
+    });
+</script>
+{{- end -}}
+
+
+{{- if .Params.anchor -}}
+<script src="/js/anchor.min.js"></script>
+<script>
+    {{ range $index, $val := .Params.anchorList }}
+    let anchor_{{$index | safeJS}} = new AnchorJS({
+        placement: '{{.placement}}',
+        visible: '{{.visible}}',
+        icon: '\u{{.icon}}',
+    });
+    anchor_{{$index | safeJS}}.add('.single-content {{ delimit .element ", .single-content " | safeJS }}')
+    {{- end -}}
+</script>
+{{- end -}}
+
+{{- end -}}

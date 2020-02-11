@@ -1,0 +1,17 @@
+<div class="list-item">
+    {{ $link := .RelPermalink }}
+    {{- partial "information" . -}}
+
+    <h2><a class="item-title" href="{{ $link }}"> {{ humanize .Title }} </a></h2>
+    <h3 class="item-subtitle"> {{ .Params.subtitle | markdownify | emojify }} </h3>
+
+    <div>
+        {{ with .Params.tags}}
+        {{ range . }}
+        <a class="item-tag" href="/{{ $.Language }}/tags/{{ . | urlize }}/">
+            <span> {{ humanize . }} </span>
+        </a>
+        {{ end }}
+        {{ end }}
+    </div>
+</div>

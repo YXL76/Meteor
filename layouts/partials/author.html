@@ -1,0 +1,72 @@
+{{ $author_page_path := (printf "/author/%s" (anchorize .Title)) }}
+{{ $author_page := .Site.GetPage $author_page_path }}
+
+{{ $background := $author_page.Resources.GetMatch "background.*" }}
+
+{{ with $author_page }}
+<div class="author" style="{{ with $background}} background-image: url({{ .Permalink | safeCSS}}) {{ end }}">
+    {{ $avatar := .Resources.GetMatch "avatar.*" }}
+    <div class="author-container">
+        <div class="left">
+            <img class="avatar" src="{{ with $avatar}} {{ .RelPermalink }} {{ end }}" alt="">
+            <div class="name">{{ $.Title }}</div>
+            <div class="role">{{ .Params.role }}</div>
+            {{ range .Params.organization }}
+            <div class="organization"><a href="{{ .url }}">{{ .name }}</a></div>
+            {{ end }}
+            <ul class="social">
+                {{ range .Params.social }}
+                <li><a href="{{ .link }}"><i class="nf nf-{{ .icon_pack }}-{{ .icon }}"></i></a></li>
+                {{ end }}
+            </ul>
+            {{ with .Params.interest }}
+            <div class="interest">Interest</div>
+            <ul class="interest">
+                {{ range . }}
+                <li>
+                    <div>{{ . }}</div>
+                </li>
+                {{ end }}
+            </ul>
+            {{ end }}
+            {{ with .Params.education }}
+            <div class="education">Education</div>
+            <ul class="education">
+                {{ range . }}
+                <li>
+                    <div class="course">{{ .course }}</div>
+                    <div class="institution">{{ .institution }} ({{ .year }})</div>
+                </li>
+                {{ end }}
+            </ul>
+            {{ end }}
+        </div>
+        <div class="right">
+            <div class="single-content">{{ .Content }}</div>
+            <div class="post">Post</div>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    {{ range $index, $val := $.Pages.ByDate }}
+                    {{ if eq (mod $index 5) 0 }}
+                    <div class="swiper-slide">
+                        <ul class="term-list">
+                            {{ range first 5 (after $index $.Pages.ByDate) }}
+                            <li>
+                                <a href="{{ .RelPermalink }}">{{ humanize .Title }}</a>
+                                <div class="line"></div>
+                                <span>{{ dateFormat "Mon, Jan 2 2006" .Date }}</span>
+                            </li>
+                            {{ end }}
+                        </ul>
+                    </div>
+                    {{ end }}
+                    {{ end }}
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}
