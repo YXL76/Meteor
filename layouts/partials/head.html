@@ -18,3 +18,23 @@
 <link rel="stylesheet" href="/css/style.css">
 
 {{ partial "flexible_js.html" }}
+
+{{- if .Site.Params.dark_mode -}}
+<script src="/js/darkreader.min.js"></script>
+<script>
+    let darkMode = localStorage.getItem("darkMode");
+    if (darkMode === '0') DarkReader.enable();
+    else DarkReader.disable();
+
+    function DarkMode() {
+        if (darkMode === '0') {
+            DarkReader.disable();
+            darkMode = '1';
+        } else {
+            DarkReader.enable();
+            darkMode = '0';
+        }
+        localStorage.setItem("darkMode", darkMode);
+    }
+</script>
+{{- end -}}

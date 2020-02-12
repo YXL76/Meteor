@@ -4,18 +4,44 @@
         <li class="left hvr-buzz-out">
             <a href="/{{ .Language }}">{{ .Site.Title }}</a>
         </li>
-        {{ range .Site.Menus.main }}
         <li class="center">
-            <a {{ with .URL }} href="{{ . }}" {{ end }}>{{ .Name }}</a>
-            {{ if .HasChildren }}
-            <ul>
-                {{ range .Children }}
-                <li><a {{ with .URL }} href="{{ . }}" {{ end }}>{{ .Name }}</a></li>
+            {{ range .Site.Menus.main }}
+            <div>
+                <a {{ with .URL }} href="{{ . }}" {{ end }}>{{ .Name }}</a>
+                {{ if .HasChildren }}
+                <ul>
+                    {{ range .Children }}
+                    <li><a {{ with .URL }} href="{{ . }}" {{ end }}>{{ .Name }}</a></li>
+                    {{ end }}
+                </ul>
                 {{ end }}
-            </ul>
+            </div>
             {{ end }}
         </li>
-        {{ end }}
+        <li class="right">
+            {{- if or (eq .Site.Params.search.engine 1) (eq .Site.Params.search.engine 2) -}}
+            <div>
+                <i class="nf nf-fa-search" onclick="showSearch()"></i>
+            </div>
+            {{- end -}}
+            {{- if .Site.Params.dark_mode -}}
+            <div>
+                <i class="nf nf-mdi-theme_light_dark" onclick="DarkMode()"></i>
+            </div>
+            {{- end -}}
+            <div class="language">
+                <i class="nf nf-mdi-earth"></i>
+                <a class="language">{{ index site.Data.i18n .Lang }}</a>
+                {{ range .Translations }}
+                <ul>
+                    <li><a class="language" href="{{ .Permalink }}" {{ if $.IsHome }} data-target="{{ .RelPermalink }}"
+                           {{ end }}>
+                        {{ index site.Data.i18n .Lang }}
+                    </a></li>
+                </ul>
+                {{ end }}
+            </div>
+        </li>
     </ul>
     <label>
         <input id="dropdown-menu" type="checkbox" oninput="Dropdown(this.checked)">
@@ -31,7 +57,7 @@
                 <a {{ with .URL }} href="{{ . }}" {{ end }}>{{ .Name }}</a>
                 {{ if .HasChildren }}
                 <label>
-                    <input type="radio" name="dropdown">
+                    <input type="checkbox" name="dropdown">
                     <i class="nf nf-18 nf-mdi-chevron_left"></i>
                     <ul>
                         {{ range .Children }}
@@ -42,7 +68,36 @@
                 {{ end }}
             </li>
             {{ end }}
+            <li class="language">
+                <a class="language">
+                    <i class="nf nf-mdi-earth"></i>
+                    {{- index site.Data.i18n .Lang -}}
+                </a>
+                {{ range .Translations }}
+                <label>
+                    <input type="checkbox" name="dropdown">
+                    <i class="nf nf-18 nf-mdi-chevron_left"></i>
+                    <ul>
+                        <li><a class="language" href="{{ .Permalink }}" {{ if $.IsHome }}
+                               data-target="{{ .RelPermalink }}"
+                               {{ end }}>
+                            {{ index site.Data.i18n .Lang }}
+                        </a></li>
+                    </ul>
+                </label>
+                {{ end }}
+            </li>
         </ul>
     </label>
 </nav>
+{{- if or (eq .Site.Params.search.engine 1) (eq .Site.Params.search.engine 2) -}}
+<div class="search">
+    <div>Search<i class="nf nf-fa-times" onclick="hideSearch()"></i></div>
+    <label>
+        <input id="search-text" type="text" name="search">
+        <i class="nf nf-fa-search" onclick="getSearchResult()"></i>
+    </label>
+    <div id="search-result"></div>
+</div>
+{{- end -}}
 <div class="mask"></div>

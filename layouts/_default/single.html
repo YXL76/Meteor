@@ -1,4 +1,10 @@
-{{ define "main" }}
+{{- define "head" -}}
+
+{{- partial "single_head.html" . -}}
+
+{{- end -}}
+
+{{- define "main" -}}
 
 <div class="single-header">
     <img src="/img/{{ .Params.Image.Name }}" alt="{{ .Params.Image.Caption }}">
@@ -37,7 +43,7 @@
 {{- partial "meting.html" .Params.musicOption -}}
 {{ end }}
 
-<div class="single-content js-toc-content">
+<div class="single-content js-toc-content {{ if .Params.toc }}TableOfContents{{ end }}">
     {{ if and .Params.music (eq .Params.musicOption.fixed false) }}
     {{- partial "meting.html" .Params.musicOption -}}
     {{ end }}
@@ -45,7 +51,7 @@
     {{ template "_internal/disqus.html" . }}
 </div>
 
-{{ end }}
+{{- end -}}
 
 {{- define "foot" -}}
 

@@ -1,13 +1,20 @@
-{{ define "head" }}
-{{- partial "author_head.html" . -}}
-{{ end }}
+{{- define "head" -}}
 
-{{ define "main" }}
+{{- partial "author_head.html" . -}}
+{{- partial "list_head.html" . -}}
+
+{{- end -}}
+
+{{- define "main" -}}
+
 {{ range .Data.Terms.Alphabetical }}
 {{- partial "author.html" .Page -}}
-{{ end }}
-{{ end }}
+{{- end -}}
 
-{{ define "foot" }}
+{{- end -}}
+
+{{- define "foot" -}}
+
 {{- partial "author_foot.html" . -}}
-{{ end }}
+
+{{- end }}

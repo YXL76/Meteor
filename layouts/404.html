@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default " en-us" }}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
+          
+    {{ $desc := "" }}
+    {{ if .Params.summary }}
+    {{ $desc = .Params.summary }}
+    {{ else if .IsPage }}
+    {{ $desc = .Summary }}
+    {{ else if .Site.Params.description }}
+    {{ $desc = .Site.Params.description }}
+    {{ end }}
+    <meta name="description" content="{{ $desc }}">
+
+    <link rel="stylesheet" href="/fonts/Montserrat/Montserrat-custom.css">
+    <link rel="stylesheet" href="/css/theme/body.css">
+    <link rel="stylesheet" href="/css/theme/404.css">
+
+    {{ partial "flexible_js.html" }}
+</head>
+
+<body>
+    <div class="circles">
+        <div>404</div>
+        <div>PAGE NOT FOUND</div>
+        <span class="big"></span>
+        <span class="med"></span>
+        <span class="small"></span>
+    </div>
+</body>
+
+</html>

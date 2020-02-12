@@ -1,4 +1,10 @@
-{{ define "main" }}
+{{- define "head" -}}
+
+{{- partial "list_head.html" . -}}
+
+{{- end -}}
+
+{{- define "main" -}}
 
 <div class="list">
     <h1 class="list-title"> {{ .Title }} </h1>
@@ -33,4 +39,4 @@
     {{ end }}
 </div>
 
-{{ end }}
+{{- end -}}

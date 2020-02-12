@@ -1,11 +1,18 @@
-{{ define "head" }}
+{{- define "head" -}}
+
 {{- partial "author_head.html" . -}}
-{{ end }}
+{{- partial "list_head.html" . -}}
 
-{{ define "main" }}
+{{- end -}}
+
+{{- define "main" -}}
+
 {{- partial "author.html" . -}}
-{{ end }}
 
-{{ define "foot" }}
+{{- end -}}
+
+{{- define "foot" -}}
+
 {{- partial "author_foot.html" . -}}
-{{ end }}
+
+{{- end -}}

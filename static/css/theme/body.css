@@ -5,7 +5,7 @@ body {
 }
 
 body > div.content {
-    padding: 50px 0;
+    padding: 0;
     width: 100%;
 }
 
@@ -20,12 +20,12 @@ ul {
 
 .avatar {
     -webkit-border-radius: 50%;
-       -moz-border-radius: 50%;
-            border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
 }
 
 .anchorjs-link:after {
-    font-family: "NerdFontsSymbols Nerd Font";
+    font-family: "NerdFontsSymbols Nerd Font", sans-serif;
     color: #f9a825;
     -webkit-transition: all .2s;
     -o-transition: all .2s;
