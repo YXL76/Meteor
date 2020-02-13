@@ -1,23 +1,29 @@
 <meta charset="UTF-8">
 <title>{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
       
-{{ $desc := "" }}
-{{ if .Params.summary }}
-{{ $desc = .Params.summary }}
-{{ else if .IsPage }}
-{{ $desc = .Summary }}
-{{ else if .Site.Params.description }}
-{{ $desc = .Site.Params.description }}
-{{ end }}
+{{- $desc := "" -}}
+{{- if .Params.summary -}}
+{{- $desc = .Params.summary -}}
+{{- else if .IsPage -}}
+{{- $desc = .Summary -}}
+{{- else if .Site.Params.description -}}
+{{- $desc = .Site.Params.description -}}
+{{- end -}}
 <meta name="description" content="{{ $desc }}">
 
 <link rel="stylesheet" href="/fonts/Montserrat/Montserrat-custom.css">
 <link rel="stylesheet" href="/fonts/Source Code Pro/Source Code Pro.css">
 <link rel="stylesheet" href="/fonts/Nerd Fonts/nerd-fonts-generated.css">
 <link rel="stylesheet" href="/fonts/Roboto/Roboto-custom.css">
-<link rel="stylesheet" href="/css/style.css">
 
-{{ partial "flexible_js.html" }}
+<link rel="stylesheet" href="{{ (resources.Get "/css/theme/body.css" | minify | fingerprint).RelPermalink }}">
+<link rel="stylesheet" href="{{ (resources.Get "/css/theme/font.css" | minify | fingerprint).RelPermalink }}">
+<link rel="stylesheet" href="{{ (resources.Get "/css/theme/footer.css" | minify | fingerprint).RelPermalink }}">
+<link rel="stylesheet" href="{{ (resources.Get "/css/theme/navbar.css" | minify | fingerprint).RelPermalink }}">
+<link rel="stylesheet" href="{{ (resources.Get "/css/theme/separate.css" | minify | fingerprint).RelPermalink }}">
+<link rel="stylesheet" href="{{ (resources.Get "/css/theme/transform.css" | minify | fingerprint).RelPermalink }}">
+
+{{- partial "flexible_js.html" -}}
 
 {{- if .Site.Params.dark_mode -}}
 <script src="/js/darkreader.min.js"></script>

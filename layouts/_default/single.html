@@ -7,7 +7,7 @@
 {{- define "main" -}}
 
 <div class="single-header">
-    <img src="/img/{{ .Params.Image.Name }}" alt="{{ .Params.Image.Caption }}">
+    <img src="/img/{{ .Params.Image.Name | safeHTML }}" alt="{{ .Params.Image.Caption }}">
     <span class="caption">{{ .Params.Image.Caption | markdownify | emojify }}</span>
 </div>
 
@@ -28,27 +28,27 @@
             </div>
         </div>
     </div>
-    {{ if .Params.Avatar }}
+    {{- if .Params.Avatar -}}
     <img class="avatar" src="{{ . }}">
-    {{ else }}
+    {{- else -}}
     <img class="avatar" src="/img/avatar.jpg">
-    {{ end }}
+    {{- end -}}
 </div>
 
-{{ with .Params.toc }}
+{{- with .Params.toc -}}
 <aside class="TableOfContents js-toc"></aside>
-{{ end }}
+{{- end -}}
 
-{{ if and .Params.music (eq .Params.musicOption.fixed true) }}
+{{- if and .Params.music (eq .Params.musicOption.fixed "true") -}}
 {{- partial "meting.html" .Params.musicOption -}}
-{{ end }}
+{{- end -}}
 
 <div class="single-content js-toc-content {{ if .Params.toc }}TableOfContents{{ end }}">
-    {{ if and .Params.music (eq .Params.musicOption.fixed false) }}
+    {{- if and .Params.music (eq .Params.musicOption.fixed "false") -}}
     {{- partial "meting.html" .Params.musicOption -}}
-    {{ end }}
-    {{ .Content }}
-    {{ template "_internal/disqus.html" . }}
+    {{- end -}}
+    {{- .Content -}}
+    {{- template "_internal/disqus.html" . -}}
 </div>
 
 {{- end -}}

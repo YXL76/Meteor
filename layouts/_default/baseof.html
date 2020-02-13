@@ -1,19 +1,46 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode | default " en-us" }}">
+<html lang="{{ (.Site.LanguageCode | default "en") | safeHTML }}-{{ (.Site.Params.countryCode | default "US") | safeHTML }}">
 <head>
     {{- partial "head.html" . -}}
-    {{- block "head" . }}{{- end }}
+    {{- block "head" . -}}{{- end -}}
+
+    {{- $hasBg := false -}}
+    {{- $bgFile := "" -}}
+    {{- $spb := .Site.Params.background -}}
+    {{- if eq .Kind "home" -}}
+    {{- $hasBg = $spb.home -}}
+    {{- $bgFile = $spb.name.home -}}
+    {{- else if eq .Kind "page" -}}
+    {{- $hasBg = $spb.page -}}
+    {{- $bgFile = $spb.name.page -}}
+    {{- else if eq .Kind "section" -}}
+    {{- $hasBg = $spb.section -}}
+    {{- $bgFile = $spb.name.section -}}
+    {{- else if eq .Kind "taxonomy" -}}
+    {{- $hasBg = $spb.taxonomy -}}
+    {{- $bgFile = $spb.name.taxonomy -}}
+    {{- else if eq .Kind "taxonomyTerm" -}}
+    {{- $hasBg = $spb.taxonomyTerm -}}
+    {{- $bgFile = $spb.name.taxonomyTerm -}}
+    {{- end -}}
+    {{- if eq $hasBg true -}}
+    <style>
+        body {
+            background-image: url("/img/{{ $bgFile | safeCSS }}");
+        }
+    </style>
+    {{- end -}}
 </head>
 <body>
 {{- partial "navbar.html" . -}}
 <div class="content" id="content">
-    {{- block "main" . }}{{- end }}
+    {{- block "main" . -}}{{- end -}}
 </div>
-{{ if not .IsHome }}
+{{- if not .IsHome -}}
 {{/*- partial "wave.html" . -*/}}
-{{ end }}
+{{- end -}}
 {{- partial "footer.html" . -}}
 {{- partial "site_js.html" . -}}
-{{- block "foot" . }}{{- end }}
+{{- block "foot" . -}}{{- end -}}
 </body>
 </html>

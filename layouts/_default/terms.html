@@ -7,36 +7,35 @@
 {{- define "main" -}}
 
 <div class="list">
-    <h1 class="list-title"> {{ .Title }} </h1>
-    {{ with .Content }}
+    <h1 class="list-title">{{ if (i18n .Title) }}{{ upper (i18n .Title) }}{{ else }}{{ upper .Title }}{{ end }}</h1>
+    {{- with .Content -}}
     <div class="list-content">{{ . }}</div>
-    {{ end }}
+    {{- end -}}
     {{ range .Data.Terms.Alphabetical }}
     <div class="list-item">
         <h2 class="terms">{{ .Page.Title }}</h2>
-        {{ $Pages := .Pages.ByDate }}
+        {{- $Pages := .Pages.ByDate.Reverse -}}
         <ul class="term-list">
             {{ range first 5 $Pages }}
             <li>
-                <i class="nf nf-fa-caret_right"></i>
-                <a href="{{ .RelPermalink }}">{{ humanize .Title }}</a>
+                <a href="{{ .RelPermalink }}"><i class="nf nf-fa-caret_right"></i>{{ .Title }}</a>
                 <div class="line"></div>
                 <span>{{ dateFormat "Mon, Jan 2 2006" .Date }}</span>
             </li>
-            {{ end }}
-            {{ if ge (len $Pages) 5 }}
+            {{- end -}}
+            {{- if ge (len $Pages) 5 -}}
             <li><i class="read-more nf nf-mdi-dots_horizontal"></i></li>
-            {{ end }}
+            {{- end -}}
             <li class="read-more">
                 <a></a>
                 <span>
-                    <a href="{{ .Page.RelPermalink }}">Read more</a>
+                    <a href="{{ .Page.RelPermalink }}">{{ i18n "ReadMore" }}</a>
                     <i class="nf nf-fa-angle_double_right"></i>
                 </span>
             </li>
         </ul>
     </div>
-    {{ end }}
+    {{- end -}}
 </div>
 
 {{- end -}}

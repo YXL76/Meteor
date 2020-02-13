@@ -1,0 +1,29 @@
+[Posts]
+other = "Post"
+
+[Search]
+other = "Search"
+
+[Categories]
+other = "Categories"
+
+[Tags]
+other = "Tags"
+
+[ReadMore]
+other = "Read more"
+
+[Words]
+other = "words"
+
+[PageNotFound]
+other = "PAGE NOT FOUND"
+
+[Interest]
+other = "Interest"
+
+[Education]
+other = "Education"
+
+[SearchResultEmpty]
+other = "Nothing, try another keyword"

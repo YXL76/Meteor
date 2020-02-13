@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/css/swiper.min.css">
-<link rel="stylesheet" href="/css/theme/single.css">
-<link rel="stylesheet" href="/css/theme/author.css">
+<link rel="stylesheet" href="{{ (resources.Get "/css/theme/single.css" | minify | fingerprint).RelPermalink }}">
+<link rel="stylesheet" href="{{ (resources.Get "/css/theme/author.css" | minify | fingerprint).RelPermalink }}">
 <style>
     div.right > div.swiper-container {
         width: 100%;

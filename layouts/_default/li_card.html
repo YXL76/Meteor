@@ -2,27 +2,27 @@
     {{ $link := .RelPermalink }}
     {{- partial "information" . -}}
 
-    {{ $resource := (.Resources.ByType "image").GetMatch "*featured*" }}
-    {{ with $resource }}
+    {{- $resource := (.Resources.ByType "image").GetMatch "*featured*" -}}
+    {{- with $resource -}}
     {{ $image := .Fill "900x450" }}
     <div class="img-content">
         <a href="{{ $link }}">
-            <img class="list-feature hvr-grow" src="{{ $image.RelPermalink }}" alt="{{ humanize .Title }}">
+            <img class="list-feature hvr-grow" src="{{ $image.RelPermalink }}" alt="{{ .Title }}">
         </a>
     </div>
-    {{ end }}
+    {{- end -}}
 
-    <h2><a class="item-title" href="{{ $link }}"> {{ humanize .Title }} </a></h2>
-    <h3 class="item-subtitle"> {{ .Params.subtitle | markdownify | emojify }} </h3>
-    <p class="item-summary"> {{ .Params.summary | markdownify | emojify }} </p>
+    <h2><a class="item-title" href="{{ $link }}">{{ .Title }}</a></h2>
+    <h3 class="item-subtitle">{{ .Params.subtitle | markdownify | emojify }}</h3>
+    <p class="item-summary">{{ .Params.summary | markdownify | emojify }}</p>
 
     <div>
-        {{ with .Params.tags}}
+        {{- with .Params.tags -}}
         {{ range . }}
-        <a class="item-tag" href="/{{ $.Language }}/tags/{{ . | urlize }}/">
-            <span> {{ humanize . }} </span>
+        <a class="item-tag" href="{{ (path.Join "/tags" (urlize .)) | relLangURL }}">
+            <span>{{ . }}</span>
         </a>
-        {{ end }}
-        {{ end }}
+        {{- end -}}
+        {{- end -}}
     </div>
 </div>

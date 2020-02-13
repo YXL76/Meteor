@@ -2,21 +2,21 @@
 <nav class="header">
     <ul class="navigation">
         <li class="left hvr-buzz-out">
-            <a href="/{{ .Language }}">{{ .Site.Title }}</a>
+            <a href="{{ "" | relLangURL }}">{{ .Site.Title }}</a>
         </li>
         <li class="center">
             {{ range .Site.Menus.main }}
             <div>
-                <a {{ with .URL }} href="{{ . }}" {{ end }}>{{ .Name }}</a>
-                {{ if .HasChildren }}
+                <a {{ with .URL }} href="{{ . | relLangURL }}" {{ end }}>{{ .Title }}</a>
+                {{- if .HasChildren -}}
                 <ul>
                     {{ range .Children }}
-                    <li><a {{ with .URL }} href="{{ . }}" {{ end }}>{{ .Name }}</a></li>
-                    {{ end }}
+                    <li><a {{ with .URL }} href="{{ . | relLangURL }}" {{ end }}>{{ .Title }}</a></li>
+                    {{- end -}}
                 </ul>
-                {{ end }}
+                {{- end -}}
             </div>
-            {{ end }}
+            {{- end -}}
         </li>
         <li class="right">
             {{- if or (eq .Site.Params.search.engine 1) (eq .Site.Params.search.engine 2) -}}
@@ -34,12 +34,11 @@
                 <a class="language">{{ index site.Data.i18n .Lang }}</a>
                 {{ range .Translations }}
                 <ul>
-                    <li><a class="language" href="{{ .Permalink }}" {{ if $.IsHome }} data-target="{{ .RelPermalink }}"
-                           {{ end }}>
-                        {{ index site.Data.i18n .Lang }}
+                    <li><a class="language" href="{{ .RelPermalink }}">
+                        {{- index site.Data.i18n .Lang -}}
                     </a></li>
                 </ul>
-                {{ end }}
+                {{- end -}}
             </div>
         </li>
     </ul>
@@ -54,20 +53,20 @@
         <ul class="dropdown">
             {{ range .Site.Menus.main }}
             <li>
-                <a {{ with .URL }} href="{{ . }}" {{ end }}>{{ .Name }}</a>
-                {{ if .HasChildren }}
+                <a {{ with .URL }} href="{{ . | relLangURL }}" {{ end }}>{{ .Title }}</a>
+                {{- if .HasChildren -}}
                 <label>
                     <input type="checkbox" name="dropdown">
                     <i class="nf nf-18 nf-mdi-chevron_left"></i>
                     <ul>
                         {{ range .Children }}
-                        <li><a {{ with .URL }} href="{{ . }}" {{ end }}>{{ .Name }}</a></li>
-                        {{ end }}
+                        <li><a {{ with .URL }} href="{{ . | relLangURL }}" {{ end }}>{{ .Title }}</a></li>
+                        {{- end -}}
                     </ul>
                 </label>
-                {{ end }}
+                {{- end -}}
             </li>
-            {{ end }}
+            {{- end -}}
             <li class="language">
                 <a class="language">
                     <i class="nf nf-mdi-earth"></i>
@@ -78,21 +77,19 @@
                     <input type="checkbox" name="dropdown">
                     <i class="nf nf-18 nf-mdi-chevron_left"></i>
                     <ul>
-                        <li><a class="language" href="{{ .Permalink }}" {{ if $.IsHome }}
-                               data-target="{{ .RelPermalink }}"
-                               {{ end }}>
-                            {{ index site.Data.i18n .Lang }}
+                        <li><a class="language" href="{{ .RelPermalink }}">
+                            {{- index site.Data.i18n .Lang -}}
                         </a></li>
                     </ul>
                 </label>
-                {{ end }}
+                {{- end -}}
             </li>
         </ul>
     </label>
 </nav>
 {{- if or (eq .Site.Params.search.engine 1) (eq .Site.Params.search.engine 2) -}}
 <div class="search">
-    <div>Search<i class="nf nf-fa-times" onclick="hideSearch()"></i></div>
+    <div>{{ upper (i18n "Search") }}<i class="nf nf-fa-times" onclick="hideSearch()"></i></div>
     <label>
         <input id="search-text" type="text" name="search">
         <i class="nf nf-fa-search" onclick="getSearchResult()"></i>

@@ -1,8 +1,8 @@
 <footer>
-    {{ with site.Copyright }}
-    {{ replace . "{year}" now.Year | markdownify}}
+    {{- with site.Copyright -}}
+    {{- replace . "{year}" now.Year | markdownify -}}
     <span class="separate-middle-dot"></span>
-    {{ end }}
+    {{- end -}}
     Powered by the
     <a href="">theme</a> for
     <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.

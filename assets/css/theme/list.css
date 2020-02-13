@@ -15,8 +15,8 @@ div.list-item {
     -webkit-border-radius: 16px;
     -moz-border-radius: 16px;
     border-radius: 16px;
-    padding: .3rem .4rem .4rem;
-    background-color: #FFFFFF;
+    padding: .3rem .4rem .2rem;
+    background-color: rgba(255, 255, 255, .9);
     margin-bottom: 40px;
     -webkit-box-shadow: 0 1px 16px 0 rgba(0, 0, 0, .2);
     -moz-box-shadow: 0 1px 16px 0 rgba(0, 0, 0, .2);
@@ -43,9 +43,9 @@ div.list-item > h2 {
 
 div.list-item > h2 > a.item-title {
     color: black;
-    font-size: -webkit-calc(1.4rem - 30px);
-    font-size: -moz-calc(1.4rem - 30px);
-    font-size: calc(1.4rem - 30px);
+    font-size: -webkit-calc(.9rem - 14px);
+    font-size: -moz-calc(.9rem - 14px);
+    font-size: calc(.9rem - 14px);
     font-weight: 700;
     -webkit-transition: color .6s;
     -o-transition: color .6s;
@@ -76,16 +76,40 @@ div.list-item > p.item-summary {
     margin: 4px 0 8px;
 }
 
+div.list-item > div:last-child {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+       -moz-box-orient: horizontal;
+       -moz-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+       -moz-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+}
+
 div.list-item > div > a.item-tag {
     color: #F9A825;
     font-size: .3rem;
     font-weight: 600;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
+    -webkit-border-radius: .18rem;
+    -moz-border-radius: .18rem;
+    border-radius: .18rem;
     padding: .05rem .15rem;
     border: .046rem solid #F9A825;
     margin-right: .16rem;
+    margin-bottom: .1rem;
     display: inline-block;
     -webkit-transform: perspective(1px);
     -moz-transform: perspective(1px);
@@ -137,7 +161,9 @@ div.list-item > div > a.item-tag:hover:before {
 }
 
 div.list-item > h2.terms {
-    font-size: .8rem;
+    font-size: -webkit-calc(.5rem + 8px);
+    font-size: -moz-calc(.5rem + 8px);
+    font-size: calc(.5rem + 8px);
 }
 
 /*noinspection ALL*/
@@ -174,10 +200,6 @@ ul.term-list > li {
     -moz-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-}
-
-ul.term-list > li > i {
-    font-size: .7rem;
 }
 
 ul.term-list > li > div.line {
@@ -239,11 +261,11 @@ ul.term-list > li > i.read-more {
 
 ul.term-list > li.read-more {
     height: .3rem;
-    -webkit-transform: translateY(-10px);
-    -moz-transform: translateY(-10px);
-    -ms-transform: translateY(-10px);
-    -o-transform: translateY(-10px);
-    transform: translateY(-10px);
+    -webkit-transform: translateY(-6px);
+    -moz-transform: translateY(-6px);
+    -ms-transform: translateY(-6px);
+    -o-transform: translateY(-6px);
+    transform: translateY(-6px);
 }
 
 ul.term-list > li.read-more > span > a, ul.term-list > li.read-more > span > i {

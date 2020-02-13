@@ -1,4 +1,4 @@
-<script src="/js/onscroll.js"></script>
+<script src="{{ (resources.Get "/js/onscroll.js" | minify | fingerprint).RelPermalink }}"></script>
 
 {{- if or (eq .Site.Params.search.engine 1) (eq .Site.Params.search.engine 2) -}}
 <script>
@@ -37,6 +37,7 @@
                         searchResult.innerHTML += '<div><h2 class="title"><a href="' + items[i].link + '">' + items[i].title + '</a></h2><p class="snippet">' + items[i].snippet + '</p></div>';
                     }
                 }
+                if (searchResult.innerHTML === '') searchResult.innerHTML = '<p class="warn">' + '{{ i18n "SearchResultEmpty" | safeJS }}' + '</p>';
             }
         };
     }

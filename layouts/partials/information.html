@@ -1,39 +1,37 @@
 <div class="information">
     <div>
-        {{ with .Params.authors}}
-        {{ $len := len . }}
+        {{- with .Params.authors -}}
+        {{- $len := len . -}}
         {{ range $index, $val := . }}
         <a href="/{{ $.Language }}/authors/{{ . | urlize }}">
-            <span> {{ $val }} </span>
+            <span>{{ $val }}</span>
         </a>
-        {{ with ne $index (sub $len 1) }}
+        {{- with ne $index (sub $len 1) -}}
         <span class="separate separate-comma"></span>
-        {{ end }}
-        {{ end }}
-        {{ end }}
+        {{- end -}}
+        {{- end -}}
+        {{- end -}}
 
         <span class="separate-hyphen-minus"></span>
 
-        {{ with .Params.categories}}
-        {{ $len := len . }}
+        {{- with .Params.categories -}}
+        {{- $len := len . -}}
         {{ range $index, $val := . }}
         <a href="/{{ $.Language }}/categories/{{ . | urlize }}">
             <i class="nf nf-fa-folder_o"></i>
-            <span> {{ $val }} </span>
+            <span>{{ $val }}</span>
         </a>
-        {{ with ne $index (sub $len 1) }}
+        {{- with ne $index (sub $len 1) -}}
         <span class="separate separate-middle-dot"></span>
-        {{ end }}
-        {{ end }}
-        {{ end }}
+        {{- end -}}
+        {{- end -}}
+        {{- end -}}
     </div>
     <div>
-        <span> {{ (.Params.date).Format "Mon" }} </span>
-        <span>&nbsp</span>
-        <span> {{ (.Params.date).Format "02 Jan 2006" }} </span>
-        <span>&nbsp</span>
-        <span> {{ (.Params.date).Format "15:04:05 MST" }} </span>
+        <span>{{ (.Params.date).Format "Mon" }}&nbsp</span>
+        <span>{{ (.Params.date).Format "02 Jan 2006" }}&nbsp</span>
+        <span>{{ (.Params.date).Format "15:04:05 MST" }}</span>
         <span class="separate separate-middle-dot"></span>
-        <span> {{ .WordCount }} words</span>
+        <span>{{ .WordCount }} {{ i18n "Words" }}</span>
     </div>
 </div>

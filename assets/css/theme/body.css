@@ -1,6 +1,11 @@
 body {
     margin: 0;
     background-color: #FFFFFF;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
     font-family: "Montserrat", "Montserrat Alternates", "Roboto", sans-serif;
 }
 

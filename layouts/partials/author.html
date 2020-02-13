@@ -4,7 +4,7 @@
 {{ $background := $author_page.Resources.GetMatch "background.*" }}
 
 {{ with $author_page }}
-<div class="author" style="{{ with $background}} background-image: url({{ .Permalink | safeCSS}}) {{ end }}">
+<div class="author" style="{{ with $background}} background-image: url({{ .RelPermalink | safeCSS}}) {{ end }}">
     {{ $avatar := .Resources.GetMatch "avatar.*" }}
     <div class="author-container">
         <div class="left">
@@ -20,7 +20,7 @@
                 {{ end }}
             </ul>
             {{ with .Params.interest }}
-            <div class="interest">Interest</div>
+            <div class="interest">{{ i18n "Interest" }}</div>
             <ul class="interest">
                 {{ range . }}
                 <li>
@@ -30,7 +30,7 @@
             </ul>
             {{ end }}
             {{ with .Params.education }}
-            <div class="education">Education</div>
+            <div class="education">{{ i18n "Education" }}</div>
             <ul class="education">
                 {{ range . }}
                 <li>
@@ -46,13 +46,13 @@
             <div class="post">Post</div>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    {{ range $index, $val := $.Pages.ByDate }}
+                    {{ range $index, $val := $.Pages.ByDate.Reverse }}
                     {{ if eq (mod $index 5) 0 }}
                     <div class="swiper-slide">
                         <ul class="term-list">
-                            {{ range first 5 (after $index $.Pages.ByDate) }}
+                            {{ range first 5 (after $index $.Pages.ByDate.Reverse) }}
                             <li>
-                                <a href="{{ .RelPermalink }}">{{ humanize .Title }}</a>
+                                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
                                 <div class="line"></div>
                                 <span>{{ dateFormat "Mon, Jan 2 2006" .Date }}</span>
                             </li>
