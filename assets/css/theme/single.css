@@ -202,10 +202,10 @@ div.single-content a:hover {
 }
 
 div.single-content img {
-    width: 100%;
+    max-width: 100%;
 }
 
-div.single-content p > code {
+div.single-content *:not(pre) > code {
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;

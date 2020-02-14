@@ -784,3 +784,10 @@ div.search > div:last-child > p.warn {
     font-size: .38rem;
     text-align: center;
 }
+
+div.search > div:last-child em {
+    background: #FFEB3B;
+    -webkit-border-radius: .12rem;
+    -moz-border-radius: .12rem;
+    border-radius: .12rem;
+}

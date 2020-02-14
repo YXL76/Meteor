@@ -1,0 +1,67 @@
+{{- $index := slice -}}
+{{- $var := $.Site.Params.search.algolia.vars -}}
+{{- $params := $.Site.Params.search.algolia.params -}}
+
+{{- range .Site.RegularPages -}}
+{{- if and (not .Draft) .File -}}
+
+{{ $item := dict }}
+
+{{- if in $var "AlternativeOutputFormats" -}} {{ $item = merge $item (dict "AlternativeOutputFormats" .AlternativeOutputFormats) }} {{- end -}}
+{{- if in $var "Aliases" -}}                  {{ $item = merge $item (dict "Aliases" .Aliases) }}                                   {{- end -}}
+{{- if in $var "Content" -}}                  {{ $item = merge $item (dict "Content" .Content) }}                                   {{- end -}}
+{{- if in $var "Data" -}}                     {{ $item = merge $item (dict "Data" .Data) }}                                         {{- end -}}
+{{- if in $var "Date" -}}                     {{ $item = merge $item (dict "Date" .Date) }}                                         {{- end -}}
+{{- if in $var "Description" -}}              {{ $item = merge $item (dict "Description" .Description) }}                           {{- end -}}
+{{- if in $var "Dir" -}}                      {{ $item = merge $item (dict "Dir" .Dir) }}                                           {{- end -}}
+{{- if in $var "Draft" -}}                    {{ $item = merge $item (dict "Draft" .Draft) }}                                       {{- end -}}
+{{- if in $var "ExpiryDate" -}}               {{ $item = merge $item (dict "ExpiryDate" .ExpiryDate) }}                             {{- end -}}
+{{- if in $var "File" -}}                     {{ $item = merge $item (dict "File" .File) }}                                         {{- end -}}
+{{- if in $var "Hugo" -}}                     {{ $item = merge $item (dict "Hugo" .Hugo) }}                                         {{- end -}}
+{{- if in $var "IsHome" -}}                   {{ $item = merge $item (dict "IsHome" .IsHome) }}                                     {{- end -}}
+{{- if in $var "IsNode" -}}                   {{ $item = merge $item (dict "IsNode" .IsNode) }}                                     {{- end -}}
+{{- if in $var "IsPage" -}}                   {{ $item = merge $item (dict "IsPage" .IsPage) }}                                     {{- end -}}
+{{- if in $var "IsTranslated" -}}             {{ $item = merge $item (dict "IsTranslated" .IsTranslated) }}                         {{- end -}}
+{{- if in $var "Keywords" -}}                 {{ $item = merge $item (dict "Keywords" .Keywords) }}                                 {{- end -}}
+{{- if in $var "Kind" -}}                     {{ $item = merge $item (dict "Kind" .Kind) }}                                         {{- end -}}
+{{- if in $var "Language" -}}                 {{ $item = merge $item (dict "Language" .Language) }}                                 {{- end -}}
+{{- if in $var "Lastmod" -}}                  {{ $item = merge $item (dict "Lastmod" .Lastmod) }}                                   {{- end -}}
+{{- if in $var "LinkTitle" -}}                {{ $item = merge $item (dict "LinkTitle" .LinkTitle) }}                               {{- end -}}
+{{- if in $var "Next" -}}                     {{ $item = merge $item (dict "Next" .Next) }}                                         {{- end -}}
+{{- if in $var "NextInSection" -}}            {{ $item = merge $item (dict "NextInSection" .NextInSection) }}                       {{- end -}}
+{{- if in $var "OutputFormats" -}}            {{ $item = merge $item (dict "OutputFormats" .OutputFormats) }}                       {{- end -}}
+{{- if in $var "Pages" -}}                    {{ $item = merge $item (dict "Pages" .Pages) }}                                       {{- end -}}
+{{- if in $var "Permalink" -}}                {{ $item = merge $item (dict "Permalink" .Permalink) }}                               {{- end -}}
+{{- if in $var "Plain" -}}                    {{ $item = merge $item (dict "Plain" .Plain) }}                                       {{- end -}}
+{{- if in $var "PlainWords" -}}               {{ $item = merge $item (dict "PlainWords" .PlainWords) }}                             {{- end -}}
+{{- if in $var "Prev" -}}                     {{ $item = merge $item (dict "Prev" .Prev) }}                                         {{- end -}}
+{{- if in $var "PrevInSection" -}}            {{ $item = merge $item (dict "PrevInSection" .PrevInSection) }}                       {{- end -}}
+{{- if in $var "PublishDate" -}}              {{ $item = merge $item (dict "PublishDate" .PublishDate) }}                           {{- end -}}
+{{- if in $var "RawContent" -}}               {{ $item = merge $item (dict "RawContent" .RawContent) }}                             {{- end -}}
+{{- if in $var "ReadingTime" -}}              {{ $item = merge $item (dict "ReadingTime" .ReadingTime) }}                           {{- end -}}
+{{- if in $var "Resources" -}}                {{ $item = merge $item (dict "Resources" .Resources) }}                               {{- end -}}
+{{- if in $var "Ref" -}}                      {{ $item = merge $item (dict "Ref" .Ref) }}                                           {{- end -}}
+{{- if in $var "RelPermalink" -}}             {{ $item = merge $item (dict "RelPermalink" .RelPermalink) }}                         {{- end -}}
+{{- if in $var "RelRef" -}}                   {{ $item = merge $item (dict "RelRef" .RelRef) }}                                     {{- end -}}
+{{- if in $var "Summary" -}}                  {{ $item = merge $item (dict "Summary" .Summary) }}                                   {{- end -}}
+{{- if in $var "TableOfContents" -}}          {{ $item = merge $item (dict "TableOfContents" .TableOfContents) }}                   {{- end -}}
+{{- if in $var "Title" -}}                    {{ $item = merge $item (dict "Title" .Title) }}                                       {{- end -}}
+{{- if in $var "Translations" -}}             {{ $item = merge $item (dict "Translations" .Translations) }}                         {{- end -}}
+{{- if in $var "TranslationKey" -}}           {{ $item = merge $item (dict "TranslationKey" .TranslationKey) }}                     {{- end -}}
+{{- if in $var "Truncated" -}}                {{ $item = merge $item (dict "Truncated" .Truncated) }}                               {{- end -}}
+{{- if in $var "Type" -}}                     {{ $item = merge $item (dict "Type" .Type) }}                                         {{- end -}}
+{{- if in $var "UniqueID" -}}                 {{ $item = merge $item (dict "UniqueID" .UniqueID) }}                                 {{- end -}}
+{{- if in $var "Weight" -}}                   {{ $item = merge $item (dict "Weight" .Weight) }}                                     {{- end -}}
+{{- if in $var "WordCount" -}}                {{ $item = merge $item (dict "WordCount" .WordCount) }}                               {{- end -}}
+
+{{- if in $params "authors" -}}               {{ $item = merge $item (dict "authors" .Params.authors) }}                            {{- end -}}
+{{- if in $params "tags" -}}                  {{ $item = merge $item (dict "tags" .Params.tags) }}                                  {{- end -}}
+{{- if in $params "categories" -}}            {{ $item = merge $item (dict "categories" .Params.categories) }}                      {{- end -}}
+
+{{- $index = $index | append $item }}
+
+{{- end -}}
+{{- end -}}
+
+{{- $index | jsonify -}}
+

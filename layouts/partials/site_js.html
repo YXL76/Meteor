@@ -1,6 +1,80 @@
 <script src="{{ (resources.Get "/js/onscroll.js" | minify | fingerprint).RelPermalink }}"></script>
 
-{{- if or (eq .Site.Params.search.engine 1) (eq .Site.Params.search.engine 2) -}}
+{{- if .Site.Params.math -}}
+<link rel="stylesheet" href="/css/katex.min.css">
+<script src="/js/katex.min.js"></script>
+<script src="/js/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+{{- end -}}
+
+{{- if .Site.Params.diagram -}}
+<script src="/js/mermaid.min.js" onload="mermaid.initialize({startOnLoad:true});"></script>
+{{- end -}}
+
+{{- template "_internal/google_analytics_async.html" . -}}
+
+{{- $search := .Site.Params.search -}}
+{{- if eq $search.engine 1 -}}
+
+<script src="/js/algoliasearchLite.min.js"></script>
+<script src="/js/instantsearch.js"></script>
+
+<script>
+    const searchDisplay = document.getElementsByClassName('search')[0].style;
+    const searchText = document.getElementById('search-text');
+    const searchResult = document.getElementById('search-result');
+
+    function getSearchResult() {
+    }
+
+    function showSearch() {
+        searchDisplay.display = 'block';
+    }
+
+    function hideSearch() {
+        searchDisplay.display = 'none';
+    }
+
+    const searchClient = algoliasearch(
+        '{{ $search.algolia.app_id | safeJS }}',
+        '{{ $search.algolia.api_key | safeJS }}'
+    );
+
+    const search = instantsearch({
+        indexName: '{{ $search.algolia.index_name | safeJS }}',
+        searchClient,
+    });
+
+    search.addWidgets([{
+        init(opts) {
+            const helper = opts.helper;
+            searchText.addEventListener('input', ({currentTarget}) => {
+                helper.setQuery(currentTarget.value).search();
+            });
+        }
+    }, {
+        render(options) {
+            const results = options.results;
+            searchResult.innerHTML = results.hits
+                .map(
+                    hit => `<div>
+                                <h2 class="title">
+                                    <a href="${hit.Permalink}">${instantsearch.highlight({attribute: 'Title', hit})}</a>
+                                </h2>
+                                <p class="snippet">${instantsearch.highlight({attribute: 'Summary', hit})}</p>
+                            </div>`
+                )
+                .join('');
+            if (searchResult.innerHTML === '') searchResult.innerHTML = '<p class="warn">' + '{{ i18n "SearchResultEmpty" | safeJS }}' + '</p>';
+        },
+    }
+    ]);
+
+    search.start();
+</script>
+
+{{- else if eq $search.engine 2 -}}
+
 <script>
     const searchDisplay = document.getElementsByClassName('search')[0].style;
     const searchText = document.getElementById('search-text');
@@ -17,42 +91,32 @@
 
     function getSearchResult() {
         let url = 'https://www.googleapis.com/customsearch/v1';
-        url += '?key={{ .Site.Params.search.google.key | safeJS }}';
-        url += '&cx={{ .Site.Params.search.google.cx | safeJS }}';
+        url += '?key={{ $search.google.key | safeJS }}';
+        url += '&cx={{ $search.google.cx | safeJS }}';
         url += '&q=' + searchText.value;
         url += '&fields=items(title,link,snippet)';
-        console.log(url);
         http.open('GET', url);
         http.send();
         http.onreadystatechange = () => {
             if (http.status === 200) {
-                console.log("sadsad");
-                console.log(http.responseText);
                 searchResult.innerHTML = '';
                 let res = JSON.parse(http.responseText);
                 if ('items' in res) {
-                    let items = res.items;
-                    let length = items.length;
-                    for (let i = 0; i < length; ++i) {
-                        searchResult.innerHTML += '<div><h2 class="title"><a href="' + items[i].link + '">' + items[i].title + '</a></h2><p class="snippet">' + items[i].snippet + '</p></div>';
-                    }
+                    searchResult.innerHTML = res.items
+                        .map(
+                            item => `<div>
+                                        <h2 class="title">
+                                            <a href="${item.link}">${item.title}</a>
+                                        </h2>
+                                        <p class="snippet">${item.snippet}</p>
+                                    </div>`
+                        )
+                        .join('');
                 }
-                if (searchResult.innerHTML === '') searchResult.innerHTML = '<p class="warn">' + '{{ i18n "SearchResultEmpty" | safeJS }}' + '</p>';
+                else searchResult.innerHTML = '<p class="warn">' + '{{ i18n "SearchResultEmpty" | safeJS }}' + '</p>';
             }
         };
     }
 </script>
-{{- end -}}
 
-{{- if .Site.Params.math -}}
-<link rel="stylesheet" href="/css/katex.min.css">
-<script src="/js/katex.min.js"></script>
-<script src="/js/auto-render.min.js"
-        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
 {{- end -}}
-
-{{- if .Site.Params.diagram -}}
-<script src="/js/mermaid.min.js" onload="mermaid.initialize({startOnLoad:true});"></script>
-{{- end -}}
-
-{{- template "_internal/google_analytics_async.html" . -}}
