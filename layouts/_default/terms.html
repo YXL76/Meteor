@@ -17,16 +17,16 @@
         {{- $Pages := .Pages.ByDate.Reverse -}}
         <ul class="term-list">
             {{ range first 5 $Pages }}
-            <li>
+            <li class="flex flex-align-center flex-space-between flex-direction-row flex-wrap">
                 <a href="{{ .RelPermalink }}"><i class="nf nf-fa-caret_right"></i>{{ .Title }}</a>
-                <div class="line"></div>
-                <span>{{ dateFormat "Mon, Jan 2 2006" .Date }}</span>
+                <div class="line flex-grow-1"></div>
+                <span>{{ i18n (dateFormat "Mon" .Date) }}, {{ dateFormat "2006-01-02" .Date }}</span>
             </li>
             {{- end -}}
             {{- if ge (len $Pages) 5 -}}
-            <li><i class="read-more nf nf-mdi-dots_horizontal"></i></li>
+            <li class="flex flex-align-center flex-space-between flex-direction-row flex-wrap"><i class="read-more nf nf-mdi-dots_horizontal"></i></li>
             {{- end -}}
-            <li class="read-more">
+            <li class="flex flex-align-center flex-space-between flex-direction-row flex-wrap read-more">
                 <a></a>
                 <span>
                     <a href="{{ .Page.RelPermalink }}">{{ i18n "ReadMore" }}</a>

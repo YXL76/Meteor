@@ -4,7 +4,7 @@
     <h2><a class="item-title" href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
     <h3 class="item-subtitle">{{ .Params.subtitle | markdownify | emojify }}</h3>
 
-    <div>
+    <div class="flex flex-direction-row flex-wrap flex-flex-end">
         {{- with .Params.tags -}}
         {{ range . }}
         <a class="item-tag" href="{{ (path.Join "/tags" (urlize .)) | relLangURL }}">

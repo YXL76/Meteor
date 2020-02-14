@@ -11,14 +11,14 @@
     <span class="caption">{{ .Params.Image.Caption | markdownify | emojify }}</span>
 </div>
 
-<div class="single-title">
-    <div>
+<div class="single-title flex flex-align-center flex-space-between flex-direction-row">
+    <div class="flex flex-direction-column flex-grow-1">
         <h1>{{ .Title | markdownify | emojify }}</h1>
         <div class="single-information">
             <h2 class="subtitle">{{ .Params.Subtitle | markdownify | emojify }}</h2>
-            <div>
+            <div class="flex flex-space-between flex-direction-row">
                 {{- partial "information" . -}}
-                <div class="share">
+                <div class="share flex flex-direction-row flex-wrap flex-flex-end">
                     <a href="#"><i id="facebook" class="nf nf-fa-reddit_alien"></i></a>
                     <a href="#"><i id="twitter" class="nf nf-fa-twitter"></i></a>
                     <a href="#"><i id="weibo" class="nf nf-fa-weibo"></i></a>
@@ -28,26 +28,58 @@
             </div>
         </div>
     </div>
-    {{- if .Params.Avatar -}}
-    <img class="avatar" src="{{ . }}">
-    {{- else -}}
-    <img class="avatar" src="/img/avatar.jpg">
+    {{- if .Params.avatar -}}
+    {{- $author_page_path := (printf "/author/%s" (anchorize .Params.avatarAuthor )) -}}
+    {{- $author_page := .Site.GetPage $author_page_path -}}
+    {{- $avatar := $author_page.Resources.GetMatch "avatar.*" -}}
+    <img class="avatar" src="{{ with $avatar }}{{ .RelPermalink }}{{ end }}" alt="avatar">
     {{- end -}}
 </div>
 
-{{- with .Params.toc -}}
+{{- with .Params.toc.enable -}}
 <aside class="TableOfContents js-toc"></aside>
 {{- end -}}
 
-{{- if and .Params.music (eq .Params.musicOption.fixed "true") -}}
+{{- if and .Params.musicOption.enable (eq .Params.musicOption.fixed "true") -}}
 {{- partial "meting.html" .Params.musicOption -}}
 {{- end -}}
 
-<div class="single-content js-toc-content {{ if .Params.toc }}TableOfContents{{ end }}">
-    {{- if and .Params.music (eq .Params.musicOption.fixed "false") -}}
+<div class="single-content js-toc-content {{ if .Params.toc.enable }}TableOfContents{{ end }}">
+    {{- if and .Params.musicOption.enable (eq .Params.musicOption.fixed "false") -}}
     {{- partial "meting.html" .Params.musicOption -}}
     {{- end -}}
     {{- .Content -}}
+    <div class="authors">
+        {{ range .Params.authors }}
+        {{- $author_page_path := (printf "/author/%s" (anchorize . )) -}}
+        {{- $author_page := $.Site.GetPage $author_page_path -}}
+        {{- $avatar := $author_page.Resources.GetMatch "avatar.*" -}}
+        <div class="flex flex-align-center flex-direction-row">
+            <img class="avatar" src="{{ with $avatar }}{{ .RelPermalink }}{{ end }}" alt="{{ . }}">
+            <div class="flex flex-direction-column">
+                <span><a href="{{ (path.Join "authors/" (anchorize . )) | relLangURL }}">{{ . }}</a></span>
+                <span>{{ $author_page.Params.bio }}</span>
+            </div>
+        </div>
+        {{- end -}}
+    </div>
+    <div class="section flex flex-space-between flex-direction-row flex-wrap">
+        <div class="flex flex-space-between flex-direction-row flex-grow-1 flex-wrap">
+            {{ with .NextInSection }}
+            <a href="{{ .Permalink }}"><i class="nf nf-fa-arrow_circle_o_left"></i>{{ .Title }}</a>
+            {{ end }}
+            <span></span>
+        </div>
+        <div class="flex flex-space-between flex-direction-row flex-grow-1 flex-wrap">
+            <span></span>
+            {{ with .PrevInSection }}
+            <a href="{{ .Permalink }}">{{ .Title }}<i class="nf nf-fa-arrow_circle_o_right"></i></a>
+            {{ end }}
+        </div>
+    </div>
+    <div class="post-copyright">
+        {{- (replace .Site.Params.postCopyright "{{ .Permalink }}" .Permalink) | markdownify | emojify  -}}
+    </div>
     {{- template "_internal/disqus.html" . -}}
 </div>
 
@@ -55,23 +87,23 @@
 
 {{- define "foot" -}}
 
-{{- if .Params.toc -}}
+{{- if .Params.toc.enable -}}
 <script src="/js/tocbot.min.js"></script>
 <script>
     tocbot.init({
         tocSelector: '.js-toc',
         contentSelector: '.js-toc-content',
-        headingSelector: '{{.Params.tocHeading}}',
+        headingSelector: '{{.Params.toc.heading}}',
         hasInnerContainers: true,
     });
 </script>
 {{- end -}}
 
 
-{{- if .Params.anchor -}}
+{{- if .Params.anchor.enable -}}
 <script src="/js/anchor.min.js"></script>
 <script>
-    {{ range $index, $val := .Params.anchorList }}
+    {{ range $index, $val := .Params.anchor.list }}
     let anchor_{{$index | safeJS}} = new AnchorJS({
         placement: '{{.placement}}',
         visible: '{{.visible}}',

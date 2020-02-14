@@ -3,7 +3,12 @@ let checkbox = false;
 function Dropdown(event) {
     checkbox = event;
     mask.display = checkbox ? "block" : "none";
-};
+}
+
+function hideMask() {
+    document.getElementById("dropdown-menu").checked = false;
+    setTimeout(() => {mask.display = "none";}, 300);
+}
 
 let heightDiff;
 let wintopPre = 100000000;

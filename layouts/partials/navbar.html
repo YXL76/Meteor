@@ -1,10 +1,10 @@
 <div class="scroll-line"></div>
 <nav class="header">
-    <ul class="navigation">
+    <ul class="navigation flex flex-align-center flex-space-between flex-direction-row">
         <li class="left hvr-buzz-out">
             <a href="{{ "" | relLangURL }}">{{ .Site.Title }}</a>
         </li>
-        <li class="center">
+        <li class="center flex flex-align-center flex-direction-row flex-grow-1">
             {{ range .Site.Menus.main }}
             <div>
                 <a {{ with .URL }} href="{{ . | relLangURL }}" {{ end }}>{{ .Title }}</a>
@@ -18,18 +18,18 @@
             </div>
             {{- end -}}
         </li>
-        <li class="right">
+        <li class="right flex flex-align-center flex-direction-row">
             {{- if or (eq .Site.Params.search.engine 1) (eq .Site.Params.search.engine 2) -}}
-            <div>
+            <div class="flex flex-align-center flex-direction-row">
                 <i class="nf nf-fa-search" onclick="showSearch()"></i>
             </div>
             {{- end -}}
             {{- if .Site.Params.dark_mode -}}
-            <div>
+            <div class="flex flex-align-center flex-direction-row">
                 <i class="nf nf-mdi-theme_light_dark" onclick="DarkMode()"></i>
             </div>
             {{- end -}}
-            <div class="language">
+            <div class="flex flex-align-center flex-direction-row language">
                 <i class="nf nf-mdi-earth"></i>
                 <a class="language">{{ index site.Data.i18n .Lang }}</a>
                 {{ range .Translations }}
@@ -90,11 +90,11 @@
 {{- if or (eq .Site.Params.search.engine 1) (eq .Site.Params.search.engine 2) -}}
 <div class="search">
     <div>{{ upper (i18n "Search") }}<i class="nf nf-fa-times" onclick="hideSearch()"></i></div>
-    <label>
-        <input id="search-text" type="text" name="search">
+    <label class="flex flex-direction-row">
+        <input class="flex-grow-1" id="search-text" type="text" name="search">
         <i class="nf nf-fa-search" onclick="getSearchResult()"></i>
     </label>
     <div id="search-result"></div>
 </div>
 {{- end -}}
-<div class="mask"></div>
+<div class="mask" onclick="hideMask()"></div>

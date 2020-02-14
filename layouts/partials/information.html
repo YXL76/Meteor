@@ -28,9 +28,10 @@
         {{- end -}}
     </div>
     <div>
-        <span>{{ (.Params.date).Format "Mon" }}&nbsp</span>
-        <span>{{ (.Params.date).Format "02 Jan 2006" }}&nbsp</span>
-        <span>{{ (.Params.date).Format "15:04:05 MST" }}</span>
+        {{- $date := .Params.date -}}
+        <span>{{ i18n ($date.Format "Mon") }}&nbsp&nbsp</span>
+        <span>{{ $date.Format "02" }} {{ i18n ($date.Format "Jan") }} {{ $date.Format "2006" }}&nbsp&nbsp</span>
+        <span>{{ $date.Format "15:04:05 MST" }}</span>
         <span class="separate separate-middle-dot"></span>
         <span>{{ .WordCount }} {{ i18n "Words" }}</span>
     </div>

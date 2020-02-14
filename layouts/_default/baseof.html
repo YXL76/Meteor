@@ -34,6 +34,10 @@
 <body>
 {{- partial "navbar.html" . -}}
 <div class="content" id="content">
+    <div style="height: 53px;"></div>
+    <script>
+        document.getElementsByClassName('content')[0].style.minHeight = (window.innerHeight - 108) + 'px';
+    </script>
     {{- block "main" . -}}{{- end -}}
 </div>
 {{- if not .IsHome -}}

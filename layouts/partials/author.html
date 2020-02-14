@@ -1,35 +1,35 @@
-{{ $author_page_path := (printf "/author/%s" (anchorize .Title)) }}
-{{ $author_page := .Site.GetPage $author_page_path }}
+{{- $author_page_path := (printf "/author/%s" (anchorize .Title)) -}}
+{{- $author_page := .Site.GetPage $author_page_path -}}
 
-{{ $background := $author_page.Resources.GetMatch "background.*" }}
+{{- $background := $author_page.Resources.GetMatch "background.*" -}}
 
-{{ with $author_page }}
+{{- with $author_page -}}
 <div class="author" style="{{ with $background}} background-image: url({{ .RelPermalink | safeCSS}}) {{ end }}">
-    {{ $avatar := .Resources.GetMatch "avatar.*" }}
-    <div class="author-container">
-        <div class="left">
-            <img class="avatar" src="{{ with $avatar}} {{ .RelPermalink }} {{ end }}" alt="">
+    {{- $avatar := .Resources.GetMatch "avatar.*" -}}
+    <div class="author-container flex">
+        <div class="left flex flex-align-center flex-direction-column">
+            <img class="avatar" src="{{ with $avatar }}{{ .RelPermalink }}{{ end }}" alt="">
             <div class="name">{{ $.Title }}</div>
             <div class="role">{{ .Params.role }}</div>
             {{ range .Params.organization }}
             <div class="organization"><a href="{{ .url }}">{{ .name }}</a></div>
-            {{ end }}
+            {{- end -}}
             <ul class="social">
                 {{ range .Params.social }}
                 <li><a href="{{ .link }}"><i class="nf nf-{{ .icon_pack }}-{{ .icon }}"></i></a></li>
-                {{ end }}
+                {{- end -}}
             </ul>
-            {{ with .Params.interest }}
+            {{- with .Params.interest -}}
             <div class="interest">{{ i18n "Interest" }}</div>
             <ul class="interest">
                 {{ range . }}
                 <li>
                     <div>{{ . }}</div>
                 </li>
-                {{ end }}
+                {{- end -}}
             </ul>
-            {{ end }}
-            {{ with .Params.education }}
+            {{- end -}}
+            {{- with .Params.education -}}
             <div class="education">{{ i18n "Education" }}</div>
             <ul class="education">
                 {{ range . }}
@@ -37,9 +37,9 @@
                     <div class="course">{{ .course }}</div>
                     <div class="institution">{{ .institution }} ({{ .year }})</div>
                 </li>
-                {{ end }}
+                {{- end -}}
             </ul>
-            {{ end }}
+            {{- end -}}
         </div>
         <div class="right">
             <div class="single-content">{{ .Content }}</div>
@@ -47,20 +47,20 @@
             <div class="swiper-container">
                 <div class="swiper-wrapper">
                     {{ range $index, $val := $.Pages.ByDate.Reverse }}
-                    {{ if eq (mod $index 5) 0 }}
+                    {{- if eq (mod $index 5) 0 -}}
                     <div class="swiper-slide">
                         <ul class="term-list">
                             {{ range first 5 (after $index $.Pages.ByDate.Reverse) }}
-                            <li>
+                            <li class="flex flex-align-center flex-space-between flex-direction-row flex-wrap">
                                 <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                                <div class="line"></div>
-                                <span>{{ dateFormat "Mon, Jan 2 2006" .Date }}</span>
+                                <div class="line flex-grow-1"></div>
+                                <span>{{ i18n (dateFormat "Mon" .Date) }}, {{ dateFormat "2006-01-02" .Date }}</span>
                             </li>
-                            {{ end }}
+                            {{- end -}}
                         </ul>
                     </div>
-                    {{ end }}
-                    {{ end }}
+                    {{- end -}}
+                    {{- end -}}
                 </div>
                 <div class="swiper-pagination"></div>
                 <div class="swiper-button-next"></div>
@@ -69,4 +69,4 @@
         </div>
     </div>
 </div>
-{{ end }}
+{{- end -}}

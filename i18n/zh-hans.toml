@@ -27,3 +27,60 @@ other = "教育经历"
 
 [SearchResultEmpty]
 other = "什么都没有，换个关键词试试"
+
+[Mon]
+other = "周一"
+
+[Tue]
+other = "周二"
+
+[Wed]
+other = "周三"
+
+[Thu]
+other = "周四"
+
+[Fri]
+other = "周五"
+
+[Sat]
+other = "周六"
+
+[Sun]
+other = "周日"
+
+[Jan]
+other = "一月"
+
+[Feb]
+other = "二月"
+
+[Mar]
+other = "三月"
+
+[Apr]
+other = "四月"
+
+[May]
+other = "五月"
+
+[Jun]
+other = "六月"
+
+[Jul]
+other = "七月"
+
+[Aug]
+other = "八月"
+
+[Sep]
+other = "九月"
+
+[Oct]
+other = "十月"
+
+[Nov]
+other = "十一月"
+
+[Dec]
+other = "十二月"

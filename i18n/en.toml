@@ -27,3 +27,60 @@ other = "Education"
 
 [SearchResultEmpty]
 other = "Nothing, try another keyword"
+
+[Mon]
+other = "Mon"
+
+[Tue]
+other = "Tue"
+
+[Wed]
+other = "Wed"
+
+[Thu]
+other = "Thu"
+
+[Fri]
+other = "Fri"
+
+[Sat]
+other = "Sat"
+
+[Sun]
+other = "Sun"
+
+[Jan]
+other = "Jan"
+
+[Feb]
+other = "Feb"
+
+[Mar]
+other = "Mar"
+
+[Apr]
+other = "Apr"
+
+[May]
+other = "May"
+
+[Jun]
+other = "Jun"
+
+[Jul]
+other = "Jul"
+
+[Aug]
+other = "Aug"
+
+[Sep]
+other = "Sep"
+
+[Oct]
+other = "Oct"
+
+[Nov]
+other = "Nov"
+
+[Dec]
+other = "Dec"
