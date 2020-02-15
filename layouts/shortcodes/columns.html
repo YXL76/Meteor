@@ -1,0 +1,24 @@
+{{ $content := split .Inner "<--->" }}
+
+{{- $input := slice -}}
+{{- range $index, $val := $content -}}
+{{- $input = $input | append (float ($.Get $index)) -}}
+{{- end -}}
+
+{{- $total := 0.0 -}}
+{{- range $input -}}
+{{- $total = add $total . -}}
+{{- end -}}
+
+{{- $percent := slice -}}
+{{- range $input -}}
+{{- $percent = $percent | append (mul (div . $total) 100.0) -}}
+{{- end -}}
+
+<div style="display: grid; grid-template-columns: {{ delimit $percent "% " | safeCSS }}%;">
+    {{ range $content }}
+    <div>
+        {{ . | markdownify | emojify }}
+    </div>
+    {{ end }}
+</div>

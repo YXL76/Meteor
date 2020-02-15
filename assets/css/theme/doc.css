@@ -1,0 +1,111 @@
+div.doc-aside {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 60px;
+    height: -webkit-calc(100vh - 60px);
+    height: -moz-calc(100vh - 60px);
+    height: calc(100vh - 60px);
+}
+
+@media (max-width: 1000px) {
+    div.doc-aside div.share {
+        display: none;
+    }
+}
+
+@media (max-width: 800px) {
+    div.doc-aside {
+        display: none;
+    }
+}
+
+div.doc-header {
+    height: 80px;
+    -webkit-box-align: end;
+    -webkit-align-items: flex-end;
+    -moz-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+}
+
+div.doc-header > h1 {
+    padding: 0 0 0 16px;
+    margin: 0;
+    font-size: 56px;
+    font-weight: 700;
+}
+
+aside.doc-nav {
+    font-family: "Roboto", sans-serif;
+    max-width: 320px;
+    min-width: 160px;
+    padding: 12px 20px 0;
+    overflow: auto;
+    height: -webkit-calc(100vh - 60px - 92px);
+    height: -moz-calc(100vh - 60px - 92px);
+    height: calc(100vh - 60px - 92px);
+}
+
+aside.doc-nav a {
+    display: inline-block;
+    color: #616161;
+    -webkit-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}
+
+aside.doc-nav a.active {
+    color: #F9A825;
+}
+
+aside.doc-nav a:hover {
+    -webkit-transform: translateX(4px);
+    -moz-transform: translateX(4px);
+    -ms-transform: translateX(4px);
+    -o-transform: translateX(4px);
+    transform: translateX(4px);
+}
+
+aside.doc-nav ul {
+    font-size: 27px;
+    line-height: 40px;
+    font-weight: 700;
+    list-style: none;
+}
+
+aside.doc-nav ul ul {
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 400;
+}
+
+aside.doc-nav ul ul ul {
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 400;
+    margin-left: 16px;
+}
+
+aside.TableOfContents.doc {
+    -webkit-border-top-right-radius: 42px;
+    -moz-border-radius-topright: 42px;
+    border-top-right-radius: 42px;
+    background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #FFFFFF), to(#FFFDE7));
+    background-image: -webkit-linear-gradient(left, #FFFFFF 0, #FFFDE7);
+    background-image: -moz-linear-gradient(left, #FFFFFF 0, #FFFDE7);
+    background-image: -o-linear-gradient(left, #FFFFFF 0, #FFFDE7);
+    background-image: linear-gradient(90deg, #FFFFFF 0, #FFFDE7);
+    height: -webkit-calc(100vh - 60px - 80px);
+    height: -moz-calc(100vh - 60px - 80px);
+    height: calc(100vh - 60px - 80px);
+}
+
+aside.TableOfContents.doc > h2 {
+    color: #F9A825;
+}
+
+aside.TableOfContents.doc > div {
+    float: none;
+    border-left: none;
+}

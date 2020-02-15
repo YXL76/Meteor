@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="/css/APlayer.min.css">
+<script src="/js/APlayer.min.js"></script>
+<script src="/js/Meting.min.js"></script>
+
+<meting-js
+  id = "{{ .Get "id" }}"
+  server = "{{ .Get "server" }}"
+  type = "{{ .Get "type" }}"
+  fixed = "{{ .Get "fixed" | default "false" }}"
+  mini = "{{ .Get "mini" | default "false" }}"
+  autoplay = "{{ .Get "autoplay" | default "false" }}"
+  theme = "{{ .Get "theme" | default "#F9A825" }}"
+  loop = "{{ .Get "loop" | default "all" }}"
+  order = "{{ .Get "order" | default "list" }}"
+  preload = "{{ .Get "preload" | default "auto" }}"
+  volume = "{{ .Get "volume" | default "0.7" }}"
+  mutex = "{{ .Get "mutex" | default "true" }}"
+  lrc-type = "{{ .Get "lrcType" | default "0" }}"
+  list-folded = "{{ .Get "listFolded" | default "false" }}"
+  list-max-height = "{{ .Get "listMaxHeight" | default "340px" }}"
+></meting-js>

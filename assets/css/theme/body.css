@@ -12,6 +12,9 @@ body {
 body > div.content {
     padding: 0;
     width: 100%;
+    min-height: -webkit-calc(100vh - 108px);
+    min-height: -moz-calc(100vh - 108px);
+    min-height: calc(100vh - 108px);
 }
 
 a {

@@ -7,8 +7,10 @@
 {{- define "main" -}}
 
 <div class="single-header">
+    {{ if .Params.Image.Name }}
     <img src="/img/{{ .Params.Image.Name | safeHTML }}" alt="{{ .Params.Image.Caption }}">
     <span class="caption">{{ .Params.Image.Caption | markdownify | emojify }}</span>
+    {{ end }}
 </div>
 
 <div class="single-title flex flex-align-center flex-space-between flex-direction-row">
@@ -19,11 +21,12 @@
             <div class="flex flex-space-between flex-direction-row">
                 {{- partial "information" . -}}
                 <div class="share flex flex-direction-row flex-wrap flex-flex-end">
-                    <a href="#"><i id="facebook" class="nf nf-fa-reddit_alien"></i></a>
-                    <a href="#"><i id="twitter" class="nf nf-fa-twitter"></i></a>
-                    <a href="#"><i id="weibo" class="nf nf-fa-weibo"></i></a>
-                    <a href="#"><i id="linkedin" class="nf nf-fa-linkedin"></i></a>
-                    <a href="#"><i id="email" class="nf nf-mdi-email"></i></a>
+                    {{ range $.Site.Params.share }}
+                    {{ $icon := index (where $.Site.Data.share.share "title" .) 0 }}
+                    {{ $link := replace $icon.url "{url}" ($.Permalink | htmlEscape) }}
+                    {{ $link = replace $link "{title}" ($.Title | htmlEscape) }}
+                    <a href="{{ $link }}" target="_blank"><i class="nf nf-{{ $icon.icon_pack | safeHTML }}-{{ $icon.icon | safeHTML }}"></i></a>
+                    {{- end -}}
                 </div>
             </div>
         </div>
@@ -37,17 +40,13 @@
 </div>
 
 {{- with .Params.toc.enable -}}
-<aside class="TableOfContents js-toc"></aside>
-{{- end -}}
-
-{{- if and .Params.musicOption.enable (eq .Params.musicOption.fixed "true") -}}
-{{- partial "meting.html" .Params.musicOption -}}
+<aside class="TableOfContents">
+    <h2>{{ i18n "TableOfContents" }}</h2>
+    <div class="js-toc"></div>
+</aside>
 {{- end -}}
 
 <div class="single-content js-toc-content {{ if .Params.toc.enable }}TableOfContents{{ end }}">
-    {{- if and .Params.musicOption.enable (eq .Params.musicOption.fixed "false") -}}
-    {{- partial "meting.html" .Params.musicOption -}}
-    {{- end -}}
     {{- .Content -}}
     <div class="authors">
         {{ range .Params.authors }}
@@ -77,15 +76,19 @@
             {{ end }}
         </div>
     </div>
+    {{ if .Site.Params.postCopyright }}
     <div class="post-copyright">
         {{- (replace .Site.Params.postCopyright "{{ .Permalink }}" .Permalink) | markdownify | emojify  -}}
     </div>
+    {{ end }}
     {{- template "_internal/disqus.html" . -}}
 </div>
 
 {{- end -}}
 
 {{- define "foot" -}}
+
+{{- partial "footer.html" . -}}
 
 {{- if .Params.toc.enable -}}
 <script src="/js/tocbot.min.js"></script>
@@ -98,7 +101,6 @@
     });
 </script>
 {{- end -}}
-
 
 {{- if .Params.anchor.enable -}}
 <script src="/js/anchor.min.js"></script>

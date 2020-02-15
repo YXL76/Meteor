@@ -1,0 +1,47 @@
+[[share]]
+  title = "twitter"
+  url = "https://twitter.com/intent/tweet?url={url}&text={title}"
+  icon_pack = "fa"
+  icon = "twitter"
+
+[[share]]
+  title = "facebook"
+  url = "https://www.facebook.com/sharer.php?u={url}&t={title}"
+  icon_pack = "fa"
+  icon = "facebook"
+
+[[share]]
+  title = "email"
+  url = "mailto:?subject={title}&body={url}"
+  icon_pack = "fa"
+  icon = "envelope"
+
+[[share]]
+  title = "linkedin"
+  url = "https://www.linkedin.com/shareArticle?url={url}&title={title}"
+  icon_pack = "fa"
+  icon = "linkedin"
+
+[[share]]
+  title = "whatsapp"
+  url = "https://web.whatsapp.com/send?text={title}%20{url}"
+  icon_pack = "fa"
+  icon = "whatsapp"
+
+[[share]]
+  title = "weibo"
+  url = "https://service.weibo.com/share/share.php?url={url}&title={title}"
+  icon_pack = "fa"
+  icon = "weibo"
+
+[[share]]
+  title = "reddit"
+  url = "https://reddit.com/submit?url={url}&title={title}"
+  icon_pack = "fa"
+  icon = "reddit_alien"
+
+[[share]]
+  title = "pinterest"
+  url = "https://pinterest.com/pin/create/link/?url={url}&description={title}"
+  icon_pack = "fa"
+  icon = "pinterest_p"

@@ -35,15 +35,11 @@
 {{- partial "navbar.html" . -}}
 <div class="content" id="content">
     <div style="height: 53px;"></div>
-    <script>
-        document.getElementsByClassName('content')[0].style.minHeight = (window.innerHeight - 108) + 'px';
-    </script>
     {{- block "main" . -}}{{- end -}}
 </div>
 {{- if not .IsHome -}}
 {{/*- partial "wave.html" . -*/}}
 {{- end -}}
-{{- partial "footer.html" . -}}
 {{- partial "site_js.html" . -}}
 {{- block "foot" . -}}{{- end -}}
 </body>

@@ -1,0 +1,67 @@
+{{- $section := .CurrentSection -}}
+
+<div class="flex flex-direction-row flex-space-between">
+    <div class="flex flex-direction-column doc-aside">
+        <div class="flex flex-direction-row flex-space-between doc-header">
+            <h1>{{ .CurrentSection.Title }}</h1>
+            <div class="share flex flex-direction-row flex-wrap">
+                {{ range $.Site.Params.share }}
+                {{ $icon := index (where $.Site.Data.share.share "title" .) 0 }}
+                {{ $link := replace $icon.url "{url}" ($.Permalink | htmlEscape) }}
+                {{ $link = replace $link "{title}" ($.Title | htmlEscape) }}
+                <a href="{{ $link }}" target="_blank"><i class="nf nf-{{ $icon.icon_pack | safeHTML }}-{{ $icon.icon | safeHTML }}"></i></a>
+                {{- end -}}
+            </div>
+        </div>
+        <div class="flex flex-direction-row">
+            <aside class="doc-nav">
+                <ul>
+                    {{- if eq .Kind "section" -}}
+                    <li><a class="active" href="{{ .RelPermalink }}">Overview</a></li>
+                    {{- else -}}
+                    <li><a href="{{ $section.RelPermalink }}">Overview</a></li>
+                    {{- end -}}
+                    {{ range $section.Params.list }}
+                    {{- $section_page := "" -}}
+                    {{- if not (eq .dir "") -}}
+                    {{- $section_page = $.Site.GetPage .dir -}}
+                    {{- end -}}
+                    <li>
+                        <a {{ with $section_page }}{{ if eq $ $section_page }}class="active"{{ end }}href="{{ .RelPermalink }}" {{ end }}>{{ .name }}</a>
+                        <ul>
+                            {{ range .child }}
+                            <li>
+                                {{- $section_page := "" -}}
+                                {{- if not (eq .dir "") -}}
+                                {{- $section_page = $.Site.GetPage .dir -}}
+                                {{- end -}}
+                                <a {{ with $section_page }}{{ if eq $ $section_page }}class="active"{{ end }}href="{{ .RelPermalink }}" {{ end }}>{{ .name }}</a>
+                                <ul>
+                                    {{ range .child }}
+                                    <li>
+                                        {{- $section_page := "" -}}
+                                        {{- if not (eq .dir "") -}}
+                                        {{- $section_page = $.Site.GetPage .dir -}}
+                                        {{- end -}}
+                                        <a {{ with $section_page }}{{ if eq $ $section_page }}class="active"{{ end }}href="{{ .RelPermalink }}" {{ end }}>{{ .name }}</a>
+                                    </li>
+                                    {{- end -}}
+                                </ul>
+                            </li>
+                            {{- end -}}
+                        </ul>
+                    </li>
+                    {{- end -}}
+                </ul>
+            </aside>
+            <aside class="TableOfContents doc">
+                <h2>{{ i18n "TableOfContents" }}</h2>
+                <div class="js-toc"></div>
+            </aside>
+        </div>
+    </div>
+    <div class="single-content js-toc-content">
+        {{- .Content -}}
+        {{- partial "footer.html" . -}}
+    </div>
+</div>

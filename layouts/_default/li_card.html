@@ -1,6 +1,8 @@
 <div class="list-item">
-    {{ $link := .RelPermalink }}
+    {{- $link := .RelPermalink -}}
+    {{- if .CurrentSection.Params.info -}}
     {{- partial "information" . -}}
+    {{- end -}}
 
     {{- $resource := (.Resources.ByType "image").GetMatch "*featured*" -}}
     {{- with $resource -}}

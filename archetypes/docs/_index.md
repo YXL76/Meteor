@@ -1,25 +1,28 @@
 ---
 
 title: "{{ .Name | humanize | title }}"
-subtitle: ""
 summary: ""
 date: {{ .Date }}
 draft: false
 
-authors: []
-tags: []
-categories: []
+docs: true
+view: 0
+info: false
 
-image:
-  image: ""
-  caption: ""
+authors: []
+
+list:
+- dir: ""
+  child:
+  - dir: ""
+- dir: ""
 
 toc:
-  enable: false
+  enable: true
   heading: "h2, h3"
 
 anchor:
-  enable: false
+  enable: true
   list:
   - placement: "right"
     visible: "hover"

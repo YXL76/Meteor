@@ -1,11 +1,3 @@
-{{- define "head" -}}
-
-{{- partial "list_head.html" . -}}
-
-{{- end -}}
-
-{{- define "main" -}}
-
 <div class="list">
     <h1 class="list-title">{{ if (i18n .Title) }}{{ upper (i18n .Title) }}{{ else }}{{ upper .Title }}{{ end }}</h1>
     {{- with .Content -}}
@@ -13,7 +5,7 @@
     {{- end -}}
     {{- $paginator := .Paginate .Data.Pages.ByDate.Reverse -}}
     {{ range $paginator.Pages }}
-    {{- if eq .Site.Params.view 1 -}}
+    {{- if eq $.Params.view 1  -}}
     {{- .Render "li_card" -}}
     {{- else -}}
     {{- .Render "li_compact" -}}
@@ -21,11 +13,3 @@
     {{- end -}}
     {{- partial "pagination" . -}}
 </div>
-
-{{- end -}}
-
-{{- define "foot" }}
-
-{{- partial "footer.html" . -}}
-
-{{- end -}}

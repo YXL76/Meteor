@@ -28,6 +28,9 @@ other = "Education"
 [SearchResultEmpty]
 other = "Nothing, try another keyword"
 
+[TableOfContents]
+other = "Table of Contents"
+
 [Mon]
 other = "Mon"
 
