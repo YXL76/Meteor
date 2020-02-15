@@ -91,7 +91,13 @@
 <div class="search">
     <div>{{ upper (i18n "Search") }}<i class="nf nf-fa-times" onclick="hideSearch()"></i></div>
     <label class="flex flex-direction-row">
-        <input class="flex-grow-1" id="search-text" type="text" name="search">
+        {{ $engine := "" }}
+        {{ if eq .Site.Params.search.engine 1 }}
+        {{ $engine = "Algolia" }}
+        {{ else }}
+        {{ $engine = "Google" }}
+        {{ end }}
+        <input class="flex-grow-1" id="search-text" type="text" name="search" placeholder="{{ i18n "SearchEngine" }}: {{ $engine }}">
         <i class="nf nf-fa-search" onclick="getSearchResult()"></i>
     </label>
     <div id="search-result"></div>

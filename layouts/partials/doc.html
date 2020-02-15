@@ -6,9 +6,9 @@
             <h1>{{ .CurrentSection.Title }}</h1>
             <div class="share flex flex-direction-row flex-wrap">
                 {{ range $.Site.Params.share }}
-                {{ $icon := index (where $.Site.Data.share.share "title" .) 0 }}
-                {{ $link := replace $icon.url "{url}" ($.Permalink | htmlEscape) }}
-                {{ $link = replace $link "{title}" ($.Title | htmlEscape) }}
+                {{- $icon := index (where $.Site.Data.share.share "title" .) 0 -}}
+                {{- $link := replace $icon.url "{url}" ($.Permalink | htmlEscape) -}}
+                {{- $link = replace $link "{title}" ($.Title | htmlEscape) -}}
                 <a href="{{ $link }}" target="_blank"><i class="nf nf-{{ $icon.icon_pack | safeHTML }}-{{ $icon.icon | safeHTML }}"></i></a>
                 {{- end -}}
             </div>

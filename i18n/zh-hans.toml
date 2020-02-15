@@ -4,6 +4,9 @@ other = "文章"
 [Search]
 other = "搜索"
 
+[SearchEngine]
+other = "搜索引擎"
+
 [Categories]
 other = "类目"
 

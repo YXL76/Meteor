@@ -4,6 +4,9 @@ other = "Post"
 [Search]
 other = "Search"
 
+[SearchEngine]
+other = "Search Engine"
+
 [Categories]
 other = "Categories"
 
