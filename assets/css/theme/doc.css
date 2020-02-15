@@ -1,3 +1,33 @@
+input.doc-side {
+    display: none;
+}
+
+input.doc-side + div.nav-icon {
+    display: none;
+    z-index: 10;
+    position: fixed;
+    right: 24px;
+    top: 100px;
+}
+
+input.doc-side + div.nav-icon span {
+    background: #f9a825;
+}
+
+div.nav-icon-bg {
+    display: none;
+    position: fixed;
+    top: 83px;
+    right: 10px;
+    height: 48px;
+    width: 48px;
+    background: #EEEEEE;
+    z-index: 5;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
 div.doc-aside {
     position: -webkit-sticky;
     position: sticky;
@@ -14,9 +44,51 @@ div.doc-aside {
 }
 
 @media (max-width: 800px) {
-    div.doc-aside {
+    input.doc-side + div.nav-icon, div.nav-icon-bg {
+        display: block;
+    }
+
+    div.doc-header > h1 {
         display: none;
     }
+
+    div.doc-aside, aside.doc-nav {
+        width: 60vw;
+        height: 100vh;
+    }
+
+    div.doc-aside {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 10;
+        background-color: #FFFFFF;
+        -webkit-box-shadow: 8px 0 16px 0 rgba(0, 0, 0, .3);
+        -moz-box-shadow: 8px 0 16px 0 rgba(0, 0, 0, .3);
+        box-shadow: 8px 0 16px 0 rgba(0, 0, 0, .3);
+        -webkit-transition: all .6s;
+        -o-transition: all .6s;
+        -moz-transition: all .6s;
+        transition: all .6s;
+    }
+
+    input.doc-side:not(:checked) + div.nav-icon + div > div.doc-aside {
+        left: -80vw;
+    }
+}
+
+div.doc-aside > div + div {
+    border-top: 1px solid #FFF9C4;
+    border-right: 1px solid #FFF9C4;
+    -webkit-border-top-right-radius: 42px;
+    -moz-border-radius-topright: 42px;
+    border-top-right-radius: 42px;
+    background-image: -webkit-gradient(linear, left top, right top, color-stop(20%, #FFFFFF), to(#FFF9C4));
+    background-image: -webkit-linear-gradient(left, #FFFFFF 20%, #FFF9C4);
+    background-image: -moz-linear-gradient(left, #FFFFFF 20%, #FFF9C4);
+    background-image: -o-linear-gradient(left, #FFFFFF 20%, #FFF9C4);
+    background-image: linear-gradient(90deg, #FFFFFF 20%, #FFF9C4);
 }
 
 div.doc-header {
@@ -88,14 +160,6 @@ aside.doc-nav ul ul ul {
 }
 
 aside.TableOfContents.doc {
-    -webkit-border-top-right-radius: 42px;
-    -moz-border-radius-topright: 42px;
-    border-top-right-radius: 42px;
-    background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #FFFFFF), to(#FFFDE7));
-    background-image: -webkit-linear-gradient(left, #FFFFFF 0, #FFFDE7);
-    background-image: -moz-linear-gradient(left, #FFFFFF 0, #FFFDE7);
-    background-image: -o-linear-gradient(left, #FFFFFF 0, #FFFDE7);
-    background-image: linear-gradient(90deg, #FFFFFF 0, #FFFDE7);
     height: -webkit-calc(100vh - 60px - 80px);
     height: -moz-calc(100vh - 60px - 80px);
     height: calc(100vh - 60px - 80px);
