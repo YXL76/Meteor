@@ -48,6 +48,7 @@
 
 <div class="single-content js-toc-content {{ if .Params.toc.enable }}TableOfContents{{ end }}">
     {{- .Content -}}
+    {{- if .Params.bio -}}
     <div class="authors">
         {{ range .Params.authors }}
         {{- $author_page_path := (printf "/author/%s" (anchorize . )) -}}
@@ -62,6 +63,7 @@
         </div>
         {{- end -}}
     </div>
+    {{- end -}}
     <div class="section flex flex-space-between flex-direction-row flex-wrap">
         <div class="flex flex-space-between flex-direction-row flex-grow-1 flex-wrap">
             {{ with .NextInSection }}

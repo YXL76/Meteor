@@ -10,6 +10,8 @@ authors: []
 tags: []
 categories: []
 
+bio: true
+
 image:
   image: ""
   caption: ""

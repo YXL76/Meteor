@@ -17,9 +17,9 @@ let scrollLine, header, mask;
 function moveHeader(winTop) {
     if (!checkbox && Math.abs(winTop - wintopPre) > 4) {
         if (winTop > wintopPre) {
-            header.transform = "translateY(-60px)";
+            header.top = "-60px";
         } else {
-            header.transform = "translateY(0)";
+            header.top = "0";
         }
     }
     wintopPre = winTop;

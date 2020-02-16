@@ -1,7 +1,8 @@
 <canvas id="{{ .Get 0 | safeHTMLAttr }}" width="{{ .Get 1 | safeHTMLAttr }}" height="{{ .Get 2 | safeHTMLAttr }}"></canvas>
 <script>
-let {{ (replace (humanize (.Get 0)) " " "") | safeJS }} = new Chart(document.getElementById('{{ .Get 0 | safeHTMLAttr }}').getContext('2d'), {
-    {{ .Inner | safeJS }}
-});
+document.addEventListener('DOMContentLoaded', () => {
+    let {{ (replace (humanize (.Get 0)) " " "") | safeJS }} = new Chart(document.getElementById('{{ .Get 0 | safeHTMLAttr }}').getContext('2d'), {
+        {{ .Inner | safeJS }}
+    });
+}, false);
 </script>
-

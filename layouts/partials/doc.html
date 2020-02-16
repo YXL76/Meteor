@@ -1,78 +1,117 @@
 {{- $section := .CurrentSection -}}
+{{- $all_page := slice -}}
 
 <div class="nav-icon-bg"></div>
 
 <label>
-    <input class="doc-side" type="checkbox">
+    <input class="doc-side" type="checkbox" oninput="callSide(this.checked)">
     <div class="nav-icon">
         <span></span>
         <span></span>
         <span></span>
         <span></span>
     </div>
-    <div class="flex flex-direction-row flex-space-between">
-        <div class="flex flex-direction-column doc-aside">
-            <div class="flex flex-direction-row flex-space-between doc-header">
-                <h1>{{ .CurrentSection.Title }}</h1>
-                <div class="share flex flex-direction-row flex-wrap">
-                    {{ range $.Site.Params.share }}
-                    {{- $icon := index (where $.Site.Data.share.share "title" .) 0 -}}
-                    {{- $link := replace $icon.url "{url}" ($.Permalink | htmlEscape) -}}
-                    {{- $link = replace $link "{title}" ($.Title | htmlEscape) -}}
-                    <a href="{{ $link }}" target="_blank"><i class="nf nf-{{ $icon.icon_pack | safeHTML }}-{{ $icon.icon | safeHTML }}"></i></a>
-                    {{- end -}}
-                </div>
-            </div>
-            <div class="flex flex-direction-row">
-                <aside class="doc-nav">
-                    <ul>
-                        {{- if eq .Kind "section" -}}
-                        <li><a class="active" href="{{ .RelPermalink }}">Overview</a></li>
-                        {{- else -}}
-                        <li><a href="{{ $section.RelPermalink }}">Overview</a></li>
-                        {{- end -}}
-                        {{ range $section.Params.list }}
-                        {{- $section_page := "" -}}
-                        {{- if not (eq .dir "") -}}
-                        {{- $section_page = $.Site.GetPage .dir -}}
-                        {{- end -}}
-                        <li>
-                            <a {{ with $section_page }}{{ if eq $ $section_page }}class="active"{{ end }}href="{{ .RelPermalink }}" {{ end }}>{{ .name }}</a>
-                            <ul>
-                                {{ range .child }}
-                                <li>
-                                    {{- $section_page := "" -}}
-                                    {{- if not (eq .dir "") -}}
-                                    {{- $section_page = $.Site.GetPage .dir -}}
-                                    {{- end -}}
-                                    <a {{ with $section_page }}{{ if eq $ $section_page }}class="active"{{ end }}href="{{ .RelPermalink }}" {{ end }}>{{ .name }}</a>
-                                    <ul>
-                                        {{ range .child }}
-                                        <li>
-                                            {{- $section_page := "" -}}
-                                            {{- if not (eq .dir "") -}}
-                                            {{- $section_page = $.Site.GetPage .dir -}}
-                                            {{- end -}}
-                                            <a {{ with $section_page }}{{ if eq $ $section_page }}class="active"{{ end }}href="{{ .RelPermalink }}" {{ end }}>{{ .name }}</a>
-                                        </li>
-                                        {{- end -}}
-                                    </ul>
-                                </li>
-                                {{- end -}}
-                            </ul>
-                        </li>
-                        {{- end -}}
-                    </ul>
-                </aside>
-                <aside class="TableOfContents doc">
-                    <h2>{{ i18n "TableOfContents" }}</h2>
-                    <div class="js-toc"></div>
-                </aside>
+</label>
+<script>
+    document.getElementsByClassName('doc-side')[0].checked = false;
+</script>
+<div class="flex flex-direction-row flex-space-between">
+    <div class="flex flex-direction-column doc-aside">
+        <div class="flex flex-direction-row flex-space-between doc-header">
+            <h1>{{ .CurrentSection.Title }}</h1>
+            <div class="share flex flex-direction-row flex-wrap">
+                {{ range $.Site.Params.share }}
+                {{- $icon := index (where $.Site.Data.share.share "title" .) 0 -}}
+                {{- $link := replace $icon.url "{url}" ($.Permalink | htmlEscape) -}}
+                {{- $link = replace $link "{title}" ($.Title | htmlEscape) -}}
+                <a href="{{ $link }}" target="_blank"><i class="nf nf-{{ $icon.icon_pack | safeHTML }}-{{ $icon.icon | safeHTML }}"></i></a>
+                {{- end -}}
             </div>
         </div>
-        <div class="single-content js-toc-content">
-            {{- .Content -}}
-            {{- partial "footer.html" . -}}
+        <div class="flex flex-direction-row">
+            <aside class="doc-nav">
+                <ul>
+                    {{- if eq .Kind "section" -}}
+                    {{- $all_page = $all_page | append $ -}}
+                    <li><a class="active" href="{{ .RelPermalink }}">Overview</a></li>
+                    {{- else -}}
+                    {{- $all_page = $all_page | append $section -}}
+                    <li><a href="{{ $section.RelPermalink }}">Overview</a></li>
+                    {{- end -}}
+                    {{ range $section.Params.list }}
+                    {{- $section_page := "" -}}
+                    {{- if not (eq .dir "") -}}
+                    {{- $section_page = $.Site.GetPage .dir -}}
+                    {{- $all_page = $all_page | append $section_page -}}
+                    {{- end -}}
+                    <li>
+                        <a {{ with $section_page }}{{ if eq $ $section_page }}class="active"{{ end }}href="{{ .RelPermalink }}" {{ end }}>{{ .name }}</a>
+                        <ul>
+                            {{ range .child }}
+                            <li>
+                                {{- $section_page := "" -}}
+                                {{- if not (eq .dir "") -}}
+                                {{- $section_page = $.Site.GetPage .dir -}}
+                                {{- $all_page = $all_page | append $section_page -}}
+                                {{- end -}}
+                                <a {{ with $section_page }}{{ if eq $ $section_page }}class="active"{{ end }}href="{{ .RelPermalink }}" {{ end }}>{{ .name }}</a>
+                                <ul>
+                                    {{ range .child }}
+                                    <li>
+                                        {{- $section_page := "" -}}
+                                        {{- if not (eq .dir "") -}}
+                                        {{- $section_page = $.Site.GetPage .dir -}}
+                                        {{- $all_page = $all_page | append $section_page -}}
+                                        {{- end -}}
+                                        <a {{ with $section_page }}{{ if eq $ $section_page }}class="active"{{ end }}href="{{ .RelPermalink }}" {{ end }}>{{ .name }}</a>
+                                    </li>
+                                    {{- end -}}
+                                </ul>
+                            </li>
+                            {{- end -}}
+                        </ul>
+                    </li>
+                    {{- end -}}
+                </ul>
+            </aside>
+            <aside class="TableOfContents doc">
+                <h2>{{ i18n "TableOfContents" }}</h2>
+                <div class="js-toc"></div>
+            </aside>
         </div>
     </div>
-</label>
+    <div class="single-content js-toc-content">
+        {{- .Content -}}
+        {{- $idx := 0 -}}
+        {{ range $index, $val := $all_page }}
+        {{- if eq $ . -}}
+        {{- $idx = $index -}}
+        {{- end -}}
+        {{- end -}}
+        <div class="section flex flex-space-between flex-direction-row flex-wrap">
+            <div class="flex flex-space-between flex-direction-row flex-grow-1 flex-wrap">
+                {{- if gt $idx 0 -}}
+                {{- $prev := index $all_page (sub $idx 1) -}}
+                <a href="{{ $prev.Permalink }}"><i class="nf nf-fa-arrow_circle_o_left"></i>{{ $prev.Title }}</a>
+                {{- end -}}
+                <span></span>
+            </div>
+            <div class="flex flex-space-between flex-direction-row flex-grow-1 flex-wrap">
+                <span></span>
+                {{- if lt $idx (sub (len $all_page) 1) -}}
+                {{- $next := index $all_page (add $idx 1) -}}
+                <a href="{{ $next.Permalink }}">{{ $next.Title }}<i class="nf nf-fa-arrow_circle_o_right"></i></a>
+                {{- end -}}
+            </div>
+        </div>
+        {{- partial "footer.html" . -}}
+    </div>
+</div>
+<script>
+    let docAside = document.getElementsByClassName('doc-aside')[0].style;
+
+    function callSide(event) {
+        if (event) docAside.left = '0';
+        else docAside.left = '-80vw';
+    }
+</script>
