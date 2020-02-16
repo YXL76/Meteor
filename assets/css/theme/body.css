@@ -6,7 +6,7 @@ body {
     -moz-background-size: cover;
     background-size: cover;
     background-attachment: fixed;
-    font-family: "Montserrat", "Montserrat Alternates", "Roboto", sans-serif;
+    font-family: "Montserrat", "Montserrat Alternates", sans-serif;
 }
 
 body > div.content {
