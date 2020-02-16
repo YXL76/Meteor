@@ -48,6 +48,9 @@
 
 <div class="single-content js-toc-content {{ if .Params.toc.enable }}TableOfContents{{ end }}">
     {{- .Content -}}
+    {{- if .GitInfo -}}
+    <p class="lastmod">{{ i18n "Lastmod" }} {{ .Lastmod.Format "2006-01-02 15:04:05 MST" }}</p>
+    {{- end -}}
     {{- if .Params.bio -}}
     <div class="authors">
         {{ range .Params.authors }}

@@ -34,6 +34,9 @@ other = "Nothing, try another keyword"
 [TableOfContents]
 other = "Table of Contents"
 
+[Lastmod]
+other = "Last modified on"
+
 [Mon]
 other = "Mon"
 
