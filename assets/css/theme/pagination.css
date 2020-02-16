@@ -28,11 +28,35 @@ ul.pagination {
 }
 
 ul.pagination > li {
-    margin-left: .4rem;
+    width: .7rem;
+    text-align: center;
+    background: #FFFFFF;
+    border-top: .036rem solid #F9A825;
+    border-bottom: .036rem solid #F9A825;
+}
+
+ul.pagination > li:first-child {
+    border-left: .036rem solid #F9A825;
+    -webkit-border-top-left-radius: 6px;
+    -moz-border-radius-topleft: 6px;
+    border-top-left-radius: 6px;
+    -webkit-border-bottom-left-radius: 6px;
+    -moz-border-radius-bottomleft: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+ul.pagination > li:last-child {
+    border-right: .036rem solid #F9A825;
+    -webkit-border-top-right-radius: 6px;
+    -moz-border-radius-topright: 6px;
+    border-top-right-radius: 6px;
+    -webkit-border-bottom-right-radius: 6px;
+    -moz-border-radius-bottomright: 6px;
+    border-bottom-right-radius: 6px;
 }
 
 ul.pagination > li > a {
-    color: #000000;
+    color: #F9A825;
     font-size: .5rem;
     font-weight: 500;
 }
@@ -41,31 +65,17 @@ ul.pagination > li.disabled > a {
     color: #BDBDBD;
 }
 
-ul.pagination > li.disabled > a > span {
-    border-color: #BDBDBD;
+ul.pagination > li.active, ul.pagination > li:hover:not(.disabled) {
+    background: #F9A825;
 }
 
 ul.pagination > li.active > a, ul.pagination > li:hover:not(.disabled) > a {
-    color: #F9A825;
+    color: #FFFFFF;
 }
 
-ul.pagination > li:hover:not(.disabled) > a > span {
-    border-color: #F9A825;
-}
-
-ul.pagination > li > a > span, ul.pagination > li > a {
-    -webkit-transition: all .4s ease-out;
-    -o-transition: all .4s ease-out;
-    -moz-transition: all .4s ease-out;
-    transition: all .4s ease-out;
-}
-
-ul.pagination > li > a > span {
-    display: inline-block;
-    width: .7rem;
-    text-align: center;
-    border: .04rem solid #000000;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
+ul.pagination > li, ul.pagination > li > a > span, ul.pagination > li > a {
+    -webkit-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    transition: all .3s ease-out;
 }

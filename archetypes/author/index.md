@@ -11,7 +11,7 @@ bio: ""
 social:
 - icon: envelope
   icon_pack: fa
-  link: ""
+  link: "mailto: "
 - icon: twitter
   icon_pack: fa
   link: ""

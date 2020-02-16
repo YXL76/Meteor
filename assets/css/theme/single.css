@@ -269,6 +269,10 @@ div.single-content ul {
     list-style-position: inside;
 }
 
+div.single-content ul ul {
+    padding-left: 20px;
+}
+
 @media (max-width: 1000px) {
     aside.TableOfContents {
         display: none;
@@ -388,6 +392,7 @@ div.single-content > div.authors > div > div > span:first-child {
     font-size: -webkit-calc(.2rem + 16px);
     font-size: -moz-calc(.2rem + 16px);
     font-size: calc(.2rem + 16px);
+    font-weight: 700;
 }
 
 div.single-content > div.section > div > a > i {

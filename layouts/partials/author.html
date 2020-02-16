@@ -6,7 +6,7 @@
 {{- with $author_page -}}
 <div class="author" style="{{ with $background}} background-image: url({{ .RelPermalink | safeCSS}}) {{ end }}">
     {{- $avatar := .Resources.GetMatch "avatar.*" -}}
-    <div class="author-container flex">
+    <div class="author-container flex flex-space-between">
         <div class="left flex flex-align-center flex-direction-column">
             <img class="avatar" src="{{ with $avatar }}{{ .RelPermalink }}{{ end }}" alt="">
             <div class="name">{{ $.Title }}</div>
@@ -41,9 +41,9 @@
             </ul>
             {{- end -}}
         </div>
-        <div class="right">
+        <div class="right flex-grow-1">
             <div class="single-content">{{ .Content }}</div>
-            <div class="post">Post</div>
+            <div class="post">{{ i18n "Posts" }}</div>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
                     {{ range $index, $val := $.Pages.ByDate.Reverse }}

@@ -1,11 +1,94 @@
 {{- define "main" -}}
 
-<div class="home-content">{{ .Content }}</div>
+<div class="home-content">
+    {{- if .Content -}}
+    {{ .Content }}
+    {{- else -}}
+    <style>
+        h1.site-title,
+        div.site-description-container {
+            position: fixed;
+            width: 90vw;
+            left: 5vw;
+            right: 5vw;
+            text-align: center;
+        }
+
+        @media (min-width: 1000px) {
+            h1.site-title,
+            div.site-description-container {
+                width: 60vw;
+                left: 20vw;
+                right: 20vw;
+            }
+        }
+
+        h1.site-title,
+        h2.site-description {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1.site-title {
+            top: 24vh;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        div.site-description-container {
+            top: 42vh;
+        }
+
+        h2.site-description {
+            display: inline-block;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        @-webkit-keyframes blink { 0% {opacity: 0;} 50% {opacity: 1;} 100% {opacity: 0;} }
+        @-moz-keyframes blink { 0% {opacity: 0;} 50% {opacity: 1;} 100% {opacity: 0;} }
+        @-o-keyframes blink { 0% {opacity: 0;} 50% {opacity: 1;} 100% {opacity: 0;} }
+        @keyframes blink { 0% {opacity: 0;} 50% {opacity: 1;} 100% {opacity: 0;} }
+
+        h2.site-description + span.typed-cursor {
+            font-size: 1rem;
+            -webkit-animation: blink .7s infinite;
+            -moz-animation: blink .7s infinite;
+            -o-animation: blink .7s infinite;
+            animation: blink .7s infinite;
+        }
+    </style>
+    <h1 class="site-title">{{ .Site.Title }}</h1>
+    <div class="site-description-container"><h2 class="site-description"></h2></div>
+    <script src="/js/typed.js"></script>
+    <script>
+        let typed = new Typed('.site-description', {
+            strings: ['{{ .Site.Params.description }}'],
+            typeSpeed: 150,
+            backSpeed: 50,
+            backDelay: 2000,
+            loop: true,
+            autoInsertCss: false,
+        });
+    </script>
+    {{- end -}}
+</div>
 
 {{- end -}}
 
 {{- define "foot" }}
 
 {{- partial "footer.html" . -}}
+{{- if not .Content -}}
+<style>
+    body > div.content {
+        min-height: -webkit-calc(100vh - 108px - 104px);
+        min-height: -moz-calc(100vh - 108px - 104px);
+        min-height: calc(100vh - 108px - 104px);
+    }
+</style>
+<link rel="stylesheet" href="{{ (resources.Get "/css/theme/wave.css" | minify | fingerprint).RelPermalink }}">
+{{- partial "wave.html" . -}}
+{{- end -}}
 
 {{- end -}}

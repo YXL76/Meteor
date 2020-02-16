@@ -10,10 +10,11 @@ authors: []
 tags: []
 categories: []
 
+avatar: false
 bio: true
 
 image:
-  image: ""
+  name: ""
   caption: ""
 
 toc:
