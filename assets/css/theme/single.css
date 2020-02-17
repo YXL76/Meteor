@@ -234,6 +234,7 @@ div.single-content ul ul {
 }
 
 div.single-content > p.lastmod {
+    color: #424242;
     font-style: italic;
     text-decoration: underline;
 }
@@ -330,18 +331,18 @@ aside.TableOfContents a:hover {
 
 div.single-content > div.authors {
     margin: .8rem .4rem .4rem;
-    border-top: .04rem solid #757575;
-    border-bottom: .04rem solid #757575;
+    border-top: .03rem solid #E0E0E0;
+    border-bottom: .03rem solid #E0E0E0;
 }
 
 div.single-content > div.authors > div {
-    padding: .2rem 0;
+    padding: .12rem 0;
 }
 
 div.single-content > div.authors > div > img {
-    height: 1.8rem;
-    width: 1.8rem;
-    margin: .2rem .4rem;
+    height: 1.6rem;
+    width: 1.6rem;
+    margin: .12rem .4rem;
 }
 
 div.single-content > div.authors > div > div > span:first-child {

@@ -22,6 +22,11 @@ ul {
     margin: 0;
 }
 
+hr {
+    border: 0;
+    border-bottom: 1px solid #E0E0E0;
+}
+
 .avatar {
     border-radius: 50%;
 }
