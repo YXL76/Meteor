@@ -32,8 +32,14 @@ div.author-container > div.left {
     text-align: center;
 }
 
-div.author-container > div.left > img.avatar {
+div.author-container > div.left > div:first-child {
     width: 60%;
+    height: 0;
+    padding-bottom: 60%;
+}
+
+div.author-container > div.left > div > img.avatar {
+    width: 100%;
 }
 
 div.author-container > div.left > div.name {

@@ -8,7 +8,7 @@
     {{- $avatar := .Resources.GetMatch "avatar.*" -}}
     <div class="author-container flex flex-space-between">
         <div class="left flex flex-align-center flex-direction-column">
-            <img class="avatar" src="{{ with $avatar }}{{ .RelPermalink }}{{ end }}" alt="">
+            <div><img class="avatar" src="{{ with $avatar }}{{ .RelPermalink }}{{ end }}" alt=""></div>
             <div class="name">{{ $.Title }}</div>
             <div class="role">{{ .Params.role }}</div>
             {{ range .Params.organization }}
