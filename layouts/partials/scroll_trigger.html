@@ -20,10 +20,10 @@
 
     @media (min-width: 540px) {
         .single-title.visible, .single-title.invisible {
-            -webkit-transition: opacity .8s ease-in, -webkit-transform .8s ease-in;
-            transition: opacity .8s ease-in, -webkit-transform .8s ease-in;
-            transition: transform .8s ease-in, opacity .8s ease-in;
-            transition: transform .8s ease-in, opacity .8s ease-in, -webkit-transform .8s ease-in;
+            -webkit-transition: opacity .8s, -webkit-transform .8s ease-in;
+            transition: opacity .8s, -webkit-transform .8s ease-in;
+            transition: opacity .8s, transform .8s ease-in;
+            transition: transform .8s ease-in, opacity .8s, -webkit-transform .8s ease-in;
         }
 
         .single-title.invisible {

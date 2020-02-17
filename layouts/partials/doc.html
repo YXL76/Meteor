@@ -82,7 +82,7 @@
     </div>
     <div class="single-content js-toc-content">
         {{- .Content -}}
-        <p class="lastmod">{{ i18n "Lastmod" }} {{ .Lastmod.Format "2006-01-02 15:04:05 MST" }}</p>
+        <p class="lastmod">{{ i18n "Lastmod" }} {{ .Lastmod.Format "2006-01-02 15:04:05" }}</p>
         {{- $idx := 0 -}}
         {{ range $index, $val := $all_page }}
         {{- if eq $ . -}}
