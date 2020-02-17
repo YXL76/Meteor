@@ -10,13 +10,15 @@
 {{- $desc = .Site.Params.description -}}
 {{- end -}}
 <meta name="description" content="{{ $desc }}">
+
+{{ template "_internal/opengraph.html" . }}
+
 <link rel="icon" type="image/png" href="/img/icon.png">
 <link rel="shortcut icon" type="image/png" href="/img/icon.png">
 <link rel="apple-touch-icon"type="image/png" href="/img/icon-big.png"/>
 
 <link rel="stylesheet" href="/fonts/Montserrat/Montserrat-custom.css">
 <link rel="stylesheet" href="/fonts/Nerd Fonts/nerd-fonts-generated.css">
-<link rel="stylesheet" href="/fonts/Source Code Pro/Source Code Pro.css">
 
 <link rel="stylesheet" href="{{ (resources.Get "/css/theme/body.css" | minify | fingerprint).RelPermalink }}">
 <link rel="stylesheet" href="{{ (resources.Get "/css/theme/font.css" | minify | fingerprint).RelPermalink }}">
@@ -47,4 +49,14 @@
 </script>
 {{- end -}}
 
-{{- template "_internal/google_analytics_async.html" . -}}
+{{- with .Site.GoogleAnalytics -}}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ . | safeJS }}"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '{{ . | safeJS }}');
+</script>
+{{- end -}}

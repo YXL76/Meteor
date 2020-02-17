@@ -69,24 +69,26 @@
     {{- end -}}
     <div class="section flex flex-space-between flex-direction-row flex-wrap">
         <div class="flex flex-space-between flex-direction-row flex-grow-1 flex-wrap">
-            {{ with .NextInSection }}
+            {{- with .NextInSection -}}
             <a href="{{ .Permalink }}"><i class="nf nf-fa-arrow_circle_o_left"></i>{{ .Title }}</a>
-            {{ end }}
+            {{- end -}}
             <span></span>
         </div>
         <div class="flex flex-space-between flex-direction-row flex-grow-1 flex-wrap">
             <span></span>
-            {{ with .PrevInSection }}
+            {{- with .PrevInSection -}}
             <a href="{{ .Permalink }}">{{ .Title }}<i class="nf nf-fa-arrow_circle_o_right"></i></a>
-            {{ end }}
+            {{- end -}}
         </div>
     </div>
-    {{ if .Site.Params.postCopyright }}
+    {{- if .Site.Params.postCopyright -}}
     <div class="post-copyright">
         {{- (replace .Site.Params.postCopyright "{{ .Permalink }}" .Permalink) | markdownify | emojify  -}}
     </div>
-    {{ end }}
+    {{- end -}}
+    {{- if .Site.DisqusShortname -}}
     {{- template "_internal/disqus.html" . -}}
+    {{- end -}}
 </div>
 
 {{- end -}}
