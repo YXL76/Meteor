@@ -22,6 +22,9 @@ other = "字"
 [PageNotFound]
 other = "页面不见了"
 
+[BackToHome]
+other = "回到首页"
+
 [Interest]
 other = "兴趣爱好"
 

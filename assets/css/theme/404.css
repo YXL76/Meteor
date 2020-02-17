@@ -11,10 +11,25 @@ div.circles > div {
 
 div.circles > div:first-child {
     font-size: 4rem;
+    font-weight: 700;
 }
 
 div.circles > div:first-child + div {
     font-size: .6rem;
+    margin-bottom: .4rem;
+}
+
+div.circles > div:first-child + div + div > a {
+    font-size: .5rem;
+    color: #ffffff;
+    padding: .1rem .16rem;
+    -webkit-border-radius: .2rem;
+    -moz-border-radius: .2rem;
+    border-radius: .2rem;
+    -webkit-animation: background 3s infinite;
+    -moz-animation: background 3s infinite;
+    -o-animation: background 3s infinite;
+    animation: background 3s infinite;
 }
 
 div.circles > span {
@@ -69,6 +84,54 @@ div.circles > span.big {
     -o-animation-delay: 3s;
     animation-delay: 3s;
     -webkit-animation-delay: 1s;
+}
+
+@-webkit-keyframes background {
+    0% {
+        background-color: rgba(249, 168, 37, 0);
+    }
+    50% {
+        background-color: rgba(249, 168, 37, .7);
+    }
+    100% {
+        background-color: rgba(249, 168, 37, 0);
+    }
+}
+
+@-moz-keyframes background {
+    0% {
+        background-color: rgba(249, 168, 37, 0);
+    }
+    50% {
+        background-color: rgba(249, 168, 37, .7);
+    }
+    100% {
+        background-color: rgba(249, 168, 37, 0);
+    }
+}
+
+@-o-keyframes background {
+    0% {
+        background-color: rgba(249, 168, 37, 0);
+    }
+    50% {
+        background-color: rgba(249, 168, 37, .7);
+    }
+    100% {
+        background-color: rgba(249, 168, 37, 0);
+    }
+}
+
+@keyframes background {
+    0% {
+        background-color: rgba(249, 168, 37, 0);
+    }
+    50% {
+        background-color: rgba(249, 168, 37, .7);
+    }
+    100% {
+        background-color: rgba(249, 168, 37, 0);
+    }
 }
 
 @-webkit-keyframes smallmove {

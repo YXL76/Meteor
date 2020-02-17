@@ -22,6 +22,9 @@ other = "words"
 [PageNotFound]
 other = "PAGE NOT FOUND"
 
+[BackToHome]
+other = "Back To Home"
+
 [Interest]
 other = "Interest"
 

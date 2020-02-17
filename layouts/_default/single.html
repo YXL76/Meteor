@@ -86,8 +86,10 @@
         {{- (replace .Site.Params.postCopyright "{{ .Permalink }}" .Permalink) | markdownify | emojify  -}}
     </div>
     {{- end -}}
-    {{- if .Site.DisqusShortname -}}
+    {{- if eq .Site.Params.comment.plugin 1 -}}
     {{- template "_internal/disqus.html" . -}}
+    {{- else if eq .Site.Params.comment.plugin 2 -}}
+    <div id="gitalk-container"></div>
     {{- end -}}
 </div>
 

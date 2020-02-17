@@ -420,7 +420,7 @@ div.single-content > div.section > div:hover > a > i {
 }
 
 div.single-content > div.post-copyright {
-    margin: .4rem .36rem 0;
+    margin: .4rem .36rem;
     padding: .2rem .4rem;
     color: #f9a825;
     background: #FFF9C4;
