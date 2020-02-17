@@ -1,10 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<style>
+    .list-item.visible, .list-item.invisible {
+        -webkit-transition: opacity .6s ease-in, -webkit-transform .6s ease-in;
+        transition: opacity .6s ease-in, -webkit-transform .6s ease-in;
+        transition: transform .6s ease-in, opacity .6s ease-in;
+        transition: transform .6s ease-in, opacity .6s ease-in, -webkit-transform .6s ease-in;
+    }
+
+    .list-item.invisible {
+        -webkit-transform: translateX(-40px);
+        transform: translateX(-40px);
+        opacity: 0;
+    }
+
+    .list-item.visible {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    @media (min-width: 540px) {
+        .single-title.visible, .single-title.invisible {
+            -webkit-transition: opacity .8s ease-in, -webkit-transform .8s ease-in;
+            transition: opacity .8s ease-in, -webkit-transform .8s ease-in;
+            transition: transform .8s ease-in, opacity .8s ease-in;
+            transition: transform .8s ease-in, opacity .8s ease-in, -webkit-transform .8s ease-in;
+        }
+
+        .single-title.invisible {
+            -webkit-transform: translateY(50px);
+            transform: translateY(50px);
+            opacity: 0;
+        }
+
+        .single-title.visible {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+</style>
+
+<script src="/js/ScrollTrigger.min.js"></script>
+<script>
+    const scrollTrigger = new ScrollTrigger.default({
+        trigger: {
+            once: true,
+            offset: {
+                viewport: {
+                    y: .25
+                }
+            },
+        },
+    });
+
+    scrollTrigger.add('[list-item-data-trigger]');
+    scrollTrigger.add('[single-title-data-trigger]');
+</script>

@@ -1,29 +1,14 @@
 ul.pagination {
     list-style: none;
     display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-    -webkit-flex-direction: row;
-    -moz-box-orient: horizontal;
-    -moz-box-direction: normal;
-    -ms-flex-direction: row;
     flex-direction: row;
     -webkit-box-align: center;
-    -webkit-align-items: center;
-    -moz-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
     -webkit-box-pack: end;
-    -webkit-justify-content: flex-end;
-    -moz-box-pack: end;
-    -ms-flex-pack: end;
     justify-content: flex-end;
-    -webkit-flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
 }
 
@@ -37,21 +22,13 @@ ul.pagination > li {
 
 ul.pagination > li:first-child {
     border-left: .036rem solid #F9A825;
-    -webkit-border-top-left-radius: 6px;
-    -moz-border-radius-topleft: 6px;
     border-top-left-radius: 6px;
-    -webkit-border-bottom-left-radius: 6px;
-    -moz-border-radius-bottomleft: 6px;
     border-bottom-left-radius: 6px;
 }
 
 ul.pagination > li:last-child {
     border-right: .036rem solid #F9A825;
-    -webkit-border-top-right-radius: 6px;
-    -moz-border-radius-topright: 6px;
     border-top-right-radius: 6px;
-    -webkit-border-bottom-right-radius: 6px;
-    -moz-border-radius-bottomright: 6px;
     border-bottom-right-radius: 6px;
 }
 
@@ -75,7 +52,5 @@ ul.pagination > li.active > a, ul.pagination > li:hover:not(.disabled) > a {
 
 ul.pagination > li, ul.pagination > li > a > span, ul.pagination > li > a {
     -webkit-transition: all .3s ease-out;
-    -o-transition: all .3s ease-out;
-    -moz-transition: all .3s ease-out;
     transition: all .3s ease-out;
 }

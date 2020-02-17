@@ -13,7 +13,7 @@
     {{ end }}
 </div>
 
-<div class="single-title flex flex-align-center flex-space-between flex-direction-row">
+<div single-title-data-trigger class="single-title flex flex-align-center flex-space-between flex-direction-row">
     <div class="flex flex-direction-column flex-grow-1">
         <h1>{{ .Title | markdownify | emojify }}</h1>
         <div class="single-information">
@@ -98,31 +98,7 @@
 {{- define "foot" -}}
 
 {{- partial "footer.html" . -}}
-
-{{- if .Params.toc.enable -}}
-<script src="/js/tocbot.min.js"></script>
-<script>
-    tocbot.init({
-        tocSelector: '.js-toc',
-        contentSelector: '.js-toc-content',
-        headingSelector: '{{.Params.toc.heading}}',
-        hasInnerContainers: true,
-    });
-</script>
-{{- end -}}
-
-{{- if .Params.anchor.enable -}}
-<script src="/js/anchor.min.js"></script>
-<script>
-    {{ range $index, $val := .Params.anchor.list }}
-    let anchor_{{$index | safeJS}} = new AnchorJS({
-        placement: '{{.placement}}',
-        visible: '{{.visible}}',
-        icon: '\u{{.icon}}',
-    });
-    anchor_{{$index | safeJS}}.add('.single-content {{ delimit .element ", .single-content " | safeJS }}')
-    {{- end -}}
-</script>
-{{- end -}}
+{{- partial "single_foot.html" . -}}
+{{- partial "gitalk.html" . -}}
 
 {{- end -}}

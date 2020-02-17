@@ -1,16 +1,11 @@
 div.author {
     background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
     background-size: cover;
 }
 
 div.author-container {
     max-width: 1200px;
     -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -moz-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
     padding: 100px 0 50px;
     margin: 0 auto;
@@ -18,16 +13,12 @@ div.author-container {
 
 @media (max-width: 1000px) {
     div.author-container {
-        -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     }
 }
 
 @media (min-width: 1000px) {
     div.author-container {
-        -webkit-flex-wrap: nowrap;
-        -ms-flex-wrap: nowrap;
         flex-wrap: nowrap;
         padding-left: .2rem;
     }
@@ -37,9 +28,6 @@ div.author-container > div.left {
     max-width: 380px;
     padding: 0 .4rem;
     -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -moz-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
     text-align: center;
 }
@@ -74,39 +62,23 @@ div.author-container > div.left > ul.social {
     padding: 0;
     margin: 0;
     list-style-type: none;
-    display: -webkit-inline-flex;
-    display: -moz-inline-box;
-    display: -ms-inline-flexbox;
+    display: -webkit-inline-box;
     display: inline-flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-    -webkit-flex-direction: row;
-    -moz-box-orient: horizontal;
-    -moz-box-direction: normal;
-    -ms-flex-direction: row;
     flex-direction: row;
-    -webkit-flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -moz-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
 }
 
 div.author-container > div.left > ul.social > li {
     -webkit-transition: all .6s;
-    -o-transition: all .6s;
-    -moz-transition: all .6s;
     transition: all .6s;
 }
 
 div.author-container > div.left > ul.social > li:hover {
     -webkit-transform: scale(1.2, 1.2);
-    -moz-transform: scale(1.2, 1.2);
-    -ms-transform: scale(1.2, 1.2);
-    -o-transform: scale(1.2, 1.2);
     transform: scale(1.2, 1.2);
 }
 
@@ -120,8 +92,6 @@ div.author-container > div.left > ul.social > li > a {
 div.author-container > div.left > div.education, div.author-container > div.left > div.interest {
     text-align: left;
     width: 80%;
-    font-size: -webkit-calc(.2rem + 13px);
-    font-size: -moz-calc(.2rem + 13px);
     font-size: calc(.2rem + 13px);
     font-weight: 500;
 }
@@ -141,8 +111,6 @@ div.author-container > div.left > ul.education > li, div.author-container > div.
 }
 
 div.author-container > div.left > ul.education > li > div.course, div.author-container > div.left > ul.interest > li > div {
-    font-size: -webkit-calc(.3rem + 4px);
-    font-size: -moz-calc(.3rem + 4px);
     font-size: calc(.3rem + 4px);
 }
 

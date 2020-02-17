@@ -1,4 +1,5 @@
 <script src="{{ (resources.Get "/js/onscroll.js" | minify | fingerprint).RelPermalink }}"></script>
+{{- partial "scroll_trigger" . -}}
 
 {{- if .Site.Params.math -}}
 <link rel="stylesheet" href="/css/katex.min.css">
@@ -126,27 +127,4 @@
     }
 </script>
 
-{{- end -}}
-
-{{- if eq .Site.Params.comment.plugin 2 -}}
-{{ $gitalk := .Site.Params.comment.gitalk }}
-<link rel="stylesheet" href="/css/gitalk.css">
-<script src="/js/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: '{{ $gitalk.clientID | safeJS }}',
-        clientSecret: '{{ $gitalk.clientSecret | safeJS }}',
-        repo: '{{ $gitalk.repo | safeJS }}',
-        owner: '{{ $gitalk.owner | safeJS }}',
-        admin: [
-            {{- range after 1 $gitalk.admin -}}
-            '{{ . | safe }}, '
-            {{- end -}}
-            '{{ index $gitalk.admin 0 }}'],
-        id: '{{ anchorize ($.Title) | safeJS }}-gitalk',
-        distractionFreeMode: false
-    });
-
-    gitalk.render('gitalk-container')
-</script>
 {{- end -}}

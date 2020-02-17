@@ -23,8 +23,6 @@ div.nav-icon-bg {
     width: 48px;
     background: #EEEEEE;
     z-index: 5;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
     border-radius: 50%;
 }
 
@@ -32,8 +30,6 @@ div.doc-aside {
     position: -webkit-sticky;
     position: sticky;
     top: 60px;
-    height: -webkit-calc(100vh - 60px);
-    height: -moz-calc(100vh - 60px);
     height: calc(100vh - 60px);
 }
 
@@ -64,23 +60,15 @@ div.doc-aside {
         bottom: 0;
         z-index: 10;
         background-color: #FFFFFF;
-        -webkit-box-shadow: 8px 0 16px 0 rgba(0, 0, 0, .3);
-        -moz-box-shadow: 8px 0 16px 0 rgba(0, 0, 0, .3);
         box-shadow: 8px 0 16px 0 rgba(0, 0, 0, .3);
         -webkit-transition: all .6s ease-out;
-        -o-transition: all .6s ease-out;
-        -moz-transition: all .6s ease-out;
         transition: all .6s ease-out;
     }
 }
 
 @media (min-width: 800px) {
     div.doc-aside > div + div {
-        -webkit-border-top-right-radius: 42px;
-        -moz-border-radius-topright: 42px;
         border-top-right-radius: 42px;
-        -webkit-box-shadow: 2px 0 16px 0 rgba(0, 0, 0, .2);
-        -moz-box-shadow: 2px 0 16px 0 rgba(0, 0, 0, .2);
         box-shadow: 2px 0 16px 0 rgba(0, 0, 0, .2);;
     }
 }
@@ -88,9 +76,6 @@ div.doc-aside {
 div.doc-header {
     height: 80px;
     -webkit-box-align: end;
-    -webkit-align-items: flex-end;
-    -moz-box-align: end;
-    -ms-flex-align: end;
     align-items: flex-end;
 }
 
@@ -107,8 +92,6 @@ aside.doc-nav {
     min-width: 160px;
     padding: 12px 20px 0;
     overflow: auto;
-    height: -webkit-calc(100vh - 60px - 92px);
-    height: -moz-calc(100vh - 60px - 92px);
     height: calc(100vh - 60px - 92px);
 }
 
@@ -116,8 +99,6 @@ aside.doc-nav a {
     display: inline-block;
     color: #616161;
     -webkit-transition: all .3s ease-out;
-    -o-transition: all .3s ease-out;
-    -moz-transition: all .3s ease-out;
     transition: all .3s ease-out;
 }
 
@@ -127,9 +108,6 @@ aside.doc-nav a.active {
 
 aside.doc-nav a:hover {
     -webkit-transform: translateX(4px);
-    -moz-transform: translateX(4px);
-    -ms-transform: translateX(4px);
-    -o-transform: translateX(4px);
     transform: translateX(4px);
 }
 
@@ -154,8 +132,6 @@ aside.doc-nav ul ul ul {
 }
 
 aside.TableOfContents.doc {
-    height: -webkit-calc(100vh - 60px - 80px);
-    height: -moz-calc(100vh - 60px - 80px);
     height: calc(100vh - 60px - 80px);
 }
 

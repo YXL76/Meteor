@@ -9,8 +9,6 @@ div.information {
 div.information > div > a {
     color: #9E9E9E;
     -webkit-transition: color .5s;
-    -o-transition: color .5s;
-    -moz-transition: color .5s;
     transition: color .5s;
 }
 

@@ -15,7 +15,7 @@ let wintopPre = 100000000;
 let scrollLine, header, mask;
 
 function moveHeader(winTop) {
-    if (!checkbox && Math.abs(winTop - wintopPre) > 4) {
+    if (window.innerWidth >= 1000 && Math.abs(winTop - wintopPre) > 4) {
         if (winTop > wintopPre) {
             header.top = "-60px";
         } else {

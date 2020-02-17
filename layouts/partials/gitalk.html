@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{{- if eq .Site.Params.comment.plugin 2 -}}
+{{ $gitalk := .Site.Params.comment.gitalk }}
+<link rel="stylesheet" href="/css/gitalk.css">
+<script src="/js/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '{{ $gitalk.clientID | safeJS }}',
+        clientSecret: '{{ $gitalk.clientSecret | safeJS }}',
+        repo: '{{ $gitalk.repo | safeJS }}',
+        owner: '{{ $gitalk.owner | safeJS }}',
+        admin: [
+            {{- range after 1 $gitalk.admin -}}
+            '{{ . | safe }}, '
+            {{- end -}}
+            '{{ index $gitalk.admin 0 }}'],
+        id: '{{ anchorize ($.Title) | safeJS }}-gitalk',
+        distractionFreeMode: false
+    });
+
+    gitalk.render('gitalk-container')
+</script>
+{{- end -}}

@@ -23,18 +23,12 @@ div.circles > div:first-child + div + div > a {
     font-size: .5rem;
     color: #ffffff;
     padding: .1rem .16rem;
-    -webkit-border-radius: .2rem;
-    -moz-border-radius: .2rem;
     border-radius: .2rem;
     -webkit-animation: background 3s infinite;
-    -moz-animation: background 3s infinite;
-    -o-animation: background 3s infinite;
     animation: background 3s infinite;
 }
 
 div.circles > span {
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
     border-radius: 50%;
     background: #F9A825;
     position: absolute;
@@ -46,12 +40,8 @@ div.circles > span.small {
     height: 2.4rem;
     top: 1.4rem;
     left: 50%;
-    -moz-animation: 7s smallmove infinite cubic-bezier(1, .22, .71, .98);
-    -o-animation: 7s smallmove infinite cubic-bezier(1, .22, .71, .98);
     animation: 7s smallmove infinite cubic-bezier(1, .22, .71, .98);
     -webkit-animation: 7s smallmove infinite cubic-bezier(1, .22, .71, .98);
-    -moz-animation-delay: 1.2s;
-    -o-animation-delay: 1.2s;
     animation-delay: 1.2s;
     -webkit-animation-delay: 1.2s;
 }
@@ -61,12 +51,8 @@ div.circles > span.med {
     height: 4rem;
     top: 0;
     left: 10%;
-    -moz-animation: 7s medmove infinite cubic-bezier(.32, .04, .15, .75);
-    -o-animation: 7s medmove infinite cubic-bezier(.32, .04, .15, .75);
     animation: 7s medmove infinite cubic-bezier(.32, .04, .15, .75);
     -webkit-animation: 7s medmove infinite cubic-bezier(.32, .04, .15, .75);
-    -moz-animation-delay: 0.4s;
-    -o-animation-delay: 0.4s;
     animation-delay: 0.4s;
     -webkit-animation-delay: 0.4s;
 }
@@ -76,41 +62,13 @@ div.circles > span.big {
     height: 7rem;
     top: 3.5rem;
     right: 0;
-    -moz-animation: 8s bigmove infinite;
-    -o-animation: 8s bigmove infinite;
     animation: 8s bigmove infinite;
     -webkit-animation: 8s bigmove infinite;
-    -moz-animation-delay: 3s;
-    -o-animation-delay: 3s;
     animation-delay: 3s;
     -webkit-animation-delay: 1s;
 }
 
 @-webkit-keyframes background {
-    0% {
-        background-color: rgba(249, 168, 37, 0);
-    }
-    50% {
-        background-color: rgba(249, 168, 37, .7);
-    }
-    100% {
-        background-color: rgba(249, 168, 37, 0);
-    }
-}
-
-@-moz-keyframes background {
-    0% {
-        background-color: rgba(249, 168, 37, 0);
-    }
-    50% {
-        background-color: rgba(249, 168, 37, .7);
-    }
-    100% {
-        background-color: rgba(249, 168, 37, 0);
-    }
-}
-
-@-o-keyframes background {
     0% {
         background-color: rgba(249, 168, 37, 0);
     }
@@ -135,62 +93,6 @@ div.circles > span.big {
 }
 
 @-webkit-keyframes smallmove {
-    0% {
-        top: 10px;
-        left: 45%;
-        opacity: 1;
-    }
-    25% {
-        top: 300px;
-        left: 40%;
-        opacity: 0.7;
-    }
-    50% {
-        top: 240px;
-        left: 55%;
-        opacity: 0.4;
-    }
-    75% {
-        top: 100px;
-        left: 40%;
-        opacity: 0.6;
-    }
-    100% {
-        top: 10px;
-        left: 45%;
-        opacity: 1;
-    }
-}
-
-@-moz-keyframes smallmove {
-    0% {
-        top: 10px;
-        left: 45%;
-        opacity: 1;
-    }
-    25% {
-        top: 300px;
-        left: 40%;
-        opacity: 0.7;
-    }
-    50% {
-        top: 240px;
-        left: 55%;
-        opacity: 0.4;
-    }
-    75% {
-        top: 100px;
-        left: 40%;
-        opacity: 0.6;
-    }
-    100% {
-        top: 10px;
-        left: 45%;
-        opacity: 1;
-    }
-}
-
-@-o-keyframes smallmove {
     0% {
         top: 10px;
         left: 45%;
@@ -274,62 +176,6 @@ div.circles > span.big {
     }
 }
 
-@-moz-keyframes medmove {
-    0% {
-        top: 0;
-        left: 20%;
-        opacity: 1;
-    }
-    25% {
-        top: 300px;
-        left: 80%;
-        opacity: 0.7;
-    }
-    50% {
-        top: 240px;
-        left: 55%;
-        opacity: 0.4;
-    }
-    75% {
-        top: 100px;
-        left: 40%;
-        opacity: 0.6;
-    }
-    100% {
-        top: 0;
-        left: 20%;
-        opacity: 1;
-    }
-}
-
-@-o-keyframes medmove {
-    0% {
-        top: 0;
-        left: 20%;
-        opacity: 1;
-    }
-    25% {
-        top: 300px;
-        left: 80%;
-        opacity: 0.7;
-    }
-    50% {
-        top: 240px;
-        left: 55%;
-        opacity: 0.4;
-    }
-    75% {
-        top: 100px;
-        left: 40%;
-        opacity: 0.6;
-    }
-    100% {
-        top: 0;
-        left: 20%;
-        opacity: 1;
-    }
-}
-
 @keyframes medmove {
     0% {
         top: 0;
@@ -359,62 +205,6 @@ div.circles > span.big {
 }
 
 @-webkit-keyframes bigmove {
-    0% {
-        top: 0;
-        right: 4%;
-        opacity: 0.5;
-    }
-    25% {
-        top: 100px;
-        right: 40%;
-        opacity: 0.4;
-    }
-    50% {
-        top: 240px;
-        right: 45%;
-        opacity: 0.8;
-    }
-    75% {
-        top: 100px;
-        right: 35%;
-        opacity: 0.6;
-    }
-    100% {
-        top: 0;
-        right: 4%;
-        opacity: 0.5;
-    }
-}
-
-@-moz-keyframes bigmove {
-    0% {
-        top: 0;
-        right: 4%;
-        opacity: 0.5;
-    }
-    25% {
-        top: 100px;
-        right: 40%;
-        opacity: 0.4;
-    }
-    50% {
-        top: 240px;
-        right: 45%;
-        opacity: 0.8;
-    }
-    75% {
-        top: 100px;
-        right: 35%;
-        opacity: 0.6;
-    }
-    100% {
-        top: 0;
-        right: 4%;
-        opacity: 0.5;
-    }
-}
-
-@-o-keyframes bigmove {
     0% {
         top: 0;
         right: 4%;

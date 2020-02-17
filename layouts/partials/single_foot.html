@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{{- if .Params.toc.enable -}}
+<script src="/js/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        tocSelector: '.js-toc',
+        contentSelector: '.js-toc-content',
+        headingSelector: '{{.Params.toc.heading}}',
+        hasInnerContainers: true,
+    });
+</script>
+{{- end -}}
+
+{{- if .Params.anchor.enable -}}
+<script src="/js/anchor.min.js"></script>
+<script>
+    {{ range $index, $val := .Params.anchor.list }}
+    let anchor_{{$index | safeJS}} = new AnchorJS({
+        placement: '{{.placement}}',
+        visible: '{{.visible}}',
+        icon: '\u{{.icon}}',
+    });
+    anchor_{{$index | safeJS}}.add('.single-content {{ delimit .element ", .single-content " | safeJS }}')
+    {{- end -}}
+</script>
+{{- end -}}

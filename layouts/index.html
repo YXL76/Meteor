@@ -46,15 +46,11 @@
         }
 
         @-webkit-keyframes blink { 0% {opacity: 0;} 50% {opacity: 1;} 100% {opacity: 0;} }
-        @-moz-keyframes blink { 0% {opacity: 0;} 50% {opacity: 1;} 100% {opacity: 0;} }
-        @-o-keyframes blink { 0% {opacity: 0;} 50% {opacity: 1;} 100% {opacity: 0;} }
         @keyframes blink { 0% {opacity: 0;} 50% {opacity: 1;} 100% {opacity: 0;} }
 
         h2.site-description + span.typed-cursor {
             font-size: 1rem;
             -webkit-animation: blink .7s infinite;
-            -moz-animation: blink .7s infinite;
-            -o-animation: blink .7s infinite;
             animation: blink .7s infinite;
         }
     </style>
@@ -82,13 +78,9 @@
 {{- if not .Content -}}
 <style>
     body > div.content {
-        min-height: -webkit-calc(100vh - 108px - 104px);
-        min-height: -moz-calc(100vh - 108px - 104px);
         min-height: calc(100vh - 108px - 104px);
     }
 </style>
-<link rel="stylesheet" href="{{ (resources.Get "/css/theme/wave.css" | minify | fingerprint).RelPermalink }}">
-{{- partial "wave.html" . -}}
 {{- end -}}
 
 {{- end -}}
