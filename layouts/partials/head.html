@@ -20,13 +20,6 @@
 <link rel="stylesheet" href="/fonts/Montserrat/Montserrat-custom.css">
 <link rel="stylesheet" href="/fonts/Nerd Fonts/nerd-fonts-generated.css">
 
-<link rel="stylesheet" href="{{ (resources.Get "/css/theme/body.css" | minify | fingerprint).RelPermalink }}">
-<link rel="stylesheet" href="{{ (resources.Get "/css/theme/font.css" | minify | fingerprint).RelPermalink }}">
-<link rel="stylesheet" href="{{ (resources.Get "/css/theme/footer.css" | minify | fingerprint).RelPermalink }}">
-<link rel="stylesheet" href="{{ (resources.Get "/css/theme/navbar.css" | minify | fingerprint).RelPermalink }}">
-<link rel="stylesheet" href="{{ (resources.Get "/css/theme/separate.css" | minify | fingerprint).RelPermalink }}">
-<link rel="stylesheet" href="{{ (resources.Get "/css/theme/transform.css" | minify | fingerprint).RelPermalink }}">
-
 {{- partial "flexible_js.html" -}}
 
 {{- if .Site.Params.dark_mode -}}

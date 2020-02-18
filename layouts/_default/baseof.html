@@ -35,6 +35,14 @@
     {{- end -}}
 </head>
 <body>
+
+<link rel="stylesheet" href="{{ (resources.Get "/css/theme/body.css" | minify | fingerprint).RelPermalink }}">
+<link rel="stylesheet" href="{{ (resources.Get "/css/theme/font.css" | minify | fingerprint).RelPermalink }}">
+<link rel="stylesheet" href="{{ (resources.Get "/css/theme/footer.css" | minify | fingerprint).RelPermalink }}">
+<link rel="stylesheet" href="{{ (resources.Get "/css/theme/navbar.css" | minify | fingerprint).RelPermalink }}">
+<link rel="stylesheet" href="{{ (resources.Get "/css/theme/separate.css" | minify | fingerprint).RelPermalink }}">
+<link rel="stylesheet" href="{{ (resources.Get "/css/theme/transform.css" | minify | fingerprint).RelPermalink }}">
+
 {{- partial "navbar.html" . -}}
 <div class="content" id="content">
     <div style="height: 53px;"></div>
