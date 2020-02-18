@@ -106,7 +106,7 @@
         http.open('GET', url);
         http.send();
         http.onreadystatechange = () => {
-            if (http.status === 200) {
+            if (http.readyState === 4 && http.status === 200) {
                 searchResult.innerHTML = '';
                 let res = JSON.parse(http.responseText);
                 if ('items' in res) {
