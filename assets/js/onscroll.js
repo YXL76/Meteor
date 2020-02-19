@@ -15,7 +15,7 @@ let wintopPre = 100000000;
 let scrollLine, header, mask;
 
 function moveHeader(winTop) {
-    if (window.innerWidth >= 1000 && Math.abs(winTop - wintopPre) > 4) {
+    if (Math.abs(winTop - wintopPre) > 4) {
         if (winTop > wintopPre) {
             header.top = "-60px";
         } else {
@@ -49,5 +49,5 @@ window.onresize = resize;
 window.onscroll = () => {
     const winTop = document.body.scrollTop || document.documentElement.scrollTop;
     moveLine(winTop);
-    moveHeader(winTop);
+    if(window.innerWidth >= 1000) moveHeader(winTop);
 };

@@ -1,12 +1,14 @@
 {{- if .Params.toc.enable -}}
 <script src="/js/tocbot.min.js"></script>
 <script>
-    tocbot.init({
-        tocSelector: '.js-toc',
-        contentSelector: '.js-toc-content',
-        headingSelector: '{{.Params.toc.heading}}',
-        hasInnerContainers: true,
-    });
+    if (window.innerWidth >= 1000) {
+        tocbot.init({
+            tocSelector: '.js-toc',
+            contentSelector: '.js-toc-content',
+            headingSelector: '{{.Params.toc.heading}}',
+            hasInnerContainers: true,
+        });
+    };
 </script>
 {{- end -}}
 
