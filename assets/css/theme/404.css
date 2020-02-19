@@ -4,7 +4,7 @@ div.circles {
 }
 
 div.circles > div {
-    color: #ffffff;
+    color: #fff;
     position: relative;
     z-index: 9;
 }
@@ -21,7 +21,7 @@ div.circles > div:first-child + div {
 
 div.circles > div:first-child + div + div > a {
     font-size: .5rem;
-    color: #ffffff;
+    color: #fff;
     padding: .1rem .16rem;
     border-radius: .2rem;
     -webkit-animation: background 3s infinite;
@@ -30,7 +30,7 @@ div.circles > div:first-child + div + div > a {
 
 div.circles > span {
     border-radius: 50%;
-    background: #F9A825;
+    background-color: #F9A825;
     position: absolute;
     z-index: 1;
 }

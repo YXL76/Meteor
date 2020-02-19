@@ -23,3 +23,23 @@
     {{- end -}}
 </script>
 {{- end -}}
+
+{{- if .Site.Params.math -}}
+<link rel="stylesheet" href="/css/katex.min.css">
+<script src="/js/katex.min.js"></script>
+<script src="/js/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+{{- end -}}
+
+{{- if .Site.Params.chart -}}
+<script src="/js/Chart.min.js"></script>
+{{- end -}}
+
+{{- if .Site.Params.diagram -}}
+<script src="/js/mermaid.min.js" onload="mermaid.initialize({startOnLoad:true});"></script>
+{{- end -}}
+
+{{- if .Site.Params.waveform -}}
+<script src="/js/default.js"></script>
+<script src="/js/wavedrom.min.js" onload="WaveDrom.ProcessAll()"></script>
+{{- end -}}

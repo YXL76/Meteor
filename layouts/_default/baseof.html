@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ (.Site.LanguageCode | default "en") | safeHTML }}-{{ (.Site.Params.countryCode | default "US") | safeHTML }}">
 <head>
-    {{- if .Site.GoogleAnalytics -}}
-    {{ template "_internal/google_analytics_async.html" . }}
-    {{- end -}}
     {{- partial "head.html" . -}}
     {{- block "head" . -}}{{- end -}}
 
@@ -26,29 +23,21 @@
     {{- $hasBg = $spb.taxonomyTerm -}}
     {{- $bgFile = $spb.name.taxonomyTerm -}}
     {{- end -}}
-    {{- if eq $hasBg true -}}
-    <style>
-        body {
-            background-image: url("/img/{{ $bgFile | safeCSS }}");
-        }
-    </style>
-    {{- end -}}
 </head>
 <body>
-{{- $body := resources.Get "/css/theme/body.css" -}}
-{{- $font := resources.Get "/css/theme/font.css" -}}
-{{- $footer := resources.Get "/css/theme/footer.css" -}}
-{{- $navbar := resources.Get "/css/theme/navbar.css" -}}
-{{- $separate := resources.Get "/css/theme/separate.css" -}}
-{{- $transform := resources.Get "/css/theme/transform.css" -}}
-
-<link rel="stylesheet" href="{{ ((slice $body $font $footer $navbar $separate $transform | resources.Concat "/css/theme/head_bundle.css") | minify | fingerprint).RelPermalink }}">
-
 {{- partial "navbar.html" . -}}
 <div class="content" id="content">
     <div style="height: 53px;"></div>
     {{- block "main" . -}}{{- end -}}
 </div>
+{{- partial "color.html" . -}}
+{{- if eq $hasBg true -}}
+<style>
+    body {
+        background-image: url("/img/{{ $bgFile | safeCSS }}");
+    }
+</style>
+{{- end -}}
 {{- block "foot" . -}}{{- end -}}
 {{- partial "site_js.html" . -}}
 </body>

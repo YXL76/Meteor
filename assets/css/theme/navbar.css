@@ -5,7 +5,7 @@ div.scroll-line {
     top: 0;
     height: 3px;
     margin-bottom: -3px;
-    background: #f9a825;
+    background-color: #f9a825;
     width: 0;
     z-index: 30;
 }
@@ -17,7 +17,7 @@ nav.header {
     top: 0;
     min-height: 56px;
     line-height: 53px;
-    background-color: #ffffff;
+    background-color: #fff;
     box-shadow: 0 1px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 20;
     -webkit-transition: all .4s;
@@ -25,7 +25,7 @@ nav.header {
 }
 
 nav.header a {
-    color: black;
+    color: #000;
 }
 
 nav.header li {
@@ -85,7 +85,7 @@ ul.navigation > li.center > div > a:after {
     margin: 9px 0;
     width: 70%;
     height: 3px;
-    background: #f9a825;
+    background-color: #f9a825;
     content: "";
     opacity: 0;
     -webkit-transition: all 0.5s;
@@ -117,7 +117,7 @@ ul.navigation > li > div > ul {
     top: 100%;
     left: 0;
     padding: 0 0 8px;
-    background: #ffffff;
+    background-color: #fff;
     margin-top: -4px;
     border-radius: 0 0 6px 6px;
     z-index: -10;
@@ -148,7 +148,7 @@ ul.navigation > li > div > ul > li:before {
     left: 50%;
     right: 50%;
     bottom: 0;
-    background: #f9a825;
+    background-color: #f9a825;
     height: 3px;
     -webkit-transition: all 0.8s cubic-bezier(0, 0, 0, 1);
     transition: all 0.8s cubic-bezier(0, 0, 0, 1);
@@ -329,7 +329,7 @@ ul.dropdown li li a {
 ul.dropdown > li > label > ul {
     max-height: 0;
     overflow: hidden;
-    background: #fafafa;
+    background-color: #fafafa;
     -webkit-transition: max-height .8s ease-in-out;
     transition: max-height .8s ease-in-out;
 }
@@ -382,7 +382,7 @@ div.nav-icon span {
     position: absolute;
     height: 3px;
     width: 100%;
-    background: #212121;
+    background-color: #212121;
     border-radius: 9px;
     opacity: 1;
     left: 0;
@@ -434,7 +434,7 @@ div.mask {
     bottom: 0;
     left: 0;
     right: 0;
-    background: #000000;
+    background-color: #000;
     z-index: 19;
     opacity: 0.5;
 }
@@ -448,7 +448,7 @@ div.search {
     bottom: 0;
     left: 0;
     right: 0;
-    background: #ffffff;
+    background-color: #fff;
     z-index: 21;
     display: none;
 }
@@ -533,7 +533,7 @@ div.search > div:last-child > div > h2.title, div.search > div:last-child > div 
 }
 
 div.search > div:last-child > div > h2.title > a {
-    color: black;
+    color: #000;
     font-size: calc(.4rem + 8px);
     font-weight: 500;
     -webkit-transition: all .6s;
@@ -555,6 +555,6 @@ div.search > div:last-child > p.warn {
 }
 
 div.search > div:last-child em {
-    background: #FFEB3B;
+    background-color: #FFEB3B;
     border-radius: .12rem;
 }

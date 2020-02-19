@@ -15,7 +15,7 @@ ul.pagination {
 ul.pagination > li {
     width: .7rem;
     text-align: center;
-    background: #FFFFFF;
+    background-color: #fff;
     border-top: .036rem solid #F9A825;
     border-bottom: .036rem solid #F9A825;
 }
@@ -43,11 +43,11 @@ ul.pagination > li.disabled > a {
 }
 
 ul.pagination > li.active, ul.pagination > li:hover:not(.disabled) {
-    background: #F9A825;
+    background-color: #F9A825;
 }
 
 ul.pagination > li.active > a, ul.pagination > li:hover:not(.disabled) > a {
-    color: #FFFFFF;
+    color: #fff;
 }
 
 ul.pagination > li, ul.pagination > li > a > span, ul.pagination > li > a {

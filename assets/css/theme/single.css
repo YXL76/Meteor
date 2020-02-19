@@ -17,16 +17,16 @@ div.single-header > span.caption {
     bottom: 0;
     right: 0;
     padding: .05rem .1rem;
-    color: #FFFFFF;
+    color: #fff;
     font-size: .3rem;
-    background: rgba(0, 0, 0, .5);
+    background-color: rgba(0, 0, 0, .5);
     z-index: 5;
     border-radius: .1rem 0 0 0;
     font-weight: 400;
 }
 
 div.single-header > span.caption > a {
-    color: #FFFFFF;
+    color: #fff;
     font-weight: 500;
 }
 
@@ -55,7 +55,7 @@ div.single-title, div.single-content {
 @media (min-width: 540px) {
     div.single-title {
         position: relative;
-        background: #FFFFFF;
+        background-color: #fff;
         margin: -1.4rem auto .8rem;
         border-radius: 4px;
         box-shadow: 0 5px 20px 0 rgba(0, 0, 0, .16);
@@ -111,7 +111,7 @@ div.share > a {
 }
 
 div.share > a > i {
-    color: #FFFFFF;
+    color: #fff;
     border-radius: 50%;
     padding: .02rem .14rem;
     margin: 0 .1rem 0 0;
@@ -187,7 +187,7 @@ div.single-content blockquote {
     margin-left: .36rem;
     padding-left: .36rem;
     border-left: .1rem solid #FBC02D;
-    background: #F5F5F5;
+    background-color: #F5F5F5;
 }
 
 div.single-content table {
@@ -324,7 +324,7 @@ aside.TableOfContents a.is-active-link {
 }
 
 aside.TableOfContents a:hover {
-    color: #FFFFFF;
+    color: #fff;
     background-color: #424242;
     text-decoration: underline;
 }
@@ -371,7 +371,7 @@ div.single-content > div.post-copyright {
     margin: .4rem .36rem;
     padding: .2rem .4rem;
     color: #f9a825;
-    background: #FFF9C4;
+    background-color: #FFF9C4;
     font-size: calc(.2rem + 6px);
     border-radius: .24rem;
 }

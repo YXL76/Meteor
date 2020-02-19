@@ -11,7 +11,7 @@ input.doc-side + div.nav-icon {
 }
 
 input.doc-side + div.nav-icon span {
-    background: #f9a825;
+    background-color: #f9a825;
 }
 
 div.nav-icon-bg {
@@ -21,7 +21,7 @@ div.nav-icon-bg {
     right: 10px;
     height: 48px;
     width: 48px;
-    background: #EEEEEE;
+    background-color: #EEEEEE;
     z-index: 5;
     border-radius: 50%;
 }
@@ -59,7 +59,7 @@ div.doc-aside {
         left: -80vw;
         bottom: 0;
         z-index: 10;
-        background-color: #FFFFFF;
+        background-color: #fff;
         box-shadow: 8px 0 16px 0 rgba(0, 0, 0, .3);
         -webkit-transition: all .6s ease-out;
         transition: all .6s ease-out;

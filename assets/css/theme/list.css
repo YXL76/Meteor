@@ -35,7 +35,7 @@ div.list-item > h2 {
 }
 
 div.list-item > h2 > a.item-title {
-    color: black;
+    color: #000;
     font-size: calc(.9rem - 14px);
     font-weight: 700;
     -webkit-transition: color .6s;
@@ -85,7 +85,7 @@ div.list-item > div > a.item-tag:before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: #F9A825;
+    background-color: #F9A825;
     border-radius: 7px;
     -webkit-transform: scaleX(0);
     transform: scaleX(0);
@@ -96,7 +96,7 @@ div.list-item > div > a.item-tag:before {
 }
 
 div.list-item > div > a.item-tag:hover {
-    color: #FFFFFF;
+    color: #fff;
 }
 
 div.list-item > div > a.item-tag:hover:before {
@@ -116,14 +116,14 @@ ul.term-list {
 
 ul.term-list > li > div.line {
     height: 0;
-    border-top: .05rem dotted #000000;
+    border-top: .05rem dotted #000;
 }
 
 ul.term-list > li > a, ul.term-list > li > span {
     font-weight: 500;
     margin: 0;
     line-height: .7rem;
-    color: black;
+    color: #000;
 }
 
 ul.term-list > li > a {
@@ -141,7 +141,7 @@ ul.term-list > li > a:before {
     left: 0;
     right: 100%;
     bottom: 0;
-    background: #F9A825;
+    background-color: #F9A825;
     height: 3px;
     -webkit-transition: all 0.6s ease-out;
     transition: all 0.6s ease-out;
@@ -168,7 +168,7 @@ ul.term-list > li.read-more {
 }
 
 ul.term-list > li.read-more > span > a, ul.term-list > li.read-more > span > i {
-    color: #000000;
+    color: #000;
     font-size: calc(.22rem + 7px);
     -webkit-transition: all .6s;
     transition: all .6s;
