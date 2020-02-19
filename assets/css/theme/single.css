@@ -181,6 +181,7 @@ div.single-content *:not(pre) > code {
     color: #F57F17;
     background-color: #FFFDE7;
     font-family: "Roboto", sans-serif;
+    word-wrap: break-word;
 }
 
 div.single-content blockquote {
