@@ -15,8 +15,6 @@ body > div.content {
 
 a {
     text-decoration: none;
-    word-wrap: break-word;
-    word-break: break-all;
 }
 
 ul {

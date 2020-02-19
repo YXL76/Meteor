@@ -163,6 +163,8 @@ div.single-content a {
     color: #039BE5;
     -webkit-transition: all .6s;
     transition: all .6s;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
 div.single-content a:hover {
