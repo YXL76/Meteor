@@ -1,5 +1,8 @@
 {{- define "head" -}}
 
+{{- with .Content -}}
+{{- partial "single_head.html" . -}}
+{{- end -}}
 {{- partial "list_head.html" . -}}
 
 {{- end -}}
@@ -9,7 +12,7 @@
 <div class="list">
     <h1 class="list-title">{{ if (i18n .Title) }}{{ upper (i18n .Title) }}{{ else }}{{ upper .Title }}{{ end }}</h1>
     {{- with .Content -}}
-    <div class="list-content">{{ . }}</div>
+    <div class="single-content">{{ . }}</div>
     {{- end -}}
 </div>
 
