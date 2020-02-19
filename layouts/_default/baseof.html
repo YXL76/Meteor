@@ -32,12 +32,12 @@
         background-image: url("/img/{{ $bgFile | safeCSS }}");
     }
 </style>
+{{- end -}}
 {{- partial "navbar.html" . -}}
 <div class="content" id="content">
     <div style="height: 53px;"></div>
     {{- block "main" . -}}{{- end -}}
 </div>
-{{- end -}}
 {{- block "foot" . -}}{{- end -}}
 {{- partial "site_js.html" . -}}
 </body>

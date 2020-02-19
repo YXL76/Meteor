@@ -11,7 +11,7 @@
     {{- with .Content -}}
     <div class="list-content">{{ . }}</div>
     {{- end -}}
-    <div list-item-data-trigger class="list-item" style="-webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none;">
+    <div class="list-item" style="-webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none;">
         <div class="flex flex-direction-row flex-wrap">
             {{ range .Data.Terms.Alphabetical }}
             <a class="item-tag" href="{{ .Page.RelPermalink }}">
