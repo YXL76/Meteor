@@ -1,6 +1,7 @@
 {{- if eq .Site.Params.comment.plugin 2 -}}
 {{ $gitalk := .Site.Params.comment.gitalk }}
 <link rel="stylesheet" href="/css/gitalk.css">
+{{- partial "color_Gitalk.html" -}}
 <script src="/js/gitalk.min.js"></script>
 <script>
     let gitalk = new Gitalk({

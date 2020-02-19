@@ -25,11 +25,6 @@
     {{- end -}}
 </head>
 <body>
-{{- partial "navbar.html" . -}}
-<div class="content" id="content">
-    <div style="height: 53px;"></div>
-    {{- block "main" . -}}{{- end -}}
-</div>
 {{- partial "color.html" . -}}
 {{- if eq $hasBg true -}}
 <style>
@@ -37,6 +32,11 @@
         background-image: url("/img/{{ $bgFile | safeCSS }}");
     }
 </style>
+{{- partial "navbar.html" . -}}
+<div class="content" id="content">
+    <div style="height: 53px;"></div>
+    {{- block "main" . -}}{{- end -}}
+</div>
 {{- end -}}
 {{- block "foot" . -}}{{- end -}}
 {{- partial "site_js.html" . -}}
