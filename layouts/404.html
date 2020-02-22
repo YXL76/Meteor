@@ -16,8 +16,8 @@
     <meta name="description" content="{{ $desc }}">
 
     <link rel="stylesheet" href="/fonts/Montserrat/Montserrat-custom.css">
-    <link rel="stylesheet" href="{{ (resources.Get "/css/theme/body.css" | minify | fingerprint).RelPermalink }}">
-    <link rel="stylesheet" href="{{ (resources.Get "/css/theme/404.css" | minify | fingerprint).RelPermalink }}">
+    <link rel="stylesheet" href="{{ (resources.Get "/css/theme/body.css" | minify).RelPermalink }}">
+    <link rel="stylesheet" href="{{ (resources.Get "/css/theme/404.css" | minify).RelPermalink }}">
 
     {{- partial "flexible_js.html" -}}
 </head>

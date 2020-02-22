@@ -26,7 +26,7 @@
 {{- $navbar := resources.Get "/css/theme/navbar.css" -}}
 {{- $separate := resources.Get "/css/theme/separate.css" -}}
 {{- $transform := resources.Get "/css/theme/transform.css" -}}
-<link rel="stylesheet" href="{{ ((slice $body $font $footer $navbar $separate $transform | resources.Concat "/css/theme/head_bundle.css") | minify | fingerprint).RelPermalink }}">
+<link rel="stylesheet" href="{{ ((slice $body $font $footer $navbar $separate $transform | resources.Concat "/css/theme/head_bundle.css") | minify).RelPermalink }}">
 
 {{- partial "flexible_js.html" -}}
 
