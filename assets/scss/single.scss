@@ -51,7 +51,7 @@ div.single-header {
         }
     }
 
-    @media (min-width: $device-width-4) {
+    @media (min-width: $device-width-3) {
         width: 900px;
         padding: .32rem 100px .4rem;
     }
@@ -64,7 +64,7 @@ div.single-header {
         z-index: 10;
     }
 
-    @media (min-width: $device-width-1) and (max-width: $device-width-4) {
+    @media (min-width: $device-width-1) and (max-width: $device-width-3) {
         max-width: calc(16% + 700px);
         padding: .32rem 8% .4rem;
     }
@@ -135,10 +135,10 @@ div.single-header {
     max-width: 800px;
     min-width: 200px;
 
-    &.TableOfContents {
-        @media (min-width: $device-width-5) {
-            -webkit-transform: translateX(-80px);
-            transform: translateX(-80px);
+    &.with-toc {
+        @media (min-width: $device-width-4) {
+            -webkit-transform: translateX(-120px);
+            transform: translateX(-120px);
         }
     }
 
@@ -205,7 +205,6 @@ div.single-header {
         -webkit-transition: color .6s;
         transition: color .6s;
         word-wrap: break-word;
-        word-break: break-all;
 
         &:hover {
             text-decoration: underline;
@@ -229,7 +228,7 @@ div.single-header {
 }
 
 
-aside.TableOfContents {
+.TableOfContents {
     line-height: 26px;
     float: right;
     position: -webkit-sticky;
@@ -245,7 +244,7 @@ aside.TableOfContents {
         family: "Roboto", sans-serif;
     }
 
-    @media (max-width: $device-width-3) {
+    @media (max-width: $device-width-4) {
         display: none;
     }
 
