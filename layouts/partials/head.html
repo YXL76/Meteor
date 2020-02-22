@@ -1,32 +1,14 @@
 <meta charset="UTF-8">
 <title>{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
-      
-{{- $desc := "" -}}
-{{- if .Params.summary -}}
-{{- $desc = .Params.summary -}}
-{{- else if .IsPage -}}
-{{- $desc = .Summary -}}
-{{- else if .Site.Params.description -}}
-{{- $desc = .Site.Params.description -}}
-{{- end -}}
-<meta name="description" content="{{ $desc }}">
 
-{{ template "_internal/opengraph.html" . }}
-
-<link rel="icon" type="image/png" href="/img/icon.png">
-<link rel="shortcut icon" type="image/png" href="/img/icon.png">
-<link rel="apple-touch-icon"type="image/png" href="/img/icon-big.png"/>
+{{- partial "head_metadata.html" . -}}
 
 <link rel="stylesheet" href="/fonts/Montserrat/Montserrat-custom.css">
 <link rel="stylesheet" href="/fonts/Nerd Fonts/nerd-fonts-generated.css">
 
-{{- $body := resources.Get "/css/theme/body.css" -}}
-{{- $font := resources.Get "/css/theme/font.css" -}}
-{{- $footer := resources.Get "/css/theme/footer.css" -}}
-{{- $navbar := resources.Get "/css/theme/navbar.css" -}}
-{{- $separate := resources.Get "/css/theme/separate.css" -}}
-{{- $transform := resources.Get "/css/theme/transform.css" -}}
-<link rel="stylesheet" href="{{ ((slice $body $font $footer $navbar $separate $transform | resources.Concat "/css/theme/head_bundle.css") | minify).RelPermalink }}">
+{{- $scss_options := (dict "outputStyle" "compressed") -}}
+<link rel="stylesheet" href="{{ ((resources.Get "scss/head.scss") | toCSS $scss_options | fingerprint).RelPermalink }}">
+<style>{{ (((resources.Get "scss/color/head.scss") | toCSS $scss_options).Content) | safeCSS }}</style>
 
 {{- partial "flexible_js.html" -}}
 

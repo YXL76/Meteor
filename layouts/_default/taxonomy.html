@@ -7,7 +7,7 @@
 {{- define "main" -}}
 
 <div class="list">
-    <h1 class="list-title">{{ if (i18n .Title) }}{{ upper (i18n .Title) }}{{ else }}{{ upper .Title }}{{ end }}</h1>
+    <h1 class="list-title">{{ upper .Title }}</h1>
     {{- with .Content -}}
     <div class="list-content">{{ . }}</div>
     {{- end -}}
@@ -26,6 +26,6 @@
 
 {{- define "foot" }}
 
-{{- partial "footer.html" . -}}
+{{- partial "list_foot.html" . -}}
 
 {{- end -}}

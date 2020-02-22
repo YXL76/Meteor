@@ -1,7 +1,5 @@
 <script src="{{ (resources.Get "/js/onscroll.js" | minify).RelPermalink }}"></script>
 
-{{- partial "scroll_trigger.html" . -}}
-
 {{- if .Site.GoogleAnalytics -}}
 {{ template "_internal/google_analytics_async.html" . }}
 {{- end -}}

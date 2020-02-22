@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/fonts/Roboto/Roboto-custom.css">
-<link rel="stylesheet" href="/fonts/Source Code Pro/Source Code Pro.css">
-<link rel="stylesheet" href="{{ (resources.Get "/css/theme/single.css" | minify).RelPermalink }}">
-<link rel="stylesheet" href="{{ (resources.Get "/css/theme/information.css" | minify).RelPermalink }}">
+
+{{- $scss_options := (dict "outputStyle" "compressed") -}}
+<link rel="stylesheet" href="{{ ((resources.Get "scss/single.scss") | toCSS $scss_options | fingerprint).RelPermalink }}">
+<style>{{ (((resources.Get "scss/color/single.scss") | toCSS $scss_options).Content) | safeCSS }}</style>

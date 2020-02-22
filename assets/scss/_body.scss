@@ -1,16 +1,22 @@
 body {
     margin: 0;
-    background-color: #fff;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
     font-family: "Montserrat", "Montserrat Alternates", sans-serif;
+
+    background: {
+        repeat: no-repeat;
+        size: cover;
+        attachment: fixed;
+    }
+
+    >.content {
+        padding: 0;
+        width: 100%;
+        min-height: calc(100vh - 108px);
+    }
 }
 
-body > div.content {
-    padding: 0;
-    width: 100%;
-    min-height: calc(100vh - 108px);
+input {
+    display: none;
 }
 
 a {
@@ -24,7 +30,7 @@ ul {
 
 hr {
     border: 0;
-    border-bottom: 1px solid #E0E0E0;
+    border-bottom: 1px solid $gray-300;
 }
 
 .avatar {
@@ -33,9 +39,6 @@ hr {
 
 .anchorjs-link:after {
     font-family: "NerdFontsSymbols Nerd Font", sans-serif;
-    color: #f9a825;
-    -webkit-transition: all .2s;
-    transition: all .2s;
 }
 
 .flex {
@@ -58,13 +61,13 @@ hr {
     justify-content: flex-end;
 }
 
-.flex.flex-direction-row {
+.flex.flex-row {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     flex-direction: row;
 }
 
-.flex.flex-direction-column {
+.flex.flex-column {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     flex-direction: column;

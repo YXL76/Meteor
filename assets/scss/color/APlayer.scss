@@ -1,0 +1,68 @@
+.aplayer,
+.aplayer.aplayer-fixed .aplayer-body {
+    background: #fff;
+}
+
+.aplayer .aplayer-pic .aplayer-button {
+    background: rgba(0, 0, 0, .2);
+}
+
+.aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar {
+    background: #cdcdcd
+}
+
+.aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-loaded,
+.aplayer .aplayer-info .aplayer-controller .aplayer-volume-wrap .aplayer-volume-bar-wrap .aplayer-volume-bar {
+    background: #aaa;
+}
+
+.aplayer .aplayer-lrc:before {
+    background: linear-gradient(180deg, #fff 0, hsla(0, 0%, 100%, 0));
+}
+
+.aplayer .aplayer-lrc:after {
+    background: linear-gradient(180deg, hsla(0, 0%, 100%, 0) 0, hsla(0, 0%, 100%, .8));
+}
+
+.aplayer .aplayer-list ol::-webkit-scrollbar-thumb {
+    background-color: #eee
+}
+
+.aplayer .aplayer-list ol::-webkit-scrollbar-thumb:hover {
+    background-color: #ccc
+}
+
+.aplayer .aplayer-list ol li:hover {
+    background: #efefef
+}
+
+.aplayer .aplayer-list ol li.aplayer-list-light {
+    background: #e9e9e9
+}
+
+.aplayer .aplayer-notice {
+    background-color: #f4f4f5;
+}
+
+.aplayer .aplayer-miniswitcher {
+    background: #e6e6e6;
+}
+
+.aplayer .aplayer-info .aplayer-music .aplayer-author {
+    color: #666
+}
+
+.aplayer .aplayer-info .aplayer-controller .aplayer-time {
+    color: #999;
+}
+
+.aplayer .aplayer-lrc p,
+.aplayer .aplayer-list ol li .aplayer-list-index,
+.aplayer .aplayer-list ol li .aplayer-list-author {
+    color: #666;
+}
+
+.aplayer .aplayer-notice {
+    color: #fff;
+    color: #909399
+}

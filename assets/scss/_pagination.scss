@@ -1,0 +1,44 @@
+.pagination {
+    list-style: none;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+
+    >li {
+        width: .7rem;
+        text-align: center;
+        border-top: .036rem solid $yellow-800;
+        border-bottom: .036rem solid $yellow-800;
+
+        &:first-child {
+            border-left: .036rem solid $yellow-800;
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+        }
+
+        &:last-child {
+            border-right: .036rem solid $yellow-800;
+            border-top-right-radius: 6px;
+            border-bottom-right-radius: 6px;
+        }
+
+        >a {
+            font-size: .5rem;
+            font-weight: 500;
+        }
+    }
+}
+
+.pagination>li,
+.pagination>li>a,
+.pagination>li>a>span {
+    -webkit-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}

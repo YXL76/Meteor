@@ -1,0 +1,28 @@
+@import '../variables';
+
+#doc-side-label>.nav-icon {
+    >span {
+        background-color: $yellow-800;
+    }
+}
+
+.nav-icon-bg {
+    background-color: $gray-200;
+}
+
+.doc-nav-ul {
+    a {
+        color: $gray-700;
+
+        &.active {
+            color: $yellow-800;
+        }
+    }
+
+}
+
+.TableOfContents.doc {
+    >h2 {
+        color: $yellow-800;
+    }
+}

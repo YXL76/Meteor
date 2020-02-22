@@ -1,0 +1,3 @@
+// In some case, the css rule in file can ont bu read.(see https://stackoverflow.com/questions/49161159/uncaught-domexception-failed-to-read-the-rules-property-from-cssstylesheet)
+// Therefore, the darkrender will be invalid.
+// My solution is making the color rule inline.

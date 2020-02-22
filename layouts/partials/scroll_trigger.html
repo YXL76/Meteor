@@ -17,27 +17,6 @@
         transform: translateX(0);
         opacity: 1;
     }
-
-    @media (min-width: 540px) {
-        .single-title.visible, .single-title.invisible {
-            -webkit-transition: opacity .8s, -webkit-transform .8s ease-in;
-            transition: opacity .8s, -webkit-transform .8s ease-in;
-            transition: opacity .8s, transform .8s ease-in;
-            transition: transform .8s ease-in, opacity .8s, -webkit-transform .8s ease-in;
-        }
-
-        .single-title.invisible {
-            -webkit-transform: translateY(50px);
-            transform: translateY(50px);
-            opacity: 0;
-        }
-
-        .single-title.visible {
-            -webkit-transform: translateY(0);
-            transform: translateY(0);
-            opacity: 1;
-        }
-    }
 </style>
 
 <script src="/js/ScrollTrigger.min.js"></script>
@@ -47,12 +26,11 @@
             once: true,
             offset: {
                 viewport: {
-                    y: .25
+                    y: .2
                 }
             },
         },
     });
 
     scrollTrigger.add('[list-item-data-trigger]');
-    scrollTrigger.add('[single-title-data-trigger]');
 </script>

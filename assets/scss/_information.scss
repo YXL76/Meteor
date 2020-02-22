@@ -1,0 +1,19 @@
+div.information {
+    padding: 0;
+    font-size: .32rem;
+    font-weight: 500;
+    line-height: .46rem;
+
+    >div>a {
+        -webkit-transition: color .5s;
+        transition: color .5s;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        >i {
+            font-size: .4rem;
+        }
+    }
+}

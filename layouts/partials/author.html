@@ -7,7 +7,7 @@
 <div class="author" style="{{ with $background}} background-image: url({{ .RelPermalink | safeCSS}}) {{ end }}">
     {{- $avatar := .Resources.GetMatch "avatar.*" -}}
     <div class="author-container flex flex-space-between">
-        <div class="left flex flex-align-center flex-direction-column">
+        <div class="left flex flex-align-center flex-column">
             <div><img class="avatar" src="{{ with $avatar }}{{ .RelPermalink }}{{ end }}" alt=""></div>
             <div class="name">{{ $.Title }}</div>
             <div class="role">{{ .Params.role }}</div>
@@ -51,7 +51,7 @@
                     <div class="swiper-slide">
                         <ul class="term-list">
                             {{ range first 5 (after $index $.Pages.ByDate.Reverse) }}
-                            <li class="flex flex-align-center flex-space-between flex-direction-row flex-wrap">
+                            <li class="flex flex-align-center flex-space-between flex-row flex-wrap">
                                 <a href="{{ .RelPermalink }}">{{ .Title }}</a>
                                 <div class="line flex-grow-1"></div>
                                 <span>{{ i18n (dateFormat "Mon" .Date) }}, {{ dateFormat "2006-01-02" .Date }}</span>

@@ -1,106 +1,108 @@
-<div class="scroll-line"></div>
-<nav class="header">
-    <ul class="navigation flex flex-align-center flex-space-between flex-direction-row">
+<div id="scroll-line"></div>
+<nav id="header">
+    <ul class="navigation flex flex-align-center flex-space-between flex-row">
         <li class="left hvr-buzz-out">
             <a href="{{ "" | relLangURL }}">{{ .Site.Title }}</a>
         </li>
-        <li class="center flex flex-align-center flex-direction-row flex-grow-1">
+        <li class="center flex flex-align-center flex-row flex-grow-1">
             {{ range .Site.Menus.main }}
             <div>
                 <a {{ with .URL }} href="{{ . | relLangURL }}" {{ end }}>{{ .Title }}</a>
                 {{- if .HasChildren -}}
-                <ul>
+                <ul class="nav-menu-ul">
                     {{ range .Children }}
-                    <li><a {{ with .URL }} href="{{ . | relLangURL }}" {{ end }}>{{ .Title }}</a></li>
+                    <li class="nav-menu-li"><a {{ with .URL }} href="{{ . | relLangURL }}" {{ end }}>{{ .Title }}</a>
+                    </li>
                     {{- end -}}
                 </ul>
                 {{- end -}}
             </div>
             {{- end -}}
         </li>
-        <li class="right flex flex-align-center flex-direction-row">
+        <li class="right flex flex-align-center flex-row">
             {{- if or (eq .Site.Params.search.engine 1) (eq .Site.Params.search.engine 2) -}}
-            <div class="flex flex-align-center flex-direction-row">
+            <div class="flex flex-align-center flex-row">
                 <i class="nf nf-fa-search" onclick="showSearch()"></i>
             </div>
             {{- end -}}
             {{- if .Site.Params.dark_mode -}}
-            <div class="flex flex-align-center flex-direction-row">
+            <div class="flex flex-align-center flex-row">
                 <i class="nf nf-mdi-theme_light_dark" onclick="DarkMode()"></i>
             </div>
             {{- end -}}
-            <div class="flex flex-align-center flex-direction-row language">
+            <div class="flex flex-align-center flex-row navigation-language">
                 <i class="nf nf-mdi-earth"></i>
-                <a class="language">{{ index site.Data.i18n .Lang }}</a>
+                <a>{{ index site.Data.i18n .Lang }}</a>
                 {{ range .Translations }}
-                <ul>
-                    <li><a class="language" href="{{ .RelPermalink }}">
-                        {{- index site.Data.i18n .Lang -}}
-                    </a></li>
+                <ul class="nav-menu-ul">
+                    <li class="nav-menu-li"><a href="{{ .RelPermalink }}">
+                            {{- index site.Data.i18n .Lang -}}
+                        </a></li>
                 </ul>
                 {{- end -}}
             </div>
+            <label class="dropdown-menu-label" for="dropdown-menu-input">
+                <div class="nav-icon" id="dropdown-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </label>
         </li>
     </ul>
-    <label>
-        <input id="dropdown-menu" type="checkbox" oninput="Dropdown(this.checked)">
-        <div class="nav-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <ul class="dropdown">
-            {{ range .Site.Menus.main }}
-            <li>
-                <a {{ with .URL }} href="{{ . | relLangURL }}" {{ end }}>{{ .Title }}</a>
-                {{- if .HasChildren -}}
-                <label>
-                    <input type="checkbox" name="dropdown">
-                    <i class="nf nf-18 nf-mdi-chevron_left"></i>
-                    <ul>
-                        {{ range .Children }}
-                        <li><a {{ with .URL }} href="{{ . | relLangURL }}" {{ end }}>{{ .Title }}</a></li>
-                        {{- end -}}
-                    </ul>
-                </label>
+    <input id="dropdown-menu-input" name="dropdown-menu" type="checkbox" oninput="Dropdown(this.checked)">
+    <ul class="dropdown-menu">
+        {{ range $index, $val := .Site.Menus.main }}
+        <li>
+            <a {{ with .URL }} href="{{ . | relLangURL }}" {{ end }}>{{ .Title }}</a>
+            {{- if .HasChildren -}}
+            <input class="dropdown-input" id="dropdown-{{ $index | safeHTML }}" type="checkbox" name="dropdown">
+            <label class="dropdown-label" for="dropdown-{{ $index | safeHTML }}">
+                <i class="nf nf-18 nf-mdi-chevron_left"></i>
+            </label>
+            <ul class="dropdown-menu-ul">
+                {{ range .Children }}
+                <li><a {{ with .URL }} href="{{ . | relLangURL }}" {{ end }}>{{ .Title }}</a></li>
                 {{- end -}}
-            </li>
+            </ul>
             {{- end -}}
-            <li class="language">
-                <a class="language">
-                    <i class="nf nf-mdi-earth"></i>
-                    {{- index site.Data.i18n .Lang -}}
-                </a>
+        </li>
+        {{- end -}}
+        <li class="dropdown-language">
+            <a class="language">
+                <i class="nf nf-mdi-earth"></i>
+                {{- index site.Data.i18n .Lang -}}
+            </a>
+            <input class="dropdown-input" id="dropdown" type="checkbox" name="dropdown">
+            <label class="dropdown-label" for="dropdown">
+                <i class="nf nf-18 nf-mdi-chevron_left"></i>
+            </label>
+            <ul class="dropdown-menu-ul">
                 {{ range .Translations }}
-                <label>
-                    <input type="checkbox" name="dropdown">
-                    <i class="nf nf-18 nf-mdi-chevron_left"></i>
-                    <ul>
-                        <li><a class="language" href="{{ .RelPermalink }}">
-                            {{- index site.Data.i18n .Lang -}}
-                        </a></li>
-                    </ul>
-                </label>
+                <li><a class="language" href="{{ .RelPermalink }}">
+                        {{- index site.Data.i18n .Lang -}}
+                    </a></li>
                 {{- end -}}
-            </li>
-        </ul>
-    </label>
+            </ul>
+        </li>
+    </ul>
 </nav>
 {{- if or (eq .Site.Params.search.engine 1) (eq .Site.Params.search.engine 2) -}}
 <div class="search">
-    <div>{{ upper (i18n "Search") }}<i class="nf nf-fa-times" onclick="hideSearch()"></i></div>
-    <label class="flex flex-direction-row">
+    <div class="search-title">{{ upper (i18n "Search") }}<i class="nf nf-fa-times" onclick="hideSearch()"></i></div>
+    <label class="flex flex-row search-label">
         {{ $engine := "" }}
         {{ if eq .Site.Params.search.engine 1 }}
         {{ $engine = "Algolia" }}
         {{ else }}
         {{ $engine = "Google" }}
         {{ end }}
-        <input class="flex-grow-1" id="search-text" type="text" name="search" placeholder="{{ i18n "SearchEngine" }}: {{ $engine }}">
+        <input class="flex-grow-1" id="search-text" type="search" name="search"
+            placeholder="{{ i18n "SearchEngine" }}: {{ $engine }}">
         <i class="nf nf-fa-search" onclick="getSearchResult()"></i>
     </label>
     <div id="search-result"></div>
 </div>
 {{- end -}}
-<div class="mask" onclick="hideMask()"></div>
+<div id="mask"></div>

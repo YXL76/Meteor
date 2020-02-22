@@ -3,8 +3,7 @@
 
 <div class="nav-icon-bg"></div>
 
-<label>
-    <input class="doc-side" type="checkbox" oninput="callSide(this.checked)">
+<label id="doc-side-label" for="doc-side-input">
     <div class="nav-icon">
         <span></span>
         <span></span>
@@ -12,14 +11,15 @@
         <span></span>
     </div>
 </label>
+<input id="doc-side-input" type="checkbox" oninput="callSide(this.checked)">
 <script>
-    document.getElementsByClassName('doc-side')[0].checked = false;
+    document.getElementById('doc-side-input').checked = false;
 </script>
-<div class="flex flex-direction-row flex-space-between">
-    <div class="flex flex-direction-column doc-aside">
-        <div class="flex flex-direction-row flex-space-between doc-header">
+<div class="flex flex-row flex-space-between">
+    <div class="flex flex-column" id="doc-aside">
+        <div class="flex flex-row flex-space-between doc-header">
             <h1>{{ .CurrentSection.Title }}</h1>
-            <div class="share flex flex-direction-row flex-wrap">
+            <div class="share flex flex-row flex-wrap">
                 {{ range $.Site.Params.share }}
                 {{- $icon := index (where $.Site.Data.share.share "title" .) 0 -}}
                 {{- $link := replace $icon.url "{url}" ($.Permalink | htmlEscape) -}}
@@ -28,9 +28,9 @@
                 {{- end -}}
             </div>
         </div>
-        <div class="flex flex-direction-row">
+        <div class="doc-nav-container flex flex-row">
             <aside class="doc-nav">
-                <ul>
+                <ul class="doc-nav-ul">
                     {{- if eq .Kind "section" -}}
                     {{- $all_page = $all_page | append $ -}}
                     <li><a class="active" href="{{ .RelPermalink }}">Overview</a></li>
@@ -89,15 +89,15 @@
         {{- $idx = $index -}}
         {{- end -}}
         {{- end -}}
-        <div class="section flex flex-space-between flex-direction-row flex-wrap">
-            <div class="flex flex-space-between flex-direction-row flex-grow-1 flex-wrap">
+        <div class="section flex flex-space-between flex-row flex-wrap">
+            <div class="flex flex-space-between flex-row flex-grow-1 flex-wrap">
                 {{- if gt $idx 0 -}}
                 {{- $prev := index $all_page (sub $idx 1) -}}
                 <a href="{{ $prev.Permalink }}"><i class="nf nf-fa-arrow_circle_o_left"></i>{{ $prev.Title }}</a>
                 {{- end -}}
                 <span></span>
             </div>
-            <div class="flex flex-space-between flex-direction-row flex-grow-1 flex-wrap">
+            <div class="flex flex-space-between flex-row flex-grow-1 flex-wrap">
                 <span></span>
                 {{- if lt $idx (sub (len $all_page) 1) -}}
                 {{- $next := index $all_page (add $idx 1) -}}
@@ -109,7 +109,7 @@
     </div>
 </div>
 <script>
-    let docAside = document.getElementsByClassName('doc-aside')[0].style;
+    let docAside = document.getElementById('doc-aside').style;
 
     function callSide(event) {
         if (event) docAside.left = '0';

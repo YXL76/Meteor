@@ -7,12 +7,12 @@
 {{- define "main" -}}
 
 <div class="list">
-    <h1 class="list-title">{{ if (i18n .Title) }}{{ upper (i18n .Title) }}{{ else }}{{ upper .Title }}{{ end }}</h1>
+    <h1 class="list-title">{{ upper .Title }}</h1>
     {{- with .Content -}}
     <div class="list-content">{{ . }}</div>
     {{- end -}}
     <div class="list-item" style="-webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none;">
-        <div class="flex flex-direction-row flex-wrap">
+        <div class="flex flex-row flex-wrap">
             {{ range .Data.Terms.Alphabetical }}
             <a class="item-tag" href="{{ .Page.RelPermalink }}">
             <span>{{ .Page.Title }} {{ len .Pages }}</span>
@@ -26,16 +26,13 @@
         {{- $Pages := .Pages.ByDate.Reverse -}}
         <ul class="term-list">
             {{ range first 5 $Pages }}
-            <li class="flex flex-align-center flex-space-between flex-direction-row flex-wrap">
+            <li class="flex flex-align-center flex-space-between flex-row flex-wrap">
                 <a href="{{ .RelPermalink }}"><i class="nf nf-fa-caret_right"></i>{{ .Title }}</a>
                 <div class="line flex-grow-1"></div>
                 <span>{{ i18n (dateFormat "Mon" .Date) }}, {{ dateFormat "2006-01-02" .Date }}</span>
             </li>
             {{- end -}}
-            {{- if ge (len $Pages) 5 -}}
-            <li class="flex flex-align-center flex-space-between flex-direction-row flex-wrap"><i class="read-more nf nf-mdi-dots_horizontal"></i></li>
-            {{- end -}}
-            <li class="flex flex-align-center flex-space-between flex-direction-row flex-wrap read-more">
+            <li class="flex flex-align-center flex-space-between flex-row flex-wrap read-more">
                 <a></a>
                 <span>
                     <a href="{{ .Page.RelPermalink }}">{{ i18n "ReadMore" }}</a>
@@ -51,6 +48,6 @@
 
 {{- define "foot" }}
 
-{{- partial "footer.html" . -}}
+{{- partial "list_foot.html" . -}}
 
 {{- end -}}
