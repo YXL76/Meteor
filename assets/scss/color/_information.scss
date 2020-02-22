@@ -1,0 +1,11 @@
+div.information {
+    color: $gray-500;
+
+    >div>a {
+        color: $gray-500;
+
+        &:hover {
+            color: $yellow-800;
+        }
+    }
+}

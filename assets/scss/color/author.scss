@@ -1,0 +1,25 @@
+@import '../variables';
+
+.author-container {
+    .left {
+        >.role {
+            color: $gray-500;
+        }
+
+        >.organization>a {
+            color: $gray-800;
+        }
+
+        >.social {
+            >li {
+                >a {
+                    color: $gray-900;
+                }
+            }
+        }
+
+        >.education>li>.institution {
+            color: $gray-600;
+        }
+    }
+}

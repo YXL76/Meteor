@@ -18,7 +18,7 @@
     <h3 class="item-subtitle">{{ .Params.subtitle | markdownify | emojify }}</h3>
     <p class="item-summary">{{ .Params.summary | markdownify | emojify }}</p>
 
-    <div class="flex flex-direction-row flex-wrap flex-flex-end">
+    <div class="flex flex-row flex-wrap flex-flex-end">
         {{- with .Params.tags -}}
         {{ range . }}
         <a class="item-tag" href="{{ (path.Join "/tags" (urlize .)) | relLangURL }}">

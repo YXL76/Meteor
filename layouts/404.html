@@ -3,21 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
-          
-    {{- $desc := "" -}}
-    {{- if .Params.summary -}}
-    {{- $desc = .Params.summary -}}
-    {{- else if .IsPage -}}
-    {{- $desc = .Summary -}}
-    {{- else if .Site.Params.description -}}
-    {{- $desc = .Site.Params.description -}}
-    {{- end -}}
-    <meta name="description" content="{{ $desc }}">
+    <title>{{ i18n "PageNotFound" }} | {{ .Site.Title }}</title>
+
+    {{- partial "head_metadata.html" . -}}
 
     <link rel="stylesheet" href="/fonts/Montserrat/Montserrat-custom.css">
-    <link rel="stylesheet" href="{{ (resources.Get "/css/theme/body.css" | minify | fingerprint).RelPermalink }}">
-    <link rel="stylesheet" href="{{ (resources.Get "/css/theme/404.css" | minify | fingerprint).RelPermalink }}">
+
+    {{- $scss_options := (dict "outputStyle" "compressed") -}}
+    <link rel="stylesheet" href="{{ ((resources.Get "scss/404.scss") | toCSS $scss_options | fingerprint).RelPermalink }}">
 
     {{- partial "flexible_js.html" -}}
 </head>
@@ -25,7 +18,7 @@
 <body>
     <div class="circles">
         <div>404</div>
-        <div>{{ i18n "PageNotFound" }}</div>
+        <div>{{ upper (i18n "PageNotFound") }}</div>
         <div><a href="{{ .Site.Home.RelPermalink }}">{{ i18n "BackToHome" }}</a></div>
         <span class="big"></span>
         <span class="med"></span>

@@ -1,35 +1,39 @@
 <link rel="stylesheet" href="/css/swiper.min.css">
-<link rel="stylesheet" href="{{ (resources.Get "/css/theme/single.css" | minify | fingerprint).RelPermalink }}">
-<link rel="stylesheet" href="{{ (resources.Get "/css/theme/author.css" | minify | fingerprint).RelPermalink }}">
+{{- $scss_options := (dict "outputStyle" "compressed") -}}
+<link rel="stylesheet" href="{{ ((resources.Get "scss/single.scss") | toCSS $scss_options | fingerprint).RelPermalink }}">
+<link rel="stylesheet" href="{{ ((resources.Get "scss/author.scss") | toCSS $scss_options | fingerprint).RelPermalink }}">
+<style>{{ (((resources.Get "scss/color/single.scss") | toCSS $scss_options).Content) | safeCSS }}</style>
+<style>{{ (((resources.Get "scss/color/author.scss") | toCSS $scss_options).Content) | safeCSS }}</style>
+
 <style>
-    div.right > div.swiper-container {
+    .right > .swiper-container {
         width: 100%;
         height: auto;
         padding-bottom: 16px;
     }
 
-    div.right div.swiper-wrapper {
+    .right .swiper-wrapper {
         width: 0;
     }
 
-    div.right div.swiper-button-next, div.right div.swiper-button-prev {
+    .right .swiper-button-next, .right .swiper-button-prev {
         color: #000000;
     }
 
-    div.swiper-pagination > span {
+    .swiper-pagination > span {
         background: #000000
     }
 
-    div.swiper-button-next::after, div.swiper-button-prev::after {
+    .swiper-button-next::after, .swiper-button-prev::after {
         font-size: .7rem;
     }
 
     @media (max-width: 540px) {
-        div.swiper-button-next, div.swiper-button-prev {
+        .swiper-button-next, .swiper-button-prev {
             width: 0;
         }
 
-        div.swiper-slide > ul.term-list {
+        .swiper-slide > .term-list {
             padding: 0 .5rem;
         }
     }

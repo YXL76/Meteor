@@ -1,0 +1,22 @@
+.pagination {
+    >li {
+        background-color: $white;
+
+        >a {
+            color: $yellow-800;
+        }
+
+        &.disabled>a {
+            color: $gray-400;
+        }
+    }
+
+    &.active,
+    &:hover:not(.disabled) {
+        background-color: $yellow-800;
+
+        >a {
+            color: $white;
+        }
+    }
+}

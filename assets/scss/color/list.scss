@@ -1,0 +1,61 @@
+@import '../variables';
+@import './information';
+@import './pagination';
+
+.item-title {
+    color: $black;
+
+    &:hover {
+        color: $yellow-800;
+    }
+}
+
+.item-tag {
+    color: $yellow-800;
+
+    &::before {
+        background-color: $yellow-800;
+    }
+
+    &:hover {
+        color: $white;
+    }
+}
+
+.term-list {
+    >li {
+
+        >a,
+        >span {
+            color: $black;
+        }
+
+        >a {
+            &::before {
+                background-color: $yellow-800;
+            }
+        }
+
+        >span {
+            color: $gray-900;
+        }
+    }
+}
+
+.read-more {
+    >span {
+
+        >a,
+        >i {
+            color: $black;
+        }
+
+        &:hover {
+
+            >a,
+            >i {
+                color: $yellow-800;
+            }
+        }
+    }
+}

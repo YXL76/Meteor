@@ -1,7 +1,8 @@
 {{- if eq .Site.Params.comment.plugin 2 -}}
 {{ $gitalk := .Site.Params.comment.gitalk }}
 <link rel="stylesheet" href="/css/gitalk.css">
-{{- partial "color_Gitalk.html" -}}
+{{- $scss_options := (dict "outputStyle" "compressed") -}}
+<style>{{ (((resources.Get "scss/color/Gitalk.scss") | toCSS $scss_options).Content) | safeCSS }}</style>
 <script src="/js/gitalk.min.js"></script>
 <script>
     let gitalk = new Gitalk({

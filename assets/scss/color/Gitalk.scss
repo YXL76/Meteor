@@ -1,0 +1,296 @@
+.markdown-body {
+    color: #24292e;
+}
+
+.markdown-body .pl-c {
+    color: #6a737d;
+}
+
+.markdown-body .pl-c1,
+.markdown-body .pl-s .pl-v {
+    color: #005cc5;
+}
+
+.markdown-body .pl-e,
+.markdown-body .pl-en {
+    color: #6f42c1;
+}
+
+.markdown-body .pl-smi,
+.markdown-body .pl-s .pl-s1 {
+    color: #24292e;
+}
+
+.markdown-body .pl-ent {
+    color: #22863a;
+}
+
+.markdown-body .pl-k {
+    color: #d73a49;
+}
+
+.markdown-body .pl-s,
+.markdown-body .pl-pds,
+.markdown-body .pl-s .pl-pse .pl-s1,
+.markdown-body .pl-sr,
+.markdown-body .pl-sr .pl-cce,
+.markdown-body .pl-sr .pl-sre,
+.markdown-body .pl-sr .pl-sra {
+    color: #032f62;
+}
+
+.markdown-body .pl-v,
+.markdown-body .pl-smw {
+    color: #e36209;
+}
+
+.markdown-body .pl-bu {
+    color: #b31d28;
+}
+
+.markdown-body .pl-ii {
+    color: #fafbfc;
+    background-color: #b31d28;
+}
+
+.markdown-body .pl-c2 {
+    color: #fafbfc;
+    background-color: #d73a49;
+}
+
+.markdown-body .pl-sr .pl-cce {
+    color: #22863a;
+}
+
+.markdown-body .pl-ml {
+    color: #735c0f;
+}
+
+.markdown-body .pl-mh,
+.markdown-body .pl-mh .pl-en,
+.markdown-body .pl-ms {
+    color: #005cc5;
+}
+
+.markdown-body .pl-mi {
+    color: #24292e;
+}
+
+.markdown-body .pl-mb {
+    color: #24292e;
+}
+
+.markdown-body .pl-md {
+    color: #b31d28;
+    background-color: #ffeef0;
+}
+
+.markdown-body .pl-mi1 {
+    color: #22863a;
+    background-color: #f0fff4;
+}
+
+.markdown-body .pl-mc {
+    color: #e36209;
+    background-color: #ffebda;
+}
+
+.markdown-body .pl-mi2 {
+    color: #f6f8fa;
+    background-color: #005cc5;
+}
+
+.markdown-body .pl-mdr {
+    color: #6f42c1;
+}
+
+.markdown-body .pl-ba {
+    color: #586069;
+}
+
+.markdown-body .pl-sg {
+    color: #959da5;
+}
+
+.markdown-body .pl-corl {
+    color: #032f62;
+}
+
+.markdown-body a {
+    color: #0366d6;
+}
+
+.markdown-body hr {
+    background-color: #e1e4e8;
+}
+
+.markdown-body blockquote {
+    color: #6a737d;
+}
+
+.markdown-body kbd {
+    color: #444d56;
+    background-color: #fafbfc;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+    color: #1b1f23;
+}
+
+.markdown-body h6 {
+    color: #6a737d;
+}
+
+.markdown-body table tr {
+    background-color: #fff;
+}
+
+.markdown-body table tr:nth-child(2n) {
+    background-color: #f6f8fa;
+}
+
+.markdown-body img {
+    background-color: #fff;
+}
+
+.markdown-body code {
+    background-color: rgba(27, 31, 35, 0.05);
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+    background-color: #f6f8fa;
+}
+
+.markdown-body .full-commit .btn-outline:not(:disabled):hover {
+    color: #005cc5;
+}
+
+.markdown-body kbd {
+    color: #444d56;
+    background-color: #fafbfc;
+}
+
+.gt-container a {
+    color: #6190e8;
+}
+
+.gt-container a:hover {
+    color: #81a6ed;
+}
+
+.gt-container a.is--active {
+    color: #333;
+}
+
+.gt-container a.is--active:hover {
+    color: #333;
+}
+
+.gt-container .gt-svg svg {
+    fill: #6190e8;
+}
+
+.gt-container .gt-loader:before {
+    background-color: #999;
+}
+
+.gt-container .gt-btn {
+    background-color: #6190e8;
+    color: #fff;
+}
+
+.gt-container .gt-btn-preview {
+    background-color: #fff;
+    color: #6190e8;
+}
+
+.gt-container .gt-btn-preview:hover {
+    background-color: #f2f2f2;
+}
+
+.gt-container .gt-btn-public:hover {
+    background-color: #81a6ed;
+}
+
+.gt-container .gt-error {
+    color: #ff3860;
+}
+
+.gt-container .gt-user .is--poping .gt-ico svg {
+    fill: #6190e8;
+}
+
+.gt-container .gt-version {
+    color: #a1a1a1;
+}
+
+.gt-container .gt-popup {
+    background: #fff;
+}
+
+.gt-container .gt-popup .gt-action.is--active:before {
+    background: #6190e8;
+}
+
+.gt-container .gt-header-textarea {
+    background-color: #f6f6f6;
+}
+
+.gt-container .gt-header-textarea:hover {
+    background-color: #fbfbfb;
+}
+
+.gt-container .gt-header-preview {
+    background-color: #f6f6f6;
+}
+
+.gt-container .gt-header-controls-tip {
+    color: #6190e8;
+}
+
+.gt-container.gt-input-focused:after {
+    background: #000;
+}
+
+.gt-container .gt-comment-content {
+    background-color: #f9f9f9;
+}
+
+.gt-container .gt-comment-username {
+    color: #6190e8;
+}
+
+.gt-container .gt-comment-text {
+    color: #a1a1a1;
+}
+
+.gt-container .gt-comment-date {
+    color: #a1a1a1;
+}
+
+.gt-container .gt-comment-body {
+    color: #333 !important;
+}
+
+.gt-container .gt-comment-body .email-hidden-toggle a {
+    color: #444d56;
+    background: #dfe2e5;
+}
+
+.gt-container .gt-comment-body .email-hidden-toggle a:hover {
+    background-color: #c6cbd1;
+}
+
+.gt-container .gt-comment-body .email-hidden-reply .email-signature-reply {
+    color: #586069;
+}
+
+.gt-container .gt-comment-admin .gt-comment-content {
+    background-color: #f6f9fe;
+}

@@ -13,14 +13,14 @@
     {{ end }}
 </div>
 
-<div single-title-data-trigger class="single-title flex flex-align-center flex-space-between flex-direction-row">
-    <div class="flex flex-direction-column flex-grow-1">
-        <h1>{{ .Title | markdownify | emojify }}</h1>
+<div class="single-title flex flex-align-center flex-space-between flex-row">
+    <div class="flex flex-column flex-grow-1">
+        <h1 class="single-title-h1">{{ .Title | markdownify | emojify }}</h1>
         <div class="single-information">
             <h2 class="subtitle">{{ .Params.Subtitle | markdownify | emojify }}</h2>
-            <div class="flex flex-space-between flex-direction-row">
+            <div class="flex flex-space-between flex-row">
                 {{- partial "information" . -}}
-                <div class="share flex flex-direction-row flex-wrap flex-flex-end">
+                <div class="share flex flex-row flex-wrap flex-flex-end">
                     {{ range $.Site.Params.share }}
                     {{ $icon := index (where $.Site.Data.share.share "title" .) 0 }}
                     {{ $link := replace $icon.url "{url}" ($.Permalink | htmlEscape) }}
@@ -57,9 +57,9 @@
         {{- $author_page_path := (printf "/author/%s" (anchorize . )) -}}
         {{- $author_page := $.Site.GetPage $author_page_path -}}
         {{- $avatar := $author_page.Resources.GetMatch "avatar.*" -}}
-        <div class="flex flex-align-center flex-direction-row">
+        <div class="author-card flex flex-align-center flex-row">
             <img class="avatar" src="{{ with $avatar }}{{ .RelPermalink }}{{ end }}" alt="{{ . }}">
-            <div class="flex flex-direction-column">
+            <div class="flex flex-column">
                 <span><a href="{{ (path.Join "authors/" (anchorize . )) | relLangURL }}">{{ . }}</a></span>
                 <span>{{ $author_page.Params.bio }}</span>
             </div>
@@ -67,14 +67,14 @@
         {{- end -}}
     </div>
     {{- end -}}
-    <div class="section flex flex-space-between flex-direction-row flex-wrap">
-        <div class="flex flex-space-between flex-direction-row flex-grow-1 flex-wrap">
+    <div class="flex flex-space-between flex-row flex-wrap">
+        <div class="section flex flex-space-between flex-row flex-grow-1 flex-wrap">
             {{- with .NextInSection -}}
             <a href="{{ .Permalink }}"><i class="nf nf-fa-arrow_circle_o_left"></i>{{ .Title }}</a>
             {{- end -}}
             <span></span>
         </div>
-        <div class="flex flex-space-between flex-direction-row flex-grow-1 flex-wrap">
+        <div class="section flex flex-space-between flex-row flex-grow-1 flex-wrap">
             <span></span>
             {{- with .PrevInSection -}}
             <a href="{{ .Permalink }}">{{ .Title }}<i class="nf nf-fa-arrow_circle_o_right"></i></a>

@@ -1,0 +1,106 @@
+@import '../variables';
+@import './information';
+
+div.single-header {
+    >.caption {
+        color: $white;
+        background-color: rgba(0, 0, 0, .5);
+
+        >a {
+            color: $white;
+        }
+    }
+}
+
+.single-title {
+    @media (min-width: $device-width-1) {
+        background-color: $white;
+    }
+}
+
+.share {
+    >a {
+        >i {
+            color: $white;
+            background-color: $gray-400;
+        }
+
+        &:hover>i {
+            background-color: $yellow-800;
+        }
+    }
+}
+
+.single-content {
+    code {
+        color: $yellow-900;
+        background-color: $yellow-50;
+    }
+
+    pre {
+        >code {
+            color: $white;
+            background-color: transparent;
+        }
+    }
+
+    table {
+        background-color: $gray-200;
+
+        >thead>tr {
+            background-color: $gray-50;
+        }
+
+        >tbody {
+            >tr:nth-child(odd) {
+                background-color: $gray-300;
+            }
+
+            >tr:nth-child(even) {
+                background-color: $gray-50;
+            }
+        }
+
+        thead>tr:hover,
+        tbody>tr:hover {
+            background-color: $gray-400;
+        }
+    }
+
+    blockquote {
+        background-color: $gray-100;
+    }
+
+    a {
+        color: $light-blue-600;
+
+        &:hover {
+            color: $light-blue-700;
+            background-color: $gray-50;
+        }
+    }
+
+    >.lastmod {
+        color: $gray-800;
+    }
+}
+
+aside.TableOfContents {
+    a {
+        color: $gray-700;
+
+        &.is-active-link {
+            color: $yellow-800;
+        }
+
+        &:hover {
+            color: $white;
+            background-color: $gray-800;
+        }
+    }
+}
+
+.post-copyright {
+    color: $yellow-800;
+    background-color: $yellow-100;
+}

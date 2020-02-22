@@ -1,10 +1,10 @@
 <div id="scroll-line"></div>
 <nav id="header">
-    <ul class="navigation flex flex-align-center flex-space-between flex-direction-row">
+    <ul class="navigation flex flex-align-center flex-space-between flex-row">
         <li class="left hvr-buzz-out">
             <a href="{{ "" | relLangURL }}">{{ .Site.Title }}</a>
         </li>
-        <li class="center flex flex-align-center flex-direction-row flex-grow-1">
+        <li class="center flex flex-align-center flex-row flex-grow-1">
             {{ range .Site.Menus.main }}
             <div>
                 <a {{ with .URL }} href="{{ . | relLangURL }}" {{ end }}>{{ .Title }}</a>
@@ -19,18 +19,18 @@
             </div>
             {{- end -}}
         </li>
-        <li class="right flex flex-align-center flex-direction-row">
+        <li class="right flex flex-align-center flex-row">
             {{- if or (eq .Site.Params.search.engine 1) (eq .Site.Params.search.engine 2) -}}
-            <div class="flex flex-align-center flex-direction-row">
+            <div class="flex flex-align-center flex-row">
                 <i class="nf nf-fa-search" onclick="showSearch()"></i>
             </div>
             {{- end -}}
             {{- if .Site.Params.dark_mode -}}
-            <div class="flex flex-align-center flex-direction-row">
+            <div class="flex flex-align-center flex-row">
                 <i class="nf nf-mdi-theme_light_dark" onclick="DarkMode()"></i>
             </div>
             {{- end -}}
-            <div class="flex flex-align-center flex-direction-row navigation-language">
+            <div class="flex flex-align-center flex-row navigation-language">
                 <i class="nf nf-mdi-earth"></i>
                 <a>{{ index site.Data.i18n .Lang }}</a>
                 {{ range .Translations }}
@@ -42,7 +42,7 @@
                 {{- end -}}
             </div>
             <label class="dropdown-menu-label" for="dropdown-menu-input">
-                <div id="dropdown-icon">
+                <div class="nav-icon" id="dropdown-icon">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -91,7 +91,7 @@
 {{- if or (eq .Site.Params.search.engine 1) (eq .Site.Params.search.engine 2) -}}
 <div class="search">
     <div class="search-title">{{ upper (i18n "Search") }}<i class="nf nf-fa-times" onclick="hideSearch()"></i></div>
-    <label class="flex flex-direction-row search-label">
+    <label class="flex flex-row search-label">
         {{ $engine := "" }}
         {{ if eq .Site.Params.search.engine 1 }}
         {{ $engine = "Algolia" }}
