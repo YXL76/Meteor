@@ -23,10 +23,13 @@
 {{- $body := resources.Get "/css/theme/body.css" -}}
 {{- $font := resources.Get "/css/theme/font.css" -}}
 {{- $footer := resources.Get "/css/theme/footer.css" -}}
-{{- $navbar := resources.Get "/css/theme/navbar.css" -}}
 {{- $separate := resources.Get "/css/theme/separate.css" -}}
 {{- $transform := resources.Get "/css/theme/transform.css" -}}
-<link rel="stylesheet" href="{{ ((slice $body $font $footer $navbar $separate $transform | resources.Concat "/css/theme/head_bundle.css") | minify | fingerprint).RelPermalink }}">
+{{ $scss_options := (dict "outputStyle" "compressed") }}
+<link rel="stylesheet" href="{{ ((resources.Get "scss/_body.scss") | toCSS $scss_options | fingerprint).RelPermalink }}">
+<link rel="stylesheet" href="{{ ((slice $body $font $footer $separate $transform | resources.Concat "/css/theme/head_bundle.css") | minify | fingerprint).RelPermalink }}">
+<link rel="stylesheet" href="{{ ((resources.Get "scss/_navbar.scss") | toCSS $scss_options | fingerprint).RelPermalink }}">
+<style>{{ (((resources.Get "scss/_navbar_color.scss") | toCSS $scss_options).Content) | safeCSS }}</style>
 
 {{- partial "flexible_js.html" -}}
 

@@ -1,53 +1,49 @@
-let checkbox = false;
+document.getElementById('dropdown-menu-input').checked = false
+let scrollLine = document.getElementById('scroll-line').style
+let header = document.getElementById('header').style
+let dropdownIcon = document.getElementById('dropdown-icon').className
+let mask = document.getElementById('mask').style
 
 function Dropdown(event) {
-    checkbox = event;
-    mask.display = checkbox ? "block" : "none";
+    if (event) {
+        mask.display = 'block'
+        dropdownIcon = 'checked'
+    } else {
+        mask.display = 'none'
+        dropdownIcon = ''
+    }
 }
 
-function hideMask() {
-    document.getElementById("dropdown-menu").checked = false;
-    setTimeout(() => {mask.display = "none";}, 300);
-}
-
-let heightDiff;
-let wintopPre = 100000000;
-let scrollLine, header, mask;
+let heightDiff = 0
+let wintopPre = 100000000
 
 function moveHeader(winTop) {
     if (Math.abs(winTop - wintopPre) > 4) {
         if (winTop > wintopPre) {
-            header.top = "-60px";
+            header.top = '-60px'
         } else {
-            header.top = "0";
+            header.top = '0'
         }
     }
     wintopPre = winTop;
 }
 
 function moveLine(winTop) {
-    const scrolled = winTop * heightDiff;
-    scrollLine.width = scrolled + "%";
+    const scrolled = winTop * heightDiff
+    scrollLine.width = scrolled + '%'
 }
 
 function resize() {
-    heightDiff = 100 / (document.body.scrollHeight - window.innerHeight);
-    moveLine(document.body.scrollTop || document.documentElement.scrollTop);
+    heightDiff = 100 / (document.body.scrollHeight - window.innerHeight)
+    moveLine(document.body.scrollTop || document.documentElement.scrollTop)
 }
 
-window.onload = () => {
-    document.getElementById("dropdown-menu").checked = false;
-    scrollLine = document.getElementsByClassName("scroll-line")[0].style;
-    header = document.getElementsByClassName("header")[0].style;
-    mask = document.getElementsByClassName("mask")[0].style;
-    resize();
-};
-
-document.body.onresize = resize;
-window.onresize = resize;
+window.onload = resize
+window.onresize = resize
+document.body.onresize = resize
 
 window.onscroll = () => {
-    const winTop = document.body.scrollTop || document.documentElement.scrollTop;
-    moveLine(winTop);
-    if(window.innerWidth >= 1000) moveHeader(winTop);
+    const winTop = document.body.scrollTop || document.documentElement.scrollTop
+    moveLine(winTop)
+    moveHeader(winTop)
 };

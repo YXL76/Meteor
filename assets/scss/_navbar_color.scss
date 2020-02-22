@@ -1,0 +1,84 @@
+@import 'variables';
+
+#scroll-line {
+    background-color: $yellow-800;
+}
+
+#header {
+    background-color: $white;
+}
+
+.navigation {
+    >.center {
+        >div {
+            >a {
+
+                &::after,
+                &::before {
+                    background-color: #f9a825;
+                }
+            }
+
+            &:hover {
+                >a {
+                    color: $yellow-800;
+                }
+            }
+        }
+    }
+
+}
+
+.nav-menu-ul {
+    background-color: $white;
+}
+
+.nav-menu-li {
+    &::before {
+        background-color: $yellow-800;
+    }
+}
+
+.dropdown-menu-ul {
+    background-color: $gray-50;
+}
+
+
+#dropdown-icon {
+    >span {
+        background-color: $gray-900;
+    }
+
+}
+
+#mask {
+    background-color: $black;
+}
+
+.search {
+    background-color: $white;
+}
+
+#search-text {
+    +i {
+        &:hover {
+            color: $yellow-800;
+        }
+    }
+}
+
+#search-result {
+    >div {
+        >.title>a {
+            color: $black;
+
+            &:hober {
+                color: $yellow-800;
+            }
+        }
+
+        em {
+            background-color: $yellow-500;
+        }
+    }
+}
