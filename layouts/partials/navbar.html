@@ -1,4 +1,5 @@
 <div id="scroll-line"></div>
+<input id="dropdown-menu-input" name="dropdown-menu" type="checkbox">
 <nav id="header">
     <ul class="navigation flex flex-align-center flex-space-between flex-row">
         <li class="left hvr-buzz-out">
@@ -51,7 +52,6 @@
             </label>
         </li>
     </ul>
-    <input id="dropdown-menu-input" name="dropdown-menu" type="checkbox" oninput="Dropdown(this.checked)">
     <ul class="dropdown-menu">
         {{ range $index, $val := .Site.Menus.main }}
         <li>
@@ -105,4 +105,4 @@
     <div id="search-result"></div>
 </div>
 {{- end -}}
-<div id="mask"></div>
+<label id="mask" for="dropdown-menu-input"></label>

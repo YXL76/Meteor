@@ -37,6 +37,7 @@
     <div style="height: 53px;"></div>
     {{- block "main" . -}}{{- end -}}
 </div>
+<script src="{{ (resources.Get "/js/onscroll.js" | minify).RelPermalink }}"></script>
 {{- block "foot" . -}}{{- end -}}
 {{- partial "site_js.html" . -}}
 </body>

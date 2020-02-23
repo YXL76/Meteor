@@ -116,3 +116,14 @@
     -webkit-animation: hvr-buzz-out 1s linear 0s 1;
     animation: hvr-buzz-out 1s linear 0s 1;
 }
+
+.scroll-trigger {
+    opacity: 0;
+    transform: translateY(64px);
+    transition: all .6s ease-in-out;
+
+    &.visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
