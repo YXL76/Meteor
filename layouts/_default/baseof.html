@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ (.Site.LanguageCode | default "en") | safeHTML }}-{{ (.Site.Params.countryCode | default "US") | safeHTML }}">
 <head>
+    {{- partial "custom_head.html" . -}}
     {{- partial "head.html" . -}}
     {{- block "head" . -}}{{- end -}}
 
@@ -40,5 +41,6 @@
 <script src="{{ (resources.Get "/js/onscroll.js" | minify).RelPermalink }}"></script>
 {{- block "foot" . -}}{{- end -}}
 {{- partial "site_js.html" . -}}
+{{- partial "custom_foot.html" . -}}
 </body>
 </html>
