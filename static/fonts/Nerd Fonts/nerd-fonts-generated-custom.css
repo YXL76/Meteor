@@ -1,0 +1,96 @@
+@font-face {
+    font-family: 'NerdFontsSymbols Nerd Font';
+    src: url("DejaVu Sans Mono Nerd Font Complete Mono.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal
+}
+
+.nerd-font,
+.nerd-fonts,
+.nf {
+    font-family: 'NerdFontsSymbols Nerd Font', monospace;
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.nf-mdi-earth:before {
+    content: "\f6e6"
+}
+
+.nf-mdi-theme_light_dark:before {
+    content: "\fa0d"
+}
+
+.nf-mdi-chevron_left:before {
+    content: "\f640"
+}
+
+.nf-fa-arrow_circle_o_left:before {
+    content: "\f190"
+}
+
+.nf-fa-caret_right:before {
+    content: "\f0da"
+}
+
+.nf-fa-angle_double_right:before {
+    content: "\f101"
+}
+
+.nf-fa-arrow_circle_o_right:before {
+    content: "\f18e"
+}
+
+.nf-fa-folder_o:before {
+    content: "\f114"
+}
+
+.nf-fa-search:before {
+    content: "\f002"
+}
+
+.nf-fa-times:before {
+    content: "\f00d"
+}
+
+.nf-fa-twitter:before {
+    content: "\f099"
+}
+
+.nf-fa-weibo:before {
+    content: "\f18a"
+}
+
+.nf-fa-github:before {
+    content: "\f09b"
+}
+
+.nf-fa-envelope:before {
+    content: "\f0e0"
+}
+
+.nf-fa-facebook:before {
+    content: "\f09a"
+}
+
+.nf-fa-linkedin:before {
+    content: "\f0e1"
+}
+
+.nf-fa-whatsapp:before {
+    content: "\f232"
+}
+
+.nf-fa-reddit_alien:before {
+    content: "\f281"
+}
+
+.nf-fa-pinterest_p:before {
+    content: "\f231"
+}

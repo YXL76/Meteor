@@ -4,7 +4,7 @@
 {{- partial "head_metadata.html" . -}}
 
 <link rel="stylesheet" href="/fonts/Montserrat/Montserrat-custom.css">
-<link rel="stylesheet" href="/fonts/Nerd Fonts/nerd-fonts-generated.css">
+<link rel="stylesheet" href="/fonts/Nerd Fonts/nerd-fonts-generated-custom.css">
 
 {{- $scss_options := (dict "outputStyle" "compressed") -}}
 <link rel="stylesheet" href="{{ ((resources.Get "scss/head.scss") | toCSS $scss_options | fingerprint).RelPermalink }}">
