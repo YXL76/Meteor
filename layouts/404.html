@@ -7,7 +7,7 @@
 
     {{- partial "head_metadata.html" . -}}
 
-    <link rel="stylesheet" href="/fonts/Montserrat/Montserrat-custom.css">
+    <link rel="stylesheet" href="{{ ((resources.Get "fonts/Montserrat/Montserrat-custom.css") | minify | fingerprint).RelPermalink }}">
 
     {{- $scss_options := (dict "outputStyle" "compressed") -}}
     <link rel="stylesheet" href="{{ ((resources.Get "scss/404.scss") | toCSS $scss_options | fingerprint).RelPermalink }}">

@@ -28,11 +28,11 @@
             {{- end -}}
             {{- if .Site.Params.dark_mode -}}
             <div class="flex flex-align-center flex-row">
-                <i class="nf nf-mdi-theme_light_dark" onclick="DarkMode()"></i>
+                <i class="nf nf-fa-adjust" onclick="DarkMode()"></i>
             </div>
             {{- end -}}
             <div class="flex flex-align-center flex-row navigation-language">
-                <i class="nf nf-mdi-earth"></i>
+                <i class="nf nf-fa-globe"></i>
                 <a>{{ index site.Data.i18n .Lang }}</a>
                 {{ range .Translations }}
                 <ul class="nav-menu-ul">
@@ -59,7 +59,7 @@
             {{- if .HasChildren -}}
             <input class="dropdown-input" id="dropdown-{{ $index | safeHTML }}" type="checkbox" name="dropdown">
             <label class="dropdown-label" for="dropdown-{{ $index | safeHTML }}">
-                <i class="nf nf-18 nf-mdi-chevron_left"></i>
+                <i class="nf nf-24 nf-fa-chevron_left"></i>
             </label>
             <ul class="dropdown-menu-ul">
                 {{ range .Children }}
@@ -71,12 +71,12 @@
         {{- end -}}
         <li class="dropdown-language">
             <a class="language">
-                <i class="nf nf-mdi-earth"></i>
+                <i class="nf nf-fa-globe"></i>
                 {{- index site.Data.i18n .Lang -}}
             </a>
             <input class="dropdown-input" id="dropdown" type="checkbox" name="dropdown">
             <label class="dropdown-label" for="dropdown">
-                <i class="nf nf-18 nf-mdi-chevron_left"></i>
+                <i class="nf nf-24 nf-fa-chevron_left"></i>
             </label>
             <ul class="dropdown-menu-ul">
                 {{ range .Translations }}

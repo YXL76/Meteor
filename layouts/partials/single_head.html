@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/fonts/Roboto/Roboto-custom.css">
+<link rel="stylesheet" href="{{ ((resources.Get "fonts/Roboto/Roboto-custom.css") | minify | fingerprint).RelPermalink }}">
 
 {{- $scss_options := (dict "outputStyle" "compressed") -}}
 <link rel="stylesheet" href="{{ ((resources.Get "scss/single.scss") | toCSS $scss_options | fingerprint).RelPermalink }}">

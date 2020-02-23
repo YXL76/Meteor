@@ -1,13 +1,5 @@
 @font-face {
   font-family: 'Roboto';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url("Roboto-Italic.woff2") format('woff2');
-}
-
-@font-face {
-  font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
