@@ -21,6 +21,7 @@ function resize() {
 }
 
 document.addEventListener('DOMContentLoaded', resize, false)
+window.onload = resize
 window.onresize = resize
 document.body.onresize = resize
 
