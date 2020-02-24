@@ -3,6 +3,7 @@
 
 {{- partial "head_metadata.html" . -}}
 
+<link rel="preload" href="{{ "fonts/Nerd Fonts/Nerd-Font.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{{ ((resources.Get "fonts/Montserrat/Montserrat-custom.css") | minify | fingerprint).RelPermalink }}">
 <link rel="stylesheet" href="{{ ((resources.Get "fonts/Nerd Fonts/nerd-fonts-generated-custom.css") | minify | fingerprint).RelPermalink }}">
 
