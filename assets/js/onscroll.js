@@ -18,10 +18,9 @@ function moveLine(winTop) {
 
 function resize() {
     heightDiff = 100 / (document.body.scrollHeight - window.innerHeight)
-    moveLine(document.body.scrollTop || document.documentElement.scrollTop)
 }
 
-window.onload = resize
+document.addEventListener('DOMContentLoaded', resize, false)
 window.onresize = resize
 document.body.onresize = resize
 
@@ -36,6 +35,7 @@ function sTrigger(winTop) {
             scrollIndex += 1
         } else break
     }
+    if (scrollIndex === scrollLength) resize()
 }
 
 sTrigger(document.body.scrollTop || document.documentElement.scrollTop + window.innerHeight - 128)
