@@ -12,13 +12,18 @@
     <div class="list-content">{{ . }}</div>
     {{- end -}}
     {{- $paginator := .Paginate .Data.Pages.ByDate.Reverse -}}
+
+    {{- if eq $.Params.view 1  -}}
     {{ range $paginator.Pages }}
-    {{- if eq .Site.Params.view 1 -}}
     {{- .Render "li_card" -}}
+    {{- end -}}
+    <script src="/js/lazyload.js" onload="lazyload();"></script>
     {{- else -}}
+    {{ range $paginator.Pages }}
     {{- .Render "li_compact" -}}
     {{- end -}}
     {{- end -}}
+
     {{- partial "pagination" . -}}
 </div>
 

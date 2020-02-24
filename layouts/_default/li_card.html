@@ -4,15 +4,11 @@
     {{- partial "information" . -}}
     {{- end -}}
 
-    {{- $resource := (.Resources.ByType "image").GetMatch "*featured*" -}}
-    {{- with $resource -}}
-    {{ $image := .Fill "900x450" }}
     <div class="img-content">
         <a href="{{ $link }}">
-            <img class="list-feature hvr-grow" src="{{ $image.RelPermalink }}" alt="{{ .Title }}">
+            <img class="list-feature hvr-grow lazyload" data-src="/img/{{ .Params.Image.Name | safeHTML }}" alt="{{ .Title }}">
         </a>
     </div>
-    {{- end -}}
 
     <h2><a class="item-title" href="{{ $link }}">{{ .Title }}</a></h2>
     <h3 class="item-subtitle">{{ .Params.subtitle | markdownify | emojify }}</h3>
