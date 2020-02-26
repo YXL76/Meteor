@@ -43,6 +43,7 @@ sTrigger(document.body.scrollTop || document.documentElement.scrollTop + window.
 
 window.onscroll = () => {
     const winTop = document.body.scrollTop || document.documentElement.scrollTop
+    if (winTop < 0) return
     moveLine(winTop)
     moveHeader(winTop)
     if (scrollIndex !== scrollLength) sTrigger(winTop + window.innerHeight - 128)
